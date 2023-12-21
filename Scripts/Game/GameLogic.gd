@@ -52,7 +52,7 @@ func processTime():
 		timeText = "12:" + str(int(fmod(time, 60))).pad_zeros(2)
 	else:
 		timeText = str(int(time / 60)).pad_zeros(2) + ":" + str(int(fmod(time, 60))).pad_zeros(2)
-	$Static/Despertador/Time.text = timeText + " AM"
+	$Static/Despertador/Time.text = timeText
 
 # Win game
 func winGame():

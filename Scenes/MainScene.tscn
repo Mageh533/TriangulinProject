@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://ci47ylf44fdg8"]
+[gd_scene load_steps=14 format=3 uid="uid://ci47ylf44fdg8"]
 
 [ext_resource type="Script" path="res://Scripts/Game/GameLogic.gd" id="1_sqss8"]
 [ext_resource type="Texture2D" uid="uid://3f28bn54dy1a" path="res://Assets/Static/Escritorio.png" id="2_48fq7"]
@@ -10,6 +10,9 @@
 
 [sub_resource type="LabelSettings" id="LabelSettings_1bbin"]
 font_size = 31
+
+[sub_resource type="LabelSettings" id="LabelSettings_todmw"]
+font_size = 18
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_d7ua2"]
 size = Vector2(117, 647)
@@ -96,12 +99,20 @@ position = Vector2(337, 363)
 texture = ExtResource("6_ux8r6")
 
 [node name="Time" type="Label" parent="Static/Despertador"]
-offset_left = -69.0
+offset_left = -56.0
 offset_top = -24.0
-offset_right = 29.0
+offset_right = 42.0
 offset_bottom = 29.0
 text = "00:00"
 label_settings = SubResource("LabelSettings_1bbin")
+
+[node name="AM" type="Label" parent="Static/Despertador"]
+offset_left = 33.0
+offset_top = -12.0
+offset_right = 131.0
+offset_bottom = 41.0
+text = "AM"
+label_settings = SubResource("LabelSettings_todmw")
 
 [node name="Interactable" type="Node2D" parent="."]
 
