@@ -1,0 +1,40 @@
+[gd_scene load_steps=4 format=3 uid="uid://deob3eh6sgnix"]
+
+[ext_resource type="Texture2D" uid="uid://vbdii8r5qpnx" path="res://Assets/triangulinTitulo.png" id="1_2uigc"]
+[ext_resource type="Script" path="res://Scripts/Menu/Buttons/Play.gd" id="1_mlvm1"]
+[ext_resource type="PackedScene" uid="uid://ci47ylf44fdg8" path="res://Scenes/MainScene.tscn" id="2_w7qix"]
+
+[node name="MainMenu" type="Node"]
+
+[node name="Menu" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="Menu"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TriangulinTitulo" type="Sprite2D" parent="Menu"]
+position = Vector2(578.5, 322.5)
+scale = Vector2(1.26217, 0.860811)
+texture = ExtResource("1_2uigc")
+
+[node name="Play" type="Button" parent="Menu"]
+layout_mode = 0
+offset_left = 702.0
+offset_top = 520.0
+offset_right = 889.0
+offset_bottom = 587.0
+text = "Joguina24"
+script = ExtResource("1_mlvm1")
+MainScene = ExtResource("2_w7qix")
+
+[connection signal="pressed" from="Menu/Play" to="Menu/Play" method="_on_pressed"]
