@@ -11,11 +11,11 @@
 [sub_resource type="LabelSettings" id="LabelSettings_1bbin"]
 font_size = 31
 
-[sub_resource type="LabelSettings" id="LabelSettings_b50o2"]
-font_color = Color(0, 0, 0, 1)
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_d7ua2"]
 size = Vector2(117, 647)
+
+[sub_resource type="LabelSettings" id="LabelSettings_b50o2"]
+font_color = Color(0, 0, 0, 1)
 
 [sub_resource type="Animation" id="Animation_1kxgc"]
 resource_name = "GameWin"
@@ -103,7 +103,11 @@ offset_bottom = 29.0
 text = "00:00"
 label_settings = SubResource("LabelSettings_1bbin")
 
-[node name="Triangulin" type="Sprite2D" parent="."]
+[node name="Interactable" type="Node2D" parent="."]
+
+[node name="Mosters" type="Node2D" parent="."]
+
+[node name="Triangulin" type="Sprite2D" parent="Mosters"]
 position = Vector2(598, 307)
 scale = Vector2(0.575718, 0.549123)
 texture = ExtResource("2_inhka")
@@ -119,6 +123,20 @@ position = Vector2(2873, 332)
 [node name="POV" type="Camera2D" parent="."]
 position = Vector2(576, 321)
 
+[node name="MoveLeft" type="Area2D" parent="POV"]
+position = Vector2(-491, -10)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="POV/MoveLeft"]
+position = Vector2(-25.5, 11.5)
+shape = SubResource("RectangleShape2D_d7ua2")
+
+[node name="MoveRight" type="Area2D" parent="POV"]
+position = Vector2(539, -11)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="POV/MoveRight"]
+position = Vector2(-25.5, 11.5)
+shape = SubResource("RectangleShape2D_d7ua2")
+
 [node name="UI" type="Control" parent="POV"]
 layout_mode = 3
 anchors_preset = 15
@@ -130,6 +148,7 @@ offset_right = 576.0
 offset_bottom = 324.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 1
 
 [node name="ColorRect" type="ColorRect" parent="POV/UI"]
 visible = false
@@ -150,20 +169,6 @@ offset_right = 619.0
 offset_bottom = 221.0
 text = "Yay!"
 label_settings = SubResource("LabelSettings_b50o2")
-
-[node name="MoveLeft" type="Area2D" parent="POV"]
-position = Vector2(-491, -10)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="POV/MoveLeft"]
-position = Vector2(-25.5, 11.5)
-shape = SubResource("RectangleShape2D_d7ua2")
-
-[node name="MoveRight" type="Area2D" parent="POV"]
-position = Vector2(539, -11)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="POV/MoveRight"]
-position = Vector2(-25.5, 11.5)
-shape = SubResource("RectangleShape2D_d7ua2")
 
 [node name="GameAnims" type="AnimationPlayer" parent="."]
 libraries = {

@@ -1,14 +1,15 @@
 extends Node2D
 
+@export var time : float
+
 var gameActive = true
 var movingLeft = false
 var movingRight = false
-var time
 var timeText = "12:00"
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	time = 350
+	pass
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -19,7 +20,6 @@ func _process(delta):
 	if(time >= 360 and gameActive):
 		gameActive = false
 		winGame()
-
 
 # Camera Logic
 func _on_move_left_mouse_entered():
