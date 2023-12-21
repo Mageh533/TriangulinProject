@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://ci47ylf44fdg8"]
+[gd_scene load_steps=13 format=3 uid="uid://ci47ylf44fdg8"]
 
 [ext_resource type="Script" path="res://Scripts/Game/GameLogic.gd" id="1_sqss8"]
 [ext_resource type="Texture2D" uid="uid://3f28bn54dy1a" path="res://Assets/Static/Escritorio.png" id="2_48fq7"]
@@ -6,9 +6,60 @@
 [ext_resource type="Texture2D" uid="uid://dystmd5t26v3j" path="res://Assets/Static/Ventana_Derecha.png" id="3_ch0ee"]
 [ext_resource type="Texture2D" uid="uid://n7r0m3ichfvj" path="res://Assets/Static/Ventana_izquierda.png" id="4_8wcoh"]
 [ext_resource type="Texture2D" uid="uid://c2nrmodxfpdqm" path="res://Assets/Static/Puerta.png" id="5_vcdfj"]
+[ext_resource type="Texture2D" uid="uid://bv82qh0ytlh75" path="res://Assets/Objects/Despertador.png" id="6_ux8r6"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_1bbin"]
+font_size = 31
+
+[sub_resource type="LabelSettings" id="LabelSettings_b50o2"]
+font_color = Color(0, 0, 0, 1)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_d7ua2"]
 size = Vector2(117, 647)
+
+[sub_resource type="Animation" id="Animation_1kxgc"]
+resource_name = "GameWin"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("POV/UI/ColorRect:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("POV/UI/ColorRect:color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("POV/UI/Label:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_hxr4n"]
+_data = {
+"GameWin": SubResource("Animation_1kxgc")
+}
 
 [node name="MainScene" type="Node2D"]
 script = ExtResource("1_sqss8")
@@ -40,8 +91,65 @@ position = Vector2(2851, 324)
 scale = Vector2(0.896094, 0.898611)
 texture = ExtResource("5_vcdfj")
 
+[node name="Despertador" type="Sprite2D" parent="Static"]
+position = Vector2(337, 363)
+texture = ExtResource("6_ux8r6")
+
+[node name="Time" type="Label" parent="Static/Despertador"]
+offset_left = -69.0
+offset_top = -24.0
+offset_right = 29.0
+offset_bottom = 29.0
+text = "00:00"
+label_settings = SubResource("LabelSettings_1bbin")
+
+[node name="Triangulin" type="Sprite2D" parent="."]
+position = Vector2(598, 307)
+scale = Vector2(0.575718, 0.549123)
+texture = ExtResource("2_inhka")
+
+[node name="Targets" type="Node2D" parent="."]
+
+[node name="Left" type="Marker2D" parent="Targets"]
+position = Vector2(-1684, 332)
+
+[node name="Right" type="Marker2D" parent="Targets"]
+position = Vector2(2873, 332)
+
 [node name="POV" type="Camera2D" parent="."]
 position = Vector2(576, 321)
+
+[node name="UI" type="Control" parent="POV"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -576.0
+offset_top = -324.0
+offset_right = 576.0
+offset_bottom = 324.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="POV/UI"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 1, 1, 0)
+
+[node name="Label" type="Label" parent="POV/UI"]
+visible = false
+layout_mode = 0
+offset_left = 579.0
+offset_top = 198.0
+offset_right = 619.0
+offset_bottom = 221.0
+text = "Yay!"
+label_settings = SubResource("LabelSettings_b50o2")
 
 [node name="MoveLeft" type="Area2D" parent="POV"]
 position = Vector2(-491, -10)
@@ -57,18 +165,10 @@ position = Vector2(539, -11)
 position = Vector2(-25.5, 11.5)
 shape = SubResource("RectangleShape2D_d7ua2")
 
-[node name="Triangulin" type="Sprite2D" parent="."]
-position = Vector2(598, 307)
-scale = Vector2(0.575718, 0.549123)
-texture = ExtResource("2_inhka")
-
-[node name="Targets" type="Node2D" parent="."]
-
-[node name="Left" type="Marker2D" parent="Targets"]
-position = Vector2(-1684, 332)
-
-[node name="Right" type="Marker2D" parent="Targets"]
-position = Vector2(2873, 332)
+[node name="GameAnims" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_hxr4n")
+}
 
 [connection signal="mouse_entered" from="POV/MoveLeft" to="." method="_on_move_left_mouse_entered"]
 [connection signal="mouse_exited" from="POV/MoveLeft" to="." method="_on_move_left_mouse_exited"]

@@ -1,15 +1,25 @@
 extends Node2D
 
+var gameActive = true
 var movingLeft = false
 var movingRight = false
+var time
+var timeText = "12:00"
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass
+	time = 350
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	processCam(delta)
+	if(gameActive):
+		processCam(delta)
+		time += delta
+		processTime()
+	if(time >= 360 and gameActive):
+		gameActive = false
+		winGame()
+
 
 # Camera Logic
 func _on_move_left_mouse_entered():
@@ -35,3 +45,15 @@ func processCam(delta):
 		$POV.position.x = $Targets/Right.position.x
 	elif($POV.position.x > 2870):
 		$POV.position.x = $Targets/Left.position.x
+
+# Time display
+func processTime():
+	if(time < 60):
+		timeText = "12:" + str(int(fmod(time, 60))).pad_zeros(2)
+	else:
+		timeText = str(int(time / 60)).pad_zeros(2) + ":" + str(int(fmod(time, 60))).pad_zeros(2)
+	$Static/Despertador/Time.text = timeText + " AM"
+
+# Win game
+func winGame():
+	$GameAnims.play("GameWin")
