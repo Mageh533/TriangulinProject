@@ -1,7 +1,6 @@
 extends Node2D
 
 @export var time : float
-@export var MainMenu : PackedScene
 
 var gameActive = true
 var movingLeft = false
@@ -13,7 +12,6 @@ func _ready():
 	$POV/UI.hide()
 	$POV/UI/WinAnims.hide()
 	$POV/UI/DeathAnims.hide()
-	$POV/UI/LoseAnims.hide()
 	$Mosters/Triangulin/ProgressBar.modulate.a = 0
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -80,7 +78,4 @@ func _on_triangulin_triangulin_kill():
 	$POV/UI/DeathAnims/Triangulin.show()
 	$GameAnims.play("TriangulinKill")
 	$POV/UI/DeathAnims/Triangulin/TriangulinSusto.play("default")
-
-# After game ends
-func returnToMenu():
-	get_tree().change_scene_to_packed(MainMenu)
+	await $GameAnims.anima
