@@ -1,4 +1,4 @@
-[gd_scene load_steps=46 format=3 uid="uid://ci47ylf44fdg8"]
+[gd_scene load_steps=48 format=3 uid="uid://ci47ylf44fdg8"]
 
 [ext_resource type="Script" path="res://Scripts/Game/GameLogic.gd" id="1_sqss8"]
 [ext_resource type="Texture2D" uid="uid://3f28bn54dy1a" path="res://Assets/Static/Escritorio.png" id="2_48fq7"]
@@ -15,8 +15,10 @@
 [ext_resource type="Texture2D" uid="uid://bfkxvfimenoab" path="res://Assets/Monsters/Triangulin/Fase_4.png" id="10_m5mm7"]
 [ext_resource type="Script" path="res://Scripts/Game/Monsters/Triangulin.gd" id="11_pmmvt"]
 [ext_resource type="Texture2D" uid="uid://doae7fjenp4cx" path="res://Assets/Effects/zzz.png" id="12_v4u3i"]
+[ext_resource type="Texture2D" uid="uid://bgtkyy37vsw1j" path="res://Assets/Objects/Boton_azul.png" id="16_b2dq5"]
 [ext_resource type="Texture2D" uid="uid://c3imkdw4n7gxd" path="res://Assets/Monsters/Triangulin/1.png" id="16_rs500"]
 [ext_resource type="Texture2D" uid="uid://d4e44ebqvemxc" path="res://Assets/Monsters/Triangulin/3.png" id="17_4kxd8"]
+[ext_resource type="Texture2D" uid="uid://dnh035tqfyrkv" path="res://Assets/Objects/Boton_rojo.png" id="17_eiet5"]
 [ext_resource type="Script" path="res://Scripts/Game/Mechanics/Flashlight.gd" id="17_kt7nn"]
 [ext_resource type="Texture2D" uid="uid://c5vsou4cbcrye" path="res://Assets/Monsters/Triangulin/4.png" id="18_pj707"]
 [ext_resource type="Texture2D" uid="uid://bwww4ewa85nv1" path="res://Assets/Monsters/Triangulin/5.png" id="19_5gdqe"]
@@ -437,6 +439,29 @@ offset_left = -171.0
 offset_top = -157.0
 offset_right = 163.0
 offset_bottom = 160.0
+
+[node name="Puerta" type="Node2D" parent="Interactable"]
+position = Vector2(1, 0)
+
+[node name="BotonAzulL" type="Sprite2D" parent="Interactable/Puerta"]
+position = Vector2(-1442.51, 309.5)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("16_b2dq5")
+
+[node name="BotonAzulR" type="Sprite2D" parent="Interactable/Puerta"]
+position = Vector2(3113.05, 309.5)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("16_b2dq5")
+
+[node name="BotonRojoL" type="Sprite2D" parent="Interactable/Puerta"]
+position = Vector2(-1442.51, 407)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("17_eiet5")
+
+[node name="BotonRojoR" type="Sprite2D" parent="Interactable/Puerta"]
+position = Vector2(3113.05, 407)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("17_eiet5")
 
 [node name="Targets" type="Node2D" parent="."]
 
