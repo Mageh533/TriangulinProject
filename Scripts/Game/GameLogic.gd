@@ -9,7 +9,8 @@ var timeText = "12:00"
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass
+	$POV/UI.hide()
+	$Mosters/Triangulin/ProgressBar.modulate.a = 0
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -41,9 +42,9 @@ func processCam(delta):
 		$POV.position.x += 1000 * delta
 	
 	# Hacky looping effect
-	if($POV.position.x < -1680):
+	if($POV.position.x < $Targets/Left.position.x):
 		$POV.position.x = $Targets/Right.position.x
-	elif($POV.position.x > 2870):
+	elif($POV.position.x > $Targets/Right.position.x):
 		$POV.position.x = $Targets/Left.position.x
 
 # Time display
@@ -57,3 +58,13 @@ func processTime():
 # Win game
 func winGame():
 	$GameAnims.play("GameWin")
+
+func _on_test_pressed():
+	print("Test")
+
+# Game anims
+func _on_accion_button_down():
+	$GameAnims.play("TriangulinGaugeFadeIn")
+
+func _on_accion_button_up():
+	$GameAnims.play("TriangulinGaugeFadeOut")

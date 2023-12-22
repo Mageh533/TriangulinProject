@@ -1,20 +1,16 @@
-[gd_scene load_steps=28 format=3 uid="uid://ci47ylf44fdg8"]
+[gd_scene load_steps=22 format=3 uid="uid://ci47ylf44fdg8"]
 
 [ext_resource type="Script" path="res://Scripts/Game/GameLogic.gd" id="1_sqss8"]
 [ext_resource type="Texture2D" uid="uid://3f28bn54dy1a" path="res://Assets/Static/Escritorio.png" id="2_48fq7"]
+[ext_resource type="Texture2D" uid="uid://fdfwmjrr4hd5" path="res://Assets/Saltosusto.png" id="2_inhka"]
 [ext_resource type="Texture2D" uid="uid://dystmd5t26v3j" path="res://Assets/Static/Ventana_Derecha.png" id="3_ch0ee"]
 [ext_resource type="Texture2D" uid="uid://n7r0m3ichfvj" path="res://Assets/Static/Ventana_izquierda.png" id="4_8wcoh"]
 [ext_resource type="Texture2D" uid="uid://c2nrmodxfpdqm" path="res://Assets/Static/Puerta.png" id="5_vcdfj"]
 [ext_resource type="Texture2D" uid="uid://bv82qh0ytlh75" path="res://Assets/Objects/Despertador.png" id="6_ux8r6"]
 [ext_resource type="Texture2D" uid="uid://d1x3h41n6h53v" path="res://Assets/Objects/Caja.png" id="7_ki6an"]
-[ext_resource type="Texture2D" uid="uid://dx2ounxchmu4w" path="res://Assets/Monsters/Triangulin/Fase_1.png" id="7_od8ki"]
 [ext_resource type="Texture2D" uid="uid://dyujd2dk7d31l" path="res://Assets/Objects/manivela.png" id="8_adp5h"]
 [ext_resource type="Script" path="res://Scripts/Game/Objects/CajaDeMusica.gd" id="8_thh0d"]
-[ext_resource type="Texture2D" uid="uid://dwurdxases13o" path="res://Assets/Monsters/Triangulin/Fase_2.png" id="8_uvl3o"]
-[ext_resource type="Texture2D" uid="uid://bpeaq7c0bq0pr" path="res://Assets/Monsters/Triangulin/Fase_3.png" id="9_to6dm"]
-[ext_resource type="Texture2D" uid="uid://bfkxvfimenoab" path="res://Assets/Monsters/Triangulin/Fase_4.png" id="10_m5mm7"]
 [ext_resource type="Script" path="res://Scripts/Game/Monsters/Triangulin.gd" id="11_pmmvt"]
-[ext_resource type="Texture2D" uid="uid://doae7fjenp4cx" path="res://Assets/Effects/zzz.png" id="12_v4u3i"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_1bbin"]
 font_size = 31
@@ -22,49 +18,10 @@ font_size = 31
 [sub_resource type="LabelSettings" id="LabelSettings_todmw"]
 font_size = 18
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_yqs6t"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("7_od8ki")
-}],
-"loop": true,
-"name": &"Fase1",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("8_uvl3o")
-}],
-"loop": true,
-"name": &"Fase2",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("9_to6dm")
-}],
-"loop": true,
-"name": &"Fase3",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("10_m5mm7")
-}],
-"loop": true,
-"name": &"Fase4",
-"speed": 5.0
-}]
-
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rx0mr"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qjhbm"]
 bg_color = Color(0.352941, 0.698039, 0.172549, 1)
-
-[sub_resource type="Curve" id="Curve_te5nk"]
-_data = [Vector2(0.0393258, 0.021978), 0.0, 0.0, 0, 0, Vector2(0.668539, 0.846154), -2.11253, -2.11253, 0, 0, Vector2(0.932584, 0), 0.0, 0.0, 0, 0]
-point_count = 3
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_d7ua2"]
 size = Vector2(117, 647)
@@ -139,7 +96,7 @@ tracks/0/keys = {
 }
 
 [sub_resource type="Animation" id="Animation_w8qli"]
-resource_name = "TriangulinGaugeFadeOut"
+resource_name = "TraingulinGaugeFadeOut"
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -156,8 +113,8 @@ tracks/0/keys = {
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_hxr4n"]
 _data = {
 "GameWin": SubResource("Animation_1kxgc"),
-"TriangulinGaugeFadeIn": SubResource("Animation_pntbf"),
-"TriangulinGaugeFadeOut": SubResource("Animation_w8qli")
+"TraingulinGaugeFadeOut": SubResource("Animation_w8qli"),
+"TriangulinGaugeFadeIn": SubResource("Animation_pntbf")
 }
 
 [node name="MainScene" type="Node2D"]
@@ -212,13 +169,11 @@ label_settings = SubResource("LabelSettings_todmw")
 
 [node name="Mosters" type="Node2D" parent="."]
 
-[node name="Triangulin" type="AnimatedSprite2D" parent="Mosters"]
+[node name="Triangulin" type="Sprite2D" parent="Mosters"]
 position = Vector2(596, 328)
 scale = Vector2(0.575718, 0.549123)
-sprite_frames = SubResource("SpriteFrames_yqs6t")
-animation = &"Fase1"
+texture = ExtResource("2_inhka")
 script = ExtResource("11_pmmvt")
-sleepBar = 50
 
 [node name="ProgressBar" type="ProgressBar" parent="Mosters/Triangulin"]
 offset_left = -186.0
@@ -230,21 +185,6 @@ theme_override_styles/background = SubResource("StyleBoxFlat_rx0mr")
 theme_override_styles/fill = SubResource("StyleBoxFlat_qjhbm")
 value = 100.0
 show_percentage = false
-
-[node name="ParticulasMimir" type="CPUParticles2D" parent="Mosters/Triangulin"]
-position = Vector2(38.213, -138.403)
-rotation = -1.18126
-amount = 4
-lifetime = 2.0
-texture = ExtResource("12_v4u3i")
-gravity = Vector2(0, 0)
-initial_velocity_min = 100.0
-initial_velocity_max = 131.31
-damping_min = 10.102
-damping_max = 10.102
-scale_amount_min = 0.2
-scale_amount_max = 0.2
-scale_amount_curve = SubResource("Curve_te5nk")
 
 [node name="Interactable" type="Node2D" parent="."]
 
@@ -293,6 +233,7 @@ position = Vector2(-25.5, 11.5)
 shape = SubResource("RectangleShape2D_d7ua2")
 
 [node name="UI" type="Control" parent="POV"]
+visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -312,7 +253,6 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(1, 1, 1, 0)
 
 [node name="Label" type="Label" parent="POV/UI"]
 layout_mode = 0
