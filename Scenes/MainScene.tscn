@@ -182,9 +182,12 @@ tracks/4/path = NodePath(".")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
-"times": PackedFloat32Array(),
-"transitions": PackedFloat32Array(),
-"values": []
+"times": PackedFloat32Array(3.5),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"returnToMenu"
+}]
 }
 
 [sub_resource type="Animation" id="Animation_1kxgc"]
@@ -295,6 +298,18 @@ tracks/1/keys = {
 "args": ["GameLose"],
 "method": &"play"
 }]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("POV/UI/DeathAnims:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_hxr4n"]
@@ -444,7 +459,6 @@ position = Vector2(-25.5, 11.5)
 shape = SubResource("RectangleShape2D_d7ua2")
 
 [node name="UI" type="Control" parent="POV"]
-visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -485,7 +499,6 @@ text = "Yay!"
 label_settings = SubResource("LabelSettings_b50o2")
 
 [node name="DeathAnims" type="Control" parent="POV/UI"]
-visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -500,7 +513,7 @@ offset_bottom = 40.0
 
 [node name="TriangulinSusto" type="AnimatedSprite2D" parent="POV/UI/DeathAnims/Triangulin"]
 position = Vector2(600, 295)
-scale = Vector2(2, 2)
+scale = Vector2(0.001, 0.001)
 sprite_frames = SubResource("SpriteFrames_jxpnt")
 frame_progress = 0.736914
 

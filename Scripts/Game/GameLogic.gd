@@ -78,3 +78,6 @@ func _on_triangulin_triangulin_kill():
 	$POV/UI/DeathAnims/Triangulin.show()
 	$GameAnims.play("TriangulinKill")
 	$POV/UI/DeathAnims/Triangulin/TriangulinSusto.play("default")
+
+func returnToMenu():
+	get_tree().change_scene_to_file("res://Scenes/MainMenu.tscn")
