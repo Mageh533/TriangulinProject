@@ -10,6 +10,8 @@ var timeText = "12:00"
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	$POV/UI.hide()
+	$POV/UI/WinAnims.hide()
+	$POV/UI/DeathAnims.hide()
 	$Mosters/Triangulin/ProgressBar.modulate.a = 0
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -68,3 +70,12 @@ func _on_accion_button_down():
 
 func _on_accion_button_up():
 	$GameAnims.play("TriangulinGaugeFadeOut")
+
+func _on_triangulin_triangulin_kill():
+	gameActive = false
+	$POV/UI.show()
+	$POV/UI/DeathAnims.show()
+	$POV/UI/DeathAnims/Triangulin.show()
+	$GameAnims.play("TriangulinKill")
+	$POV/UI/DeathAnims/Triangulin/TriangulinSusto.play("default")
+	await $GameAnims.anima

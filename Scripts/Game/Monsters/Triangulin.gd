@@ -1,6 +1,8 @@
 extends AnimatedSprite2D
 
+signal triangulinKill
 @export var sleepBar = 100
+var sleeping = true
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -8,17 +10,18 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	$ProgressBar.value = sleepBar
-	sleepBar -= delta * 2
-	monsterAnims()
-	if sleepBar <= 0:
-		killPlayer()
+	if(sleeping):
+		$ProgressBar.value = sleepBar
+		sleepBar -= delta * 2
+		monsterAnims()
+		if sleepBar <= 0 and sleeping:
+			sleeping = false
+			hide()
+			$KillTimer.start()
 
 func _on_caja_de_musica_is_winding(delta):
-	sleepBar += delta * 20
-
-func killPlayer():
-	pass
+	if(sleeping):
+		sleepBar += delta * 20
 
 func monsterAnims():
 	if(sleepBar >= 75):
@@ -29,3 +32,6 @@ func monsterAnims():
 		play("Fase3")
 	else:
 		play("Fase4")
+
+func _on_kill_timer_timeout():
+	emit_signal("triangulinKill")
