@@ -78,4 +78,3 @@ func _on_triangulin_triangulin_kill():
 	$POV/UI/DeathAnims/Triangulin.show()
 	$GameAnims.play("TriangulinKill")
 	$POV/UI/DeathAnims/Triangulin/TriangulinSusto.play("default")
-	await $GameAnims.anima
