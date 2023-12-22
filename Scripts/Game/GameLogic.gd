@@ -9,10 +9,12 @@ var timeText = "12:00"
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	$POV/UI.hide()
-	$POV/UI/WinAnims.hide()
-	$POV/UI/DeathAnims.hide()
+	$POV/UILayer/UI.show()
+	$POV/UILayer/UI/WinAnims.hide()
+	$POV/UILayer/UI/DeathAnims.hide()
+	$POV/UILayer/UI/LoseAnims.hide()
 	$Mosters/Triangulin/ProgressBar.modulate.a = 0
+	$Darkness.show()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -73,11 +75,11 @@ func _on_accion_button_up():
 
 func _on_triangulin_triangulin_kill():
 	gameActive = false
-	$POV/UI.show()
-	$POV/UI/DeathAnims.show()
-	$POV/UI/DeathAnims/Triangulin.show()
+	$POV/UILayer/UI.show()
+	$POV/UILayer/UI/DeathAnims.show()
+	$POV/UILayer/UI/DeathAnims/Triangulin.show()
 	$GameAnims.play("TriangulinKill")
-	$POV/UI/DeathAnims/Triangulin/TriangulinSusto.play("default")
+	$POV/UILayer/UI/DeathAnims/Triangulin/TriangulinSusto.play("default")
 
 func returnToMenu():
 	get_tree().change_scene_to_file("res://Scenes/MainMenu.tscn")

@@ -1,4 +1,4 @@
-[gd_scene load_steps=43 format=3 uid="uid://ci47ylf44fdg8"]
+[gd_scene load_steps=46 format=3 uid="uid://ci47ylf44fdg8"]
 
 [ext_resource type="Script" path="res://Scripts/Game/GameLogic.gd" id="1_sqss8"]
 [ext_resource type="Texture2D" uid="uid://3f28bn54dy1a" path="res://Assets/Static/Escritorio.png" id="2_48fq7"]
@@ -17,11 +17,13 @@
 [ext_resource type="Texture2D" uid="uid://doae7fjenp4cx" path="res://Assets/Effects/zzz.png" id="12_v4u3i"]
 [ext_resource type="Texture2D" uid="uid://c3imkdw4n7gxd" path="res://Assets/Monsters/Triangulin/1.png" id="16_rs500"]
 [ext_resource type="Texture2D" uid="uid://d4e44ebqvemxc" path="res://Assets/Monsters/Triangulin/3.png" id="17_4kxd8"]
+[ext_resource type="Script" path="res://Scripts/Game/Mechanics/Flashlight.gd" id="17_kt7nn"]
 [ext_resource type="Texture2D" uid="uid://c5vsou4cbcrye" path="res://Assets/Monsters/Triangulin/4.png" id="18_pj707"]
 [ext_resource type="Texture2D" uid="uid://bwww4ewa85nv1" path="res://Assets/Monsters/Triangulin/5.png" id="19_5gdqe"]
 [ext_resource type="Texture2D" uid="uid://v4ohnposhbde" path="res://Assets/Monsters/Triangulin/6.png" id="20_11aiv"]
 [ext_resource type="Texture2D" uid="uid://el4brylng18v" path="res://Assets/Monsters/Triangulin/7.png" id="21_ffoxj"]
 [ext_resource type="Shader" path="res://Assets/Effects/TVNoise.gdshader" id="22_ersd0"]
+[ext_resource type="Texture2D" uid="uid://ctc7650yn8r2c" path="res://Assets/Effects/flaslight.png" id="23_571ms"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_1bbin"]
 font_size = 31
@@ -124,13 +126,17 @@ shader_parameter/amount = 40.0
 font_size = 72
 font_color = Color(0.584314, 0, 0.027451, 1)
 
+[sub_resource type="LabelSettings" id="LabelSettings_4lk0f"]
+font_size = 32
+font_color = Color(1, 1, 1, 0.54902)
+
 [sub_resource type="Animation" id="Animation_8p7iw"]
 resource_name = "GameLose"
 length = 3.5
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("POV/UI/LoseAnims:visible")
+tracks/0/path = NodePath("POV/UILayer/UI/LoseAnims:visible")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -142,7 +148,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("POV/UI/LoseAnims/Black:visible")
+tracks/1/path = NodePath("POV/UILayer/UI/LoseAnims/Black:visible")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -154,7 +160,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("POV/UI/LoseAnims/Static:visible")
+tracks/2/path = NodePath("POV/UILayer/UI/LoseAnims/Static:visible")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -166,7 +172,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("POV/UI/LoseAnims/Death Text:visible")
+tracks/3/path = NodePath("POV/UILayer/UI/LoseAnims/Death Text:visible")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -195,7 +201,7 @@ resource_name = "GameWin"
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("POV/UI/WinAnims/ColorRect:visible")
+tracks/0/path = NodePath("POV/UILayer/UI/WinAnims/ColorRect:visible")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -207,7 +213,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("POV/UI/WinAnims/ColorRect:color")
+tracks/1/path = NodePath("POV/UILayer/UI/WinAnims/ColorRect:color")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -219,7 +225,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("POV/UI/WinAnims/Label:visible")
+tracks/2/path = NodePath("POV/UILayer/UI/WinAnims/Label:visible")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -231,7 +237,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("POV/UI:visible")
+tracks/3/path = NodePath("POV/UILayer/UI:visible")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -276,7 +282,7 @@ resource_name = "TriangulinKill"
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("POV/UI/DeathAnims/Triangulin/TriangulinSusto:scale")
+tracks/0/path = NodePath("POV/UILayer/UI/DeathAnims/Triangulin/TriangulinSusto:scale")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -302,7 +308,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("POV/UI/DeathAnims:visible")
+tracks/2/path = NodePath("POV/UILayer/UI/DeathAnims:visible")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -380,13 +386,12 @@ sprite_frames = SubResource("SpriteFrames_yqs6t")
 animation = &"Fase1"
 frame_progress = 0.535346
 script = ExtResource("11_pmmvt")
-sleepBar = 5
 
 [node name="ProgressBar" type="ProgressBar" parent="Mosters/Triangulin"]
-offset_left = -186.0
-offset_top = -198.0
-offset_right = 198.0
-offset_bottom = -134.0
+offset_left = -185.855
+offset_top = -225.815
+offset_right = 198.145
+offset_bottom = -161.815
 theme_override_font_sizes/font_size = 46
 theme_override_styles/background = SubResource("StyleBoxFlat_rx0mr")
 theme_override_styles/fill = SubResource("StyleBoxFlat_qjhbm")
@@ -441,6 +446,17 @@ position = Vector2(-1684, 332)
 [node name="Right" type="Marker2D" parent="Targets"]
 position = Vector2(2873, 332)
 
+[node name="Flashlight" type="PointLight2D" parent="."]
+shadow_enabled = true
+texture = ExtResource("23_571ms")
+texture_scale = 3.0
+script = ExtResource("17_kt7nn")
+
+[node name="Darkness" type="DirectionalLight2D" parent="."]
+visible = false
+blend_mode = 1
+shadow_enabled = true
+
 [node name="POV" type="Camera2D" parent="."]
 position = Vector2(576, 321)
 
@@ -458,20 +474,19 @@ position = Vector2(539, -11)
 position = Vector2(-25.5, 11.5)
 shape = SubResource("RectangleShape2D_d7ua2")
 
-[node name="UI" type="Control" parent="POV"]
+[node name="UILayer" type="CanvasLayer" parent="POV"]
+layer = 2
+
+[node name="UI" type="Control" parent="POV/UILayer"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -576.0
-offset_top = -324.0
-offset_right = 576.0
-offset_bottom = 324.0
 grow_horizontal = 2
 grow_vertical = 2
-mouse_filter = 1
+mouse_filter = 2
 
-[node name="WinAnims" type="Control" parent="POV/UI"]
+[node name="WinAnims" type="Control" parent="POV/UILayer/UI"]
 visible = false
 layout_mode = 1
 anchors_preset = 15
@@ -480,7 +495,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="ColorRect" type="ColorRect" parent="POV/UI/WinAnims"]
+[node name="ColorRect" type="ColorRect" parent="POV/UILayer/UI/WinAnims"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -489,7 +504,7 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(1, 1, 1, 0.98)
 
-[node name="Label" type="Label" parent="POV/UI/WinAnims"]
+[node name="Label" type="Label" parent="POV/UILayer/UI/WinAnims"]
 layout_mode = 0
 offset_left = 579.0
 offset_top = 198.0
@@ -498,7 +513,8 @@ offset_bottom = 221.0
 text = "Yay!"
 label_settings = SubResource("LabelSettings_b50o2")
 
-[node name="DeathAnims" type="Control" parent="POV/UI"]
+[node name="DeathAnims" type="Control" parent="POV/UILayer/UI"]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -506,18 +522,18 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Triangulin" type="Control" parent="POV/UI/DeathAnims"]
+[node name="Triangulin" type="Control" parent="POV/UILayer/UI/DeathAnims"]
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="TriangulinSusto" type="AnimatedSprite2D" parent="POV/UI/DeathAnims/Triangulin"]
+[node name="TriangulinSusto" type="AnimatedSprite2D" parent="POV/UILayer/UI/DeathAnims/Triangulin"]
 position = Vector2(600, 295)
 scale = Vector2(0.001, 0.001)
 sprite_frames = SubResource("SpriteFrames_jxpnt")
 frame_progress = 0.736914
 
-[node name="TextureRect" type="TextureRect" parent="POV/UI/DeathAnims"]
+[node name="TextureRect" type="TextureRect" parent="POV/UILayer/UI/DeathAnims"]
 visible = false
 material = SubResource("ShaderMaterial_stuu6")
 layout_mode = 1
@@ -528,7 +544,7 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = SubResource("GradientTexture1D_7sc17")
 
-[node name="LoseAnims" type="Control" parent="POV/UI"]
+[node name="LoseAnims" type="Control" parent="POV/UILayer/UI"]
 visible = false
 layout_mode = 1
 anchors_preset = 15
@@ -537,7 +553,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Black" type="ColorRect" parent="POV/UI/LoseAnims"]
+[node name="Black" type="ColorRect" parent="POV/UILayer/UI/LoseAnims"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -546,7 +562,7 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 1)
 
-[node name="Static" type="ColorRect" parent="POV/UI/LoseAnims"]
+[node name="Static" type="ColorRect" parent="POV/UILayer/UI/LoseAnims"]
 material = SubResource("ShaderMaterial_x226s")
 layout_mode = 1
 anchors_preset = 15
@@ -555,7 +571,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Death Text" type="Label" parent="POV/UI/LoseAnims"]
+[node name="Death Text" type="Label" parent="POV/UILayer/UI/LoseAnims"]
 visible = false
 layout_mode = 1
 anchors_preset = 8
@@ -572,6 +588,35 @@ grow_vertical = 2
 text = "Has Morido"
 label_settings = SubResource("LabelSettings_pl7cf")
 
+[node name="LeftGuide" type="Label" parent="POV/UILayer/UI"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 40.0
+offset_top = -22.0
+offset_right = 80.0
+offset_bottom = 23.0
+grow_vertical = 2
+text = "<<"
+label_settings = SubResource("LabelSettings_4lk0f")
+
+[node name="RightGuide" type="Label" parent="POV/UILayer/UI"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -81.0
+offset_top = -22.0
+offset_right = -41.0
+offset_bottom = 23.0
+grow_horizontal = 0
+grow_vertical = 2
+text = ">>"
+label_settings = SubResource("LabelSettings_4lk0f")
+
 [node name="GameAnims" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_hxr4n")
@@ -584,6 +629,7 @@ libraries = {
 [connection signal="button_down" from="Interactable/CajaDeMusica/Accion" to="Interactable/CajaDeMusica" method="_on_accion_button_down"]
 [connection signal="button_up" from="Interactable/CajaDeMusica/Accion" to="." method="_on_accion_button_up"]
 [connection signal="button_up" from="Interactable/CajaDeMusica/Accion" to="Interactable/CajaDeMusica" method="_on_accion_button_up"]
+[connection signal="noise" from="Flashlight" to="Mosters/Triangulin" method="_on_flashlight_noise"]
 [connection signal="mouse_entered" from="POV/MoveLeft" to="." method="_on_move_left_mouse_entered"]
 [connection signal="mouse_exited" from="POV/MoveLeft" to="." method="_on_move_left_mouse_exited"]
 [connection signal="mouse_entered" from="POV/MoveRight" to="." method="_on_move_right_mouse_entered"]

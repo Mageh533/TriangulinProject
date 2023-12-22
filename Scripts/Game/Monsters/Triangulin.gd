@@ -35,3 +35,6 @@ func monsterAnims():
 
 func _on_kill_timer_timeout():
 	emit_signal("triangulinKill")
+
+func _on_flashlight_noise():
+	sleepBar -= 5
