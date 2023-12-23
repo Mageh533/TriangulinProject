@@ -2,8 +2,8 @@
 
 [ext_resource type="Script" path="res://Scripts/Game/GameLogic.gd" id="1_sqss8"]
 [ext_resource type="Texture2D" uid="uid://3f28bn54dy1a" path="res://Assets/Static/Escritorio.png" id="2_48fq7"]
-[ext_resource type="Texture2D" uid="uid://dystmd5t26v3j" path="res://Assets/Static/Ventana_Derecha.png" id="3_ch0ee"]
 [ext_resource type="Texture2D" uid="uid://n7r0m3ichfvj" path="res://Assets/Static/Ventana_izquierda.png" id="4_8wcoh"]
+[ext_resource type="Texture2D" uid="uid://2p2usg3o5g1q" path="res://Assets/Static/Estanterias.png" id="5_podnf"]
 [ext_resource type="Texture2D" uid="uid://c2nrmodxfpdqm" path="res://Assets/Static/Puerta.png" id="5_vcdfj"]
 [ext_resource type="Texture2D" uid="uid://bv82qh0ytlh75" path="res://Assets/Objects/Despertador.png" id="6_ux8r6"]
 [ext_resource type="Texture2D" uid="uid://d1x3h41n6h53v" path="res://Assets/Objects/Caja.png" id="7_ki6an"]
@@ -335,29 +335,29 @@ script = ExtResource("1_sqss8")
 [node name="Static" type="Node2D" parent="."]
 
 [node name="Escritorio" type="Sprite2D" parent="Static"]
-position = Vector2(575.5, 323.5)
+position = Vector2(576, 328)
 scale = Vector2(0.896094, 0.898611)
 texture = ExtResource("2_48fq7")
 
-[node name="VentanaDerecha" type="Sprite2D" parent="Static"]
-position = Vector2(1716, 324)
+[node name="Ventana1" type="Sprite2D" parent="Static"]
+position = Vector2(-1712, 328)
 scale = Vector2(0.896094, 0.898611)
-texture = ExtResource("3_ch0ee")
+texture = ExtResource("4_8wcoh")
 
-[node name="VentanaIzquierda" type="Sprite2D" parent="Static"]
-position = Vector2(-565, 324)
+[node name="Ventana2" type="Sprite2D" parent="Static"]
+position = Vector2(2864, 328)
 scale = Vector2(0.896094, 0.898611)
 texture = ExtResource("4_8wcoh")
 
 [node name="Puerta" type="Sprite2D" parent="Static"]
-position = Vector2(-1704, 324)
+position = Vector2(-568, 328)
 scale = Vector2(0.896094, 0.898611)
 texture = ExtResource("5_vcdfj")
 
-[node name="Puerta2" type="Sprite2D" parent="Static"]
-position = Vector2(2851, 324)
+[node name="Estanterias" type="Sprite2D" parent="Static"]
+position = Vector2(1720, 328)
 scale = Vector2(0.896094, 0.898611)
-texture = ExtResource("5_vcdfj")
+texture = ExtResource("5_podnf")
 
 [node name="Despertador" type="Sprite2D" parent="Static"]
 position = Vector2(337, 363)
@@ -441,35 +441,25 @@ offset_right = 163.0
 offset_bottom = 160.0
 
 [node name="Puerta" type="Node2D" parent="Interactable"]
-position = Vector2(1, 0)
+position = Vector2(-328, 368)
 
-[node name="BotonAzulL" type="Sprite2D" parent="Interactable/Puerta"]
-position = Vector2(-1442.51, 309.5)
+[node name="BotonAzul" type="Sprite2D" parent="Interactable/Puerta"]
+position = Vector2(29.75, -72.5)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("16_b2dq5")
 
-[node name="BotonAzulR" type="Sprite2D" parent="Interactable/Puerta"]
-position = Vector2(3113.05, 309.5)
-scale = Vector2(0.5, 0.5)
-texture = ExtResource("16_b2dq5")
-
-[node name="BotonRojoL" type="Sprite2D" parent="Interactable/Puerta"]
-position = Vector2(-1442.51, 407)
-scale = Vector2(0.5, 0.5)
-texture = ExtResource("17_eiet5")
-
-[node name="BotonRojoR" type="Sprite2D" parent="Interactable/Puerta"]
-position = Vector2(3113.05, 407)
+[node name="BotonRojo" type="Sprite2D" parent="Interactable/Puerta"]
+position = Vector2(29.75, 25)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("17_eiet5")
 
 [node name="Targets" type="Node2D" parent="."]
 
 [node name="Left" type="Marker2D" parent="Targets"]
-position = Vector2(-1684, 332)
+position = Vector2(-1704, 256)
 
 [node name="Right" type="Marker2D" parent="Targets"]
-position = Vector2(2873, 332)
+position = Vector2(2872, 256)
 
 [node name="Flashlight" type="PointLight2D" parent="."]
 shadow_enabled = true
