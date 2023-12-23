@@ -1,7 +1,5 @@
 extends PointLight2D
 
-signal noise
-
 @export var battery : float
 
 func _ready():
@@ -18,4 +16,4 @@ func _process(delta):
 	if(Input.is_action_just_pressed("recharge")):
 		if battery < 1:
 			battery += 0.05
-			emit_signal("noise")
+			GlobalVariables.tempNoise += 0.5

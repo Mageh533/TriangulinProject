@@ -1,4 +1,4 @@
-[gd_scene load_steps=62 format=3 uid="uid://ci47ylf44fdg8"]
+[gd_scene load_steps=61 format=3 uid="uid://ci47ylf44fdg8"]
 
 [ext_resource type="Script" path="res://Scripts/Game/GameLogic.gd" id="1_sqss8"]
 [ext_resource type="Texture2D" uid="uid://3f28bn54dy1a" path="res://Assets/Static/Escritorio.png" id="2_48fq7"]
@@ -28,11 +28,11 @@
 [ext_resource type="Texture2D" uid="uid://v4ohnposhbde" path="res://Assets/Monsters/Triangulin/6.png" id="20_11aiv"]
 [ext_resource type="Texture2D" uid="uid://cr25vsm6let08" path="res://Assets/Objects/Radio.png" id="21_53fum"]
 [ext_resource type="Texture2D" uid="uid://el4brylng18v" path="res://Assets/Monsters/Triangulin/7.png" id="21_ffoxj"]
-[ext_resource type="Script" path="res://Scripts/Game/Objects/Radios.gd" id="22_8qmgw"]
 [ext_resource type="Shader" path="res://Assets/Effects/TVNoise.gdshader" id="22_ersd0"]
 [ext_resource type="Texture2D" uid="uid://ctc7650yn8r2c" path="res://Assets/Effects/flaslight.png" id="23_571ms"]
 [ext_resource type="Texture2D" uid="uid://cbh438noyaf2j" path="res://Assets/UI/battery.svg" id="31_vrffb"]
 [ext_resource type="Texture2D" uid="uid://u0crq5pyqcw3" path="res://Assets/UI/volume.svg" id="31_xkdqm"]
+[ext_resource type="Texture2D" uid="uid://cv5sjoksv6u8f" path="res://Assets/UI/navigation-filled.svg" id="32_n2k42"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_1bbin"]
 font_size = 31
@@ -161,9 +161,6 @@ font_size = 11
 
 [sub_resource type="LabelSettings" id="LabelSettings_5ofkn"]
 font_size = 15
-
-[sub_resource type="LabelSettings" id="LabelSettings_o3kgp"]
-font_size = 12
 
 [sub_resource type="Animation" id="Animation_u4fau"]
 resource_name = "DoorButtonPushed"
@@ -390,7 +387,12 @@ scale = Vector2(0.896094, 0.898611)
 texture = ExtResource("2_48fq7")
 
 [node name="Ventana1" type="Sprite2D" parent="Static"]
-position = Vector2(1720, 328)
+position = Vector2(-1712, 328)
+scale = Vector2(0.896094, 0.898611)
+texture = ExtResource("4_8wcoh")
+
+[node name="Ventana2" type="Sprite2D" parent="Static"]
+position = Vector2(2864, 328)
 scale = Vector2(0.896094, 0.898611)
 texture = ExtResource("4_8wcoh")
 
@@ -400,12 +402,7 @@ scale = Vector2(0.896094, 0.898611)
 texture = ExtResource("5_vcdfj")
 
 [node name="Estanterias" type="Sprite2D" parent="Static"]
-position = Vector2(-1712, 328)
-scale = Vector2(0.896094, 0.898611)
-texture = ExtResource("5_podnf")
-
-[node name="Estanterias2" type="Sprite2D" parent="Static"]
-position = Vector2(2864, 328)
+position = Vector2(1720, 328)
 scale = Vector2(0.896094, 0.898611)
 texture = ExtResource("5_podnf")
 
@@ -576,77 +573,11 @@ scale = Vector2(0.896094, 0.898611)
 texture = ExtResource("18_b2ip2")
 
 [node name="Radios" type="Node2D" parent="Interactable"]
-script = ExtResource("22_8qmgw")
-radioChance = 1.0
 
 [node name="Radio1" type="Sprite2D" parent="Interactable/Radios"]
-visible = false
-position = Vector2(1712, 304)
+position = Vector2(1352, 312)
 scale = Vector2(0.25, 0.25)
 texture = ExtResource("21_53fum")
-
-[node name="Apagar" type="Button" parent="Interactable/Radios/Radio1"]
-modulate = Color(1, 1, 1, 0)
-offset_left = -340.0
-offset_top = -84.0
-offset_right = 336.0
-offset_bottom = 236.0
-
-[node name="Radio2" type="Sprite2D" parent="Interactable/Radios"]
-visible = false
-position = Vector2(813, 578)
-scale = Vector2(0.25, 0.25)
-texture = ExtResource("21_53fum")
-
-[node name="Apagar" type="Button" parent="Interactable/Radios/Radio2"]
-modulate = Color(1, 1, 1, 0)
-offset_left = -340.0
-offset_top = -84.0
-offset_right = 336.0
-offset_bottom = 236.0
-
-[node name="Radio3" type="Sprite2D" parent="Interactable/Radios"]
-visible = false
-position = Vector2(-862, 584)
-scale = Vector2(0.25, 0.25)
-texture = ExtResource("21_53fum")
-
-[node name="Apagar" type="Button" parent="Interactable/Radios/Radio3"]
-modulate = Color(1, 1, 1, 0)
-offset_left = -340.0
-offset_top = -84.0
-offset_right = 336.0
-offset_bottom = 236.0
-
-[node name="Radio4First" type="Sprite2D" parent="Interactable/Radios"]
-visible = false
-position = Vector2(2872, 160)
-scale = Vector2(0.25, 0.25)
-texture = ExtResource("21_53fum")
-
-[node name="Apagar" type="Button" parent="Interactable/Radios/Radio4First"]
-modulate = Color(1, 1, 1, 0)
-offset_left = -340.0
-offset_top = -84.0
-offset_right = 336.0
-offset_bottom = 236.0
-
-[node name="Radio4Last" type="Sprite2D" parent="Interactable/Radios"]
-visible = false
-position = Vector2(-1712, 160)
-scale = Vector2(0.25, 0.25)
-texture = ExtResource("21_53fum")
-
-[node name="Apagar" type="Button" parent="Interactable/Radios/Radio4Last"]
-modulate = Color(1, 1, 1, 0)
-offset_left = -340.0
-offset_top = -84.0
-offset_right = 336.0
-offset_bottom = 236.0
-
-[node name="RadioTimer" type="Timer" parent="Interactable/Radios"]
-wait_time = 10.0
-autostart = true
 
 [node name="Targets" type="Node2D" parent="."]
 
@@ -655,6 +586,20 @@ position = Vector2(-1704, 256)
 
 [node name="Right" type="Marker2D" parent="Targets"]
 position = Vector2(2872, 256)
+
+[node name="Nav" type="Node2D" parent="Targets"]
+
+[node name="CenterLeft" type="Marker2D" parent="Targets/Nav"]
+position = Vector2(0, 384)
+
+[node name="Left" type="Marker2D" parent="Targets/Nav"]
+position = Vector2(-1208, 384)
+
+[node name="CenterRight" type="Marker2D" parent="Targets/Nav"]
+position = Vector2(1152, 384)
+
+[node name="Right" type="Marker2D" parent="Targets/Nav"]
+position = Vector2(2368, 384)
 
 [node name="Flashlight" type="PointLight2D" parent="."]
 shadow_enabled = true
@@ -834,7 +779,6 @@ offset_left = 424.0
 offset_top = 552.0
 offset_right = 792.0
 offset_bottom = 640.0
-mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_kcxho")
 
 [node name="Volume" type="Sprite2D" parent="POV/UILayer/UI/Inventory"]
@@ -843,15 +787,20 @@ scale = Vector2(2, 2)
 texture = ExtResource("31_xkdqm")
 
 [node name="Ammount" type="Label" parent="POV/UILayer/UI/Inventory/Volume"]
-offset_left = 16.0
+offset_left = 12.0
 offset_top = -8.0
-offset_right = 56.0
+offset_right = 52.0
 offset_bottom = 15.0
 text = "1000"
 label_settings = SubResource("LabelSettings_x32vv")
 
+[node name="Navigation-filled" type="Sprite2D" parent="POV/UILayer/UI/Inventory"]
+position = Vector2(192, 48)
+scale = Vector2(2, 2)
+texture = ExtResource("32_n2k42")
+
 [node name="Battery" type="Sprite2D" parent="POV/UILayer/UI/Inventory"]
-position = Vector2(312, 43)
+position = Vector2(328, 48)
 scale = Vector2(3.33333, 2.66667)
 texture = ExtResource("31_vrffb")
 
@@ -863,15 +812,6 @@ offset_bottom = 19.625
 scale = Vector2(0.29, 0.29)
 text = "100%"
 label_settings = SubResource("LabelSettings_5ofkn")
-
-[node name="Label" type="Label" parent="POV/UILayer/UI/Inventory/Battery"]
-offset_left = -11.7
-offset_top = 6.75
-offset_right = 76.3
-offset_bottom = 29.75
-scale = Vector2(0.36, 0.36)
-text = "Recargar: R"
-label_settings = SubResource("LabelSettings_o3kgp")
 
 [node name="GameAnims" type="AnimationPlayer" parent="."]
 libraries = {
@@ -888,12 +828,6 @@ libraries = {
 [connection signal="button_up" from="Interactable/CajaDeMusica/Accion" to="Interactable/CajaDeMusica" method="_on_accion_button_up"]
 [connection signal="doorDisable" from="Interactable/Puerta" to="." method="_on_puerta_door_disable"]
 [connection signal="pressed" from="Interactable/Puerta/BotonAzul/ShockDoor" to="Interactable/Puerta" method="_on_shock_door_pressed"]
-[connection signal="pressed" from="Interactable/Radios/Radio1/Apagar" to="Interactable/Radios" method="_on_apagar_pressed"]
-[connection signal="pressed" from="Interactable/Radios/Radio2/Apagar" to="Interactable/Radios" method="_on_apagar_pressed"]
-[connection signal="pressed" from="Interactable/Radios/Radio3/Apagar" to="Interactable/Radios" method="_on_apagar_pressed"]
-[connection signal="pressed" from="Interactable/Radios/Radio4First/Apagar" to="Interactable/Radios" method="_on_apagar_pressed"]
-[connection signal="pressed" from="Interactable/Radios/Radio4Last/Apagar" to="Interactable/Radios" method="_on_apagar_pressed"]
-[connection signal="timeout" from="Interactable/Radios/RadioTimer" to="Interactable/Radios" method="_on_radio_timer_timeout"]
 [connection signal="mouse_entered" from="POV/MoveLeft" to="." method="_on_move_left_mouse_entered"]
 [connection signal="mouse_exited" from="POV/MoveLeft" to="." method="_on_move_left_mouse_exited"]
 [connection signal="mouse_entered" from="POV/MoveRight" to="." method="_on_move_right_mouse_entered"]

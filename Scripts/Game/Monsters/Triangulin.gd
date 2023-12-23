@@ -3,6 +3,7 @@ extends AnimatedSprite2D
 signal triangulinKill
 @export var sleepBar = 100
 var sleeping = true
+
 var particleAmounts = 8
 
 # Called when the node enters the scene tree for the first time.
@@ -14,7 +15,7 @@ func _ready():
 func _process(delta):
 	if(sleeping):
 		$ProgressBar.value = sleepBar
-		sleepBar -= delta * 2
+		sleepBar -= (delta * GlobalVariables.noise) + (delta * 1)
 		monsterAnims()
 		if sleepBar <= 0 and sleeping:
 			sleeping = false
@@ -22,7 +23,7 @@ func _process(delta):
 			$KillTimer.start()
 
 func _on_caja_de_musica_is_winding(delta):
-	if(sleeping):
+	if(sleeping and sleepBar < 100):
 		sleepBar += delta * 20
 
 func monsterAnims():
@@ -41,9 +42,6 @@ func monsterAnims():
 
 func _on_kill_timer_timeout():
 	emit_signal("triangulinKill")
-
-func _on_flashlight_noise():
-	sleepBar -= 5
 
 func _on_particle_timer_timeout():
 	if particleAmounts > 0:
