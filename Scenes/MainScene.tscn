@@ -486,6 +486,7 @@ offset_left = -81.0
 offset_top = -35.0
 offset_right = 79.0
 offset_bottom = 37.0
+mouse_filter = 1
 
 [node name="Time" type="Label" parent="Interactable/Despertador"]
 offset_left = -56.0
@@ -528,6 +529,7 @@ offset_left = -171.0
 offset_top = -157.0
 offset_right = 163.0
 offset_bottom = 160.0
+mouse_filter = 1
 
 [node name="Puerta" type="Node2D" parent="Interactable"]
 position = Vector2(-328, 368)
@@ -561,6 +563,7 @@ offset_left = -85.0
 offset_top = -79.0
 offset_right = 82.0
 offset_bottom = 83.0
+mouse_filter = 1
 
 [node name="BotonRojo" type="Sprite2D" parent="Interactable/Puerta"]
 position = Vector2(29.75, 25)
@@ -588,6 +591,7 @@ offset_left = 79.9056
 offset_top = -111.889
 offset_right = 88.9056
 offset_bottom = -22.8889
+mouse_filter = 1
 theme_override_styles/background = SubResource("StyleBoxFlat_8he2t")
 theme_override_styles/fill = SubResource("StyleBoxFlat_36xep")
 max_value = 10.0
@@ -701,7 +705,7 @@ blend_mode = 1
 shadow_enabled = true
 
 [node name="POV" type="Camera2D" parent="."]
-position = Vector2(576, 321)
+position = Vector2(576, 328)
 
 [node name="MoveLeft" type="Area2D" parent="POV"]
 position = Vector2(-491, -10)
