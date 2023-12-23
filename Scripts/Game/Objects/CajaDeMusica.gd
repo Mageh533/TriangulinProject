@@ -18,7 +18,7 @@ func _process(delta):
 		if(windProgress > 0):
 			windProgress -= delta * 50
 	
-	$Manivela.rotation_degrees = windProgress
+	$Manivela.rotation_degrees = windProgress * 2
 
 func _on_accion_button_down():
 	winding = true

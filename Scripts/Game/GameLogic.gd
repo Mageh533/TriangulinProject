@@ -83,3 +83,17 @@ func _on_triangulin_triangulin_kill():
 
 func returnToMenu():
 	get_tree().change_scene_to_file("res://Scenes/MainMenu.tscn")
+
+# Interactable objects
+
+func _on_shock_door_pressed():
+	$Interactable/Barrera_Puerta.show()
+	$Interactable/Puerta/BotonAzul/ShockDoor.disabled = true
+	$GameAnims.play("DoorButtonPushed")
+	$Interactable/ShockEffect_Puerta.restart()
+	$Interactable/Barrera_Puerta/PuertaCooldown.start()
+
+func _on_puerta_cooldown_timeout():
+	$Interactable/Barrera_Puerta.hide()
+	$GameAnims.play_backwards("DoorButtonPushed")
+	$Interactable/Puerta/BotonAzul/ShockDoor.disabled = false

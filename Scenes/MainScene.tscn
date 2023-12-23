@@ -1,4 +1,4 @@
-[gd_scene load_steps=48 format=3 uid="uid://ci47ylf44fdg8"]
+[gd_scene load_steps=52 format=3 uid="uid://ci47ylf44fdg8"]
 
 [ext_resource type="Script" path="res://Scripts/Game/GameLogic.gd" id="1_sqss8"]
 [ext_resource type="Texture2D" uid="uid://3f28bn54dy1a" path="res://Assets/Static/Escritorio.png" id="2_48fq7"]
@@ -20,9 +20,12 @@
 [ext_resource type="Texture2D" uid="uid://d4e44ebqvemxc" path="res://Assets/Monsters/Triangulin/3.png" id="17_4kxd8"]
 [ext_resource type="Texture2D" uid="uid://dnh035tqfyrkv" path="res://Assets/Objects/Boton_rojo.png" id="17_eiet5"]
 [ext_resource type="Script" path="res://Scripts/Game/Mechanics/Flashlight.gd" id="17_kt7nn"]
+[ext_resource type="Texture2D" uid="uid://bl4kf4il716yk" path="res://Assets/Objects/Barrera_Ventana.png" id="18_b2ip2"]
 [ext_resource type="Texture2D" uid="uid://c5vsou4cbcrye" path="res://Assets/Monsters/Triangulin/4.png" id="18_pj707"]
 [ext_resource type="Texture2D" uid="uid://bwww4ewa85nv1" path="res://Assets/Monsters/Triangulin/5.png" id="19_5gdqe"]
+[ext_resource type="Texture2D" uid="uid://y1tl32obuluk" path="res://Assets/Objects/Barrera_Puerta.png" id="19_uu3fg"]
 [ext_resource type="Texture2D" uid="uid://v4ohnposhbde" path="res://Assets/Monsters/Triangulin/6.png" id="20_11aiv"]
+[ext_resource type="Texture2D" uid="uid://cr25vsm6let08" path="res://Assets/Objects/Radio.png" id="21_53fum"]
 [ext_resource type="Texture2D" uid="uid://el4brylng18v" path="res://Assets/Monsters/Triangulin/7.png" id="21_ffoxj"]
 [ext_resource type="Shader" path="res://Assets/Effects/TVNoise.gdshader" id="22_ersd0"]
 [ext_resource type="Texture2D" uid="uid://ctc7650yn8r2c" path="res://Assets/Effects/flaslight.png" id="23_571ms"]
@@ -320,8 +323,25 @@ tracks/2/keys = {
 "values": [true]
 }
 
+[sub_resource type="Animation" id="Animation_u4fau"]
+resource_name = "DoorButtonPushed"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Interactable/Puerta/BotonAzul:modulate")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(0.203922, 0.203922, 0.203922, 1)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_hxr4n"]
 _data = {
+"DoorButtonPushed": SubResource("Animation_u4fau"),
 "GameLose": SubResource("Animation_8p7iw"),
 "GameWin": SubResource("Animation_1kxgc"),
 "TriangulinGaugeFadeIn": SubResource("Animation_pntbf"),
@@ -401,16 +421,18 @@ value = 100.0
 show_percentage = false
 
 [node name="ParticulasMimir" type="CPUParticles2D" parent="Mosters/Triangulin"]
-position = Vector2(38.213, -138.403)
-rotation = -1.18126
-amount = 4
-lifetime = 2.0
+position = Vector2(20.8435, -29.1374)
+rotation = -1.14507
+emitting = false
+lifetime = 3.0
+one_shot = true
 texture = ExtResource("12_v4u3i")
+spread = 0.0
 gravity = Vector2(0, 0)
 initial_velocity_min = 100.0
-initial_velocity_max = 131.31
-damping_min = 10.102
-damping_max = 10.102
+initial_velocity_max = 100.0
+tangential_accel_min = 3.0
+tangential_accel_max = 3.0
 scale_amount_min = 0.2
 scale_amount_max = 0.2
 scale_amount_curve = SubResource("Curve_te5nk")
@@ -418,6 +440,10 @@ scale_amount_curve = SubResource("Curve_te5nk")
 [node name="KillTimer" type="Timer" parent="Mosters/Triangulin"]
 wait_time = 3.0
 one_shot = true
+
+[node name="ParticleTimer" type="Timer" parent="Mosters/Triangulin"]
+wait_time = 6.0
+autostart = true
 
 [node name="Interactable" type="Node2D" parent="."]
 
@@ -448,10 +474,71 @@ position = Vector2(29.75, -72.5)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("16_b2dq5")
 
+[node name="ShockDoor" type="Button" parent="Interactable/Puerta/BotonAzul"]
+modulate = Color(1, 1, 1, 0)
+offset_left = -85.0
+offset_top = -79.0
+offset_right = 82.0
+offset_bottom = 83.0
+
 [node name="BotonRojo" type="Sprite2D" parent="Interactable/Puerta"]
 position = Vector2(29.75, 25)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("17_eiet5")
+
+[node name="Barrera_Ventana" type="Sprite2D" parent="Interactable"]
+visible = false
+position = Vector2(-1704, 328)
+scale = Vector2(0.896094, 0.898611)
+texture = ExtResource("18_b2ip2")
+
+[node name="Barrera_Ventana2" type="Sprite2D" parent="Interactable"]
+visible = false
+position = Vector2(2872, 328)
+scale = Vector2(0.896094, 0.898611)
+texture = ExtResource("18_b2ip2")
+
+[node name="Barrera_Puerta" type="Sprite2D" parent="Interactable"]
+visible = false
+position = Vector2(-568, 328)
+scale = Vector2(0.896094, 0.898611)
+texture = ExtResource("19_uu3fg")
+
+[node name="PuertaCooldown" type="Timer" parent="Interactable/Barrera_Puerta"]
+wait_time = 2.0
+
+[node name="Light" type="PointLight2D" parent="Interactable/Barrera_Puerta"]
+shadow_enabled = true
+texture = ExtResource("19_uu3fg")
+
+[node name="Light2" type="PointLight2D" parent="Interactable/Barrera_Puerta"]
+position = Vector2(44.6382, 53.4158)
+shadow_enabled = true
+texture = ExtResource("23_571ms")
+texture_scale = 5.5
+
+[node name="ShockEffect_Puerta" type="CPUParticles2D" parent="Interactable"]
+position = Vector2(-544, 224)
+scale = Vector2(0.896094, 0.898611)
+emitting = false
+amount = 62
+lifetime = 2.0
+one_shot = true
+emission_shape = 1
+emission_sphere_radius = 128.0
+spread = 180.0
+initial_velocity_min = 323.23
+initial_velocity_max = 323.23
+scale_amount_min = 5.0
+scale_amount_max = 5.0
+color = Color(0.360784, 0.568627, 1, 1)
+
+[node name="Radios" type="Node2D" parent="Interactable"]
+
+[node name="Radio1" type="Sprite2D" parent="Interactable/Radios"]
+position = Vector2(1352, 312)
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("21_53fum")
 
 [node name="Targets" type="Node2D" parent="."]
 
@@ -639,11 +726,14 @@ libraries = {
 
 [connection signal="triangulinKill" from="Mosters/Triangulin" to="." method="_on_triangulin_triangulin_kill"]
 [connection signal="timeout" from="Mosters/Triangulin/KillTimer" to="Mosters/Triangulin" method="_on_kill_timer_timeout"]
+[connection signal="timeout" from="Mosters/Triangulin/ParticleTimer" to="Mosters/Triangulin" method="_on_particle_timer_timeout"]
 [connection signal="isWinding" from="Interactable/CajaDeMusica" to="Mosters/Triangulin" method="_on_caja_de_musica_is_winding"]
 [connection signal="button_down" from="Interactable/CajaDeMusica/Accion" to="." method="_on_accion_button_down"]
 [connection signal="button_down" from="Interactable/CajaDeMusica/Accion" to="Interactable/CajaDeMusica" method="_on_accion_button_down"]
 [connection signal="button_up" from="Interactable/CajaDeMusica/Accion" to="." method="_on_accion_button_up"]
 [connection signal="button_up" from="Interactable/CajaDeMusica/Accion" to="Interactable/CajaDeMusica" method="_on_accion_button_up"]
+[connection signal="pressed" from="Interactable/Puerta/BotonAzul/ShockDoor" to="." method="_on_shock_door_pressed"]
+[connection signal="timeout" from="Interactable/Barrera_Puerta/PuertaCooldown" to="." method="_on_puerta_cooldown_timeout"]
 [connection signal="noise" from="Flashlight" to="Mosters/Triangulin" method="_on_flashlight_noise"]
 [connection signal="mouse_entered" from="POV/MoveLeft" to="." method="_on_move_left_mouse_entered"]
 [connection signal="mouse_exited" from="POV/MoveLeft" to="." method="_on_move_left_mouse_exited"]
