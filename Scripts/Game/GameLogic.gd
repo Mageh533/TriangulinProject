@@ -1,11 +1,8 @@
 extends Node2D
 
-@export var time : float
-
 var gameActive = true
 var movingLeft = false
 var movingRight = false
-var timeText = "12:00"
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -20,9 +17,8 @@ func _ready():
 func _process(delta):
 	if(gameActive):
 		processCam(delta)
-		time += delta
-		processTime()
-	if(time >= 360 and gameActive):
+		GlobalVariables.time += delta
+	if(GlobalVariables.time >= 360 and gameActive):
 		gameActive = false
 		winGame()
 	$POV/UILayer/UI/Inventory/Volume/Ammount.text = str(snapped(GlobalVariables.noise, 0.01)).pad_decimals(2)
@@ -53,14 +49,6 @@ func processCam(delta):
 	elif($POV.position.x > $Targets/Right.position.x):
 		$POV.position.x = $Targets/Left.position.x
 
-# Time display
-func processTime():
-	if(time < 60):
-		timeText = "12:" + str(int(fmod(time, 60))).pad_zeros(2)
-	else:
-		timeText = str(int(time / 60)).pad_zeros(2) + ":" + str(int(fmod(time, 60))).pad_zeros(2)
-	$Static/Despertador/Time.text = timeText
-
 # Win game
 func winGame():
 	$GameAnims.play("GameWin")
@@ -88,3 +76,9 @@ func returnToMenu():
 
 func _on_puerta_door_disable():
 	$GameAnims.play("DoorButtonPushed")
+
+func _on_blink_timeout():
+	if $Interactable/Despertador/Time.modulate.a == 0:
+		$GameAnims.play_backwards("AlarmBlink")
+	else:
+		$GameAnims.play("AlarmBlink")

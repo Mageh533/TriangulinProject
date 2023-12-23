@@ -1,4 +1,4 @@
-[gd_scene load_steps=62 format=3 uid="uid://ci47ylf44fdg8"]
+[gd_scene load_steps=64 format=3 uid="uid://ci47ylf44fdg8"]
 
 [ext_resource type="Script" path="res://Scripts/Game/GameLogic.gd" id="1_sqss8"]
 [ext_resource type="Texture2D" uid="uid://3f28bn54dy1a" path="res://Assets/Static/Escritorio.png" id="2_48fq7"]
@@ -15,6 +15,7 @@
 [ext_resource type="Texture2D" uid="uid://bfkxvfimenoab" path="res://Assets/Monsters/Triangulin/Fase_4.png" id="10_m5mm7"]
 [ext_resource type="Script" path="res://Scripts/Game/Monsters/Triangulin.gd" id="11_pmmvt"]
 [ext_resource type="Texture2D" uid="uid://doae7fjenp4cx" path="res://Assets/Effects/zzz.png" id="12_v4u3i"]
+[ext_resource type="Script" path="res://Scripts/Game/Objects/Despertador.gd" id="13_jswqi"]
 [ext_resource type="Texture2D" uid="uid://bgtkyy37vsw1j" path="res://Assets/Objects/Boton_azul.png" id="16_b2dq5"]
 [ext_resource type="Texture2D" uid="uid://c3imkdw4n7gxd" path="res://Assets/Monsters/Triangulin/1.png" id="16_rs500"]
 [ext_resource type="Script" path="res://Scripts/Game/Objects/Puerta.gd" id="16_t1obs"]
@@ -33,12 +34,6 @@
 [ext_resource type="Texture2D" uid="uid://ctc7650yn8r2c" path="res://Assets/Effects/flaslight.png" id="23_571ms"]
 [ext_resource type="Texture2D" uid="uid://cbh438noyaf2j" path="res://Assets/UI/battery.svg" id="31_vrffb"]
 [ext_resource type="Texture2D" uid="uid://u0crq5pyqcw3" path="res://Assets/UI/volume.svg" id="31_xkdqm"]
-
-[sub_resource type="LabelSettings" id="LabelSettings_1bbin"]
-font_size = 31
-
-[sub_resource type="LabelSettings" id="LabelSettings_todmw"]
-font_size = 18
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_yqs6t"]
 animations = [{
@@ -83,6 +78,12 @@ bg_color = Color(0.352941, 0.698039, 0.172549, 1)
 [sub_resource type="Curve" id="Curve_te5nk"]
 _data = [Vector2(0.0393258, 0.021978), 0.0, 0.0, 0, 0, Vector2(0.668539, 0.846154), -2.11253, -2.11253, 0, 0, Vector2(0.932584, 0), 0.0, 0.0, 0, 0]
 point_count = 3
+
+[sub_resource type="LabelSettings" id="LabelSettings_1bbin"]
+font_size = 31
+
+[sub_resource type="LabelSettings" id="LabelSettings_todmw"]
+font_size = 18
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8he2t"]
 bg_color = Color(0.239216, 0.239216, 0.239216, 1)
@@ -369,8 +370,25 @@ tracks/2/keys = {
 "values": [true]
 }
 
+[sub_resource type="Animation" id="Animation_jv2oe"]
+resource_name = "AlarmBlink"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Interactable/Despertador/Time:modulate")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_hxr4n"]
 _data = {
+"AlarmBlink": SubResource("Animation_jv2oe"),
 "DoorButtonPushed": SubResource("Animation_u4fau"),
 "GameLose": SubResource("Animation_8p7iw"),
 "GameWin": SubResource("Animation_1kxgc"),
@@ -408,26 +426,6 @@ texture = ExtResource("5_podnf")
 position = Vector2(2864, 328)
 scale = Vector2(0.896094, 0.898611)
 texture = ExtResource("5_podnf")
-
-[node name="Despertador" type="Sprite2D" parent="Static"]
-position = Vector2(337, 363)
-texture = ExtResource("6_ux8r6")
-
-[node name="Time" type="Label" parent="Static/Despertador"]
-offset_left = -56.0
-offset_top = -24.0
-offset_right = 42.0
-offset_bottom = 29.0
-text = "00:00"
-label_settings = SubResource("LabelSettings_1bbin")
-
-[node name="AM" type="Label" parent="Static/Despertador"]
-offset_left = 33.0
-offset_top = -12.0
-offset_right = 131.0
-offset_bottom = 41.0
-text = "AM"
-label_settings = SubResource("LabelSettings_todmw")
 
 [node name="Mosters" type="Node2D" parent="."]
 
@@ -476,6 +474,41 @@ wait_time = 6.0
 autostart = true
 
 [node name="Interactable" type="Node2D" parent="."]
+
+[node name="Despertador" type="Sprite2D" parent="Interactable"]
+position = Vector2(337, 363)
+texture = ExtResource("6_ux8r6")
+script = ExtResource("13_jswqi")
+
+[node name="Apagar" type="Button" parent="Interactable/Despertador"]
+modulate = Color(1, 1, 1, 0)
+offset_left = -81.0
+offset_top = -35.0
+offset_right = 79.0
+offset_bottom = 37.0
+
+[node name="Time" type="Label" parent="Interactable/Despertador"]
+offset_left = -56.0
+offset_top = -24.0
+offset_right = 42.0
+offset_bottom = 29.0
+text = "00:00"
+label_settings = SubResource("LabelSettings_1bbin")
+
+[node name="AM" type="Label" parent="Interactable/Despertador"]
+offset_left = 33.0
+offset_top = -12.0
+offset_right = 131.0
+offset_bottom = 41.0
+text = "AM"
+label_settings = SubResource("LabelSettings_todmw")
+
+[node name="Blink" type="Timer" parent="Interactable/Despertador"]
+wait_time = 0.5
+
+[node name="Alarm" type="Timer" parent="Interactable/Despertador"]
+wait_time = 60.0
+autostart = true
 
 [node name="CajaDeMusica" type="Sprite2D" parent="Interactable"]
 position = Vector2(832, 352)
@@ -577,7 +610,7 @@ texture = ExtResource("18_b2ip2")
 
 [node name="Radios" type="Node2D" parent="Interactable"]
 script = ExtResource("22_8qmgw")
-radioChance = 1.0
+radioChance = 0.05
 
 [node name="Radio1" type="Sprite2D" parent="Interactable/Radios"]
 visible = false
@@ -881,6 +914,9 @@ libraries = {
 [connection signal="triangulinKill" from="Mosters/Triangulin" to="." method="_on_triangulin_triangulin_kill"]
 [connection signal="timeout" from="Mosters/Triangulin/KillTimer" to="Mosters/Triangulin" method="_on_kill_timer_timeout"]
 [connection signal="timeout" from="Mosters/Triangulin/ParticleTimer" to="Mosters/Triangulin" method="_on_particle_timer_timeout"]
+[connection signal="pressed" from="Interactable/Despertador/Apagar" to="Interactable/Despertador" method="_on_apagar_pressed"]
+[connection signal="timeout" from="Interactable/Despertador/Blink" to="." method="_on_blink_timeout"]
+[connection signal="timeout" from="Interactable/Despertador/Alarm" to="Interactable/Despertador" method="_on_alarm_timeout"]
 [connection signal="isWinding" from="Interactable/CajaDeMusica" to="Mosters/Triangulin" method="_on_caja_de_musica_is_winding"]
 [connection signal="button_down" from="Interactable/CajaDeMusica/Accion" to="." method="_on_accion_button_down"]
 [connection signal="button_down" from="Interactable/CajaDeMusica/Accion" to="Interactable/CajaDeMusica" method="_on_accion_button_down"]

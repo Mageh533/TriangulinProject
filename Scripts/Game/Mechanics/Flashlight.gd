@@ -17,3 +17,5 @@ func _process(delta):
 		if battery < 1:
 			battery += 0.05
 			GlobalVariables.tempNoise += 0.5
+		if battery > 1:
+			battery = 1
