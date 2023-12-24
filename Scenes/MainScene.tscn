@@ -872,7 +872,7 @@ z_index = -1
 offset_left = -2285.0
 offset_top = 7.0
 offset_right = 3428.0
-offset_bottom = 648.0
+offset_bottom = 663.0
 mouse_filter = 2
 color = Color(0.0627451, 0.0627451, 0.0627451, 1)
 
@@ -1579,7 +1579,7 @@ mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_kcxho")
 
 [node name="Volume" type="Sprite2D" parent="POV/UILayer/UI/Inventory"]
-position = Vector2(32, 48)
+position = Vector2(45, 48)
 scale = Vector2(2, 2)
 texture = ExtResource("31_xkdqm")
 
