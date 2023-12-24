@@ -30,3 +30,6 @@ func _on_radio_timer_timeout():
 	randomize()
 	if randf_range(0, 1) <= radioChance:
 		turnRadioOn()
+
+func _on_difficulty_timer_timeout():
+	radioChance += 0.1

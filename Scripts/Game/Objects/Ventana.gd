@@ -2,9 +2,10 @@ extends Node2D
 
 signal windowDisable
 signal shocking
+signal alarmActive
 
 @export var usageTime = 10
-@export var shockNoise : float = 10
+@export var shockNoise : float = 0.5
 @export var alarmNoise : float = 10
 var currentUsage = 0
 var activated = false
@@ -12,6 +13,7 @@ var activated = false
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	currentUsage = usageTime
+	$Alert.hide()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -42,3 +44,13 @@ func _on_shock_window_pressed():
 			$ShockEffect_Ventana.restart()
 			activated = true
 			GlobalVariables.permNoise += shockNoise
+
+func _on_alert_button_pressed():
+	emit_signal("alarmActive")
+	$BotonRojo/AlertButton.disabled = true
+	$Alert.show()
+	GlobalVariables.permNoise += alarmNoise
+	await get_tree().create_timer(3).timeout
+	$Alert.hide()
+	GlobalVariables.permNoise -= alarmNoise
+	$BotonRojo/AlertButton.disabled = false

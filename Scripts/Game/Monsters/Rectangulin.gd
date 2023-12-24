@@ -65,3 +65,10 @@ func _on_puerta_shocking():
 	if !shocked and active:
 		shocked = true
 		dissapear()
+
+func _on_puerta_alarm_active():
+	if active:
+		dissapear()
+
+func _on_difficulty_timer_timeout():
+	rectangulinChance += 0.1

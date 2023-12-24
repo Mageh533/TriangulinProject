@@ -39,3 +39,6 @@ func _on_alarm_timeout():
 	randomize()
 	if randf_range(0, 1) <= alarmChance:
 		activateAlarm()
+
+func _on_difficulty_timer_timeout():
+	alarmChance += 0.1

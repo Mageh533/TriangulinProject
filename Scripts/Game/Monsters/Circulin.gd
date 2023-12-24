@@ -58,3 +58,10 @@ func _on_cristal_broken():
 func _on_ventana_shocking():
 	if !shocked:
 		shocked = true
+
+func _on_ventana_alarm_active():
+	if active:
+		dissapear()
+
+func _on_difficulty_timer_timeout():
+	circulinChance += 0.1

@@ -2,15 +2,17 @@ extends Node2D
 
 signal doorDisable
 signal shocking
+signal alarmActive
 
 @export var usageTime = 10
-@export var shockNoise : float = 10
-@export var alarmNoise : float = 10
+@export var shockNoise : float = 0.5
+@export var alarmNoise : float = 20
 var currentUsage = 0
 var activated = false
 
 func _ready():
 	currentUsage = usageTime
+	$Alert.hide()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -32,6 +34,16 @@ func _on_shock_door_pressed():
 			$ShockEffect_Puerta.restart()
 			activated = true
 			GlobalVariables.permNoise += shockNoise
+
+func _on_alert_button_pressed():
+	emit_signal("alarmActive")
+	$BotonRojo/AlertButton.disabled = true
+	$Alert.show()
+	GlobalVariables.permNoise += alarmNoise
+	await get_tree().create_timer(3).timeout
+	$Alert.hide()
+	GlobalVariables.permNoise -= alarmNoise
+	$BotonRojo/AlertButton.disabled = false
 
 func disableDoor():
 	if activated:

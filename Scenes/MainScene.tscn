@@ -1,4 +1,4 @@
-[gd_scene load_steps=95 format=3 uid="uid://ci47ylf44fdg8"]
+[gd_scene load_steps=96 format=3 uid="uid://ci47ylf44fdg8"]
 
 [ext_resource type="Script" path="res://Scripts/Game/GameLogic.gd" id="1_sqss8"]
 [ext_resource type="Texture2D" uid="uid://3f28bn54dy1a" path="res://Assets/Static/Escritorio.png" id="2_48fq7"]
@@ -55,6 +55,7 @@
 [ext_resource type="Texture2D" uid="uid://ct302ntfp2l3g" path="res://Assets/Monsters/Circulin/3.1.png" id="36_6e3mg"]
 [ext_resource type="Texture2D" uid="uid://bc1eor6tprmix" path="res://Assets/Monsters/Circulin/4.1.png" id="37_a37y8"]
 [ext_resource type="Texture2D" uid="uid://bebj2pooh4rqk" path="res://Assets/Monsters/Circulin/5.1.png" id="38_uvok8"]
+[ext_resource type="Texture2D" uid="uid://c1c5m3yokxwax" path="res://Assets/Effects/spotlight.png" id="42_g3qvk"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_e7v5w"]
 animations = [{
@@ -1110,7 +1111,6 @@ mouse_filter = 1
 [node name="Puerta" type="Node2D" parent="Interactable"]
 position = Vector2(-328, 368)
 script = ExtResource("16_t1obs")
-shockNoise = 0.5
 
 [node name="ShockEffect_Puerta" type="CPUParticles2D" parent="Interactable/Puerta"]
 position = Vector2(-216, -144)
@@ -1146,6 +1146,14 @@ position = Vector2(29.75, 25)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("17_eiet5")
 
+[node name="AlertButton" type="Button" parent="Interactable/Puerta/BotonRojo"]
+modulate = Color(1, 1, 1, 0)
+offset_left = -89.0
+offset_top = -82.0
+offset_right = 86.0
+offset_bottom = 82.0
+mouse_filter = 1
+
 [node name="Barrera_Puerta" type="Sprite2D" parent="Interactable/Puerta"]
 visible = false
 position = Vector2(-249, -40)
@@ -1174,9 +1182,23 @@ max_value = 10.0
 fill_mode = 3
 show_percentage = false
 
+[node name="Alert" type="PointLight2D" parent="Interactable/Puerta"]
+position = Vector2(-224, -256.5)
+scale = Vector2(1.17969, 0.488281)
+color = Color(0.760784, 0, 0, 1)
+energy = 15.0
+texture = ExtResource("23_571ms")
+
+[node name="Alert1Bottom" type="PointLight2D" parent="Interactable/Puerta/Alert"]
+position = Vector2(-12.7152, 828.416)
+scale = Vector2(0.958609, 3.256)
+color = Color(0.760784, 0, 0, 1)
+energy = 15.0
+texture = ExtResource("42_g3qvk")
+
 [node name="Ventana" type="Node2D" parent="Interactable"]
 script = ExtResource("27_1ir03")
-shockNoise = 0.5
+alarmNoise = 20.0
 
 [node name="Barrera_Ventana" type="Sprite2D" parent="Interactable/Ventana"]
 visible = false
@@ -1195,11 +1217,20 @@ offset_left = -86.0
 offset_top = -80.0
 offset_right = 84.0
 offset_bottom = 82.0
+mouse_filter = 1
 
 [node name="BotonRojo" type="Sprite2D" parent="Interactable/Ventana"]
 position = Vector2(1758, 415)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("17_eiet5")
+
+[node name="AlertButton" type="Button" parent="Interactable/Ventana/BotonRojo"]
+modulate = Color(1, 1, 1, 0)
+offset_left = -88.0
+offset_top = -78.0
+offset_right = 84.0
+offset_bottom = 84.0
+mouse_filter = 1
 
 [node name="ShockEffect_Ventana" type="CPUParticles2D" parent="Interactable/Ventana"]
 position = Vector2(1707, 225)
@@ -1228,6 +1259,20 @@ theme_override_styles/fill = SubResource("StyleBoxFlat_36xep")
 max_value = 10.0
 show_percentage = false
 
+[node name="Alert" type="PointLight2D" parent="Interactable/Ventana"]
+position = Vector2(1700, 108)
+scale = Vector2(1.17969, 0.488281)
+color = Color(0.760784, 0, 0, 1)
+energy = 15.0
+texture = ExtResource("23_571ms")
+
+[node name="Alert1Bottom" type="PointLight2D" parent="Interactable/Ventana/Alert"]
+position = Vector2(7.62915, 477.184)
+scale = Vector2(1.56623, 1.872)
+color = Color(0.760784, 0, 0, 1)
+energy = 15.0
+texture = ExtResource("42_g3qvk")
+
 [node name="Radios" type="Node2D" parent="Interactable"]
 script = ExtResource("22_8qmgw")
 radioChance = 0.05
@@ -1244,6 +1289,7 @@ offset_left = -340.0
 offset_top = -84.0
 offset_right = 336.0
 offset_bottom = 236.0
+mouse_filter = 1
 
 [node name="Radio2" type="Sprite2D" parent="Interactable/Radios"]
 visible = false
@@ -1257,6 +1303,7 @@ offset_left = -340.0
 offset_top = -84.0
 offset_right = 336.0
 offset_bottom = 236.0
+mouse_filter = 1
 
 [node name="Radio3" type="Sprite2D" parent="Interactable/Radios"]
 visible = false
@@ -1270,6 +1317,7 @@ offset_left = -340.0
 offset_top = -84.0
 offset_right = 336.0
 offset_bottom = 236.0
+mouse_filter = 1
 
 [node name="Radio4First" type="Sprite2D" parent="Interactable/Radios"]
 visible = false
@@ -1283,6 +1331,7 @@ offset_left = -340.0
 offset_top = -84.0
 offset_right = 336.0
 offset_bottom = 236.0
+mouse_filter = 1
 
 [node name="Radio4Last" type="Sprite2D" parent="Interactable/Radios"]
 visible = false
@@ -1296,6 +1345,7 @@ offset_left = -340.0
 offset_top = -84.0
 offset_right = 336.0
 offset_bottom = 236.0
+mouse_filter = 1
 
 [node name="RadioTimer" type="Timer" parent="Interactable/Radios"]
 wait_time = 10.0
@@ -1570,6 +1620,10 @@ libraries = {
 "": SubResource("AnimationLibrary_hxr4n")
 }
 
+[node name="DifficultyTimer" type="Timer" parent="."]
+wait_time = 60.0
+autostart = true
+
 [connection signal="broken" from="Static/Cristal" to="Mosters/Circulin" method="_on_cristal_broken"]
 [connection signal="triangulinKill" from="Mosters/Triangulin" to="." method="_on_triangulin_triangulin_kill"]
 [connection signal="timeout" from="Mosters/Triangulin/KillTimer" to="Mosters/Triangulin" method="_on_kill_timer_timeout"]
@@ -1587,12 +1641,16 @@ libraries = {
 [connection signal="button_down" from="Interactable/CajaDeMusica/Accion" to="Interactable/CajaDeMusica" method="_on_accion_button_down"]
 [connection signal="button_up" from="Interactable/CajaDeMusica/Accion" to="." method="_on_accion_button_up"]
 [connection signal="button_up" from="Interactable/CajaDeMusica/Accion" to="Interactable/CajaDeMusica" method="_on_accion_button_up"]
+[connection signal="alarmActive" from="Interactable/Puerta" to="Mosters/Rectangulin" method="_on_puerta_alarm_active"]
 [connection signal="doorDisable" from="Interactable/Puerta" to="." method="_on_puerta_door_disable"]
 [connection signal="shocking" from="Interactable/Puerta" to="Mosters/Rectangulin" method="_on_puerta_shocking"]
 [connection signal="pressed" from="Interactable/Puerta/BotonAzul/ShockDoor" to="Interactable/Puerta" method="_on_shock_door_pressed"]
+[connection signal="pressed" from="Interactable/Puerta/BotonRojo/AlertButton" to="Interactable/Puerta" method="_on_alert_button_pressed"]
+[connection signal="alarmActive" from="Interactable/Ventana" to="Mosters/Circulin" method="_on_ventana_alarm_active"]
 [connection signal="shocking" from="Interactable/Ventana" to="Mosters/Circulin" method="_on_ventana_shocking"]
 [connection signal="windowDisable" from="Interactable/Ventana" to="." method="_on_ventana_window_disable"]
 [connection signal="pressed" from="Interactable/Ventana/BotonAzul/ShockWindow" to="Interactable/Ventana" method="_on_shock_window_pressed"]
+[connection signal="pressed" from="Interactable/Ventana/BotonRojo/AlertButton" to="Interactable/Ventana" method="_on_alert_button_pressed"]
 [connection signal="pressed" from="Interactable/Radios/Radio1/Apagar" to="Interactable/Radios" method="_on_apagar_pressed"]
 [connection signal="pressed" from="Interactable/Radios/Radio2/Apagar" to="Interactable/Radios" method="_on_apagar_pressed"]
 [connection signal="pressed" from="Interactable/Radios/Radio3/Apagar" to="Interactable/Radios" method="_on_apagar_pressed"]
@@ -1603,3 +1661,8 @@ libraries = {
 [connection signal="mouse_exited" from="POV/MoveLeft" to="." method="_on_move_left_mouse_exited"]
 [connection signal="mouse_entered" from="POV/MoveRight" to="." method="_on_move_right_mouse_entered"]
 [connection signal="mouse_exited" from="POV/MoveRight" to="." method="_on_move_right_mouse_exited"]
+[connection signal="timeout" from="DifficultyTimer" to="Mosters/Triangulin" method="_on_difficulty_timer_timeout"]
+[connection signal="timeout" from="DifficultyTimer" to="Mosters/Circulin" method="_on_difficulty_timer_timeout"]
+[connection signal="timeout" from="DifficultyTimer" to="Interactable/Despertador" method="_on_difficulty_timer_timeout"]
+[connection signal="timeout" from="DifficultyTimer" to="Interactable/Radios" method="_on_difficulty_timer_timeout"]
+[connection signal="timeout" from="DifficultyTimer" to="Mosters/Rectangulin" method="_on_difficulty_timer_timeout"]

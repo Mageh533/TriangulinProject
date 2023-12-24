@@ -47,3 +47,6 @@ func _on_particle_timer_timeout():
 	if particleAmounts > 0:
 		$ParticulasMimir.amount = particleAmounts
 		$ParticulasMimir.restart()
+
+func _on_difficulty_timer_timeout():
+	pass # Replace with function body.
