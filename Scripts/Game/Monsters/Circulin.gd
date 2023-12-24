@@ -9,6 +9,7 @@ signal hitGlass(damage : int)
 @export var glassDamage : int = 10
 var shovelTime = 0
 var active = false
+var shocked = false
 
 func _ready():
 	hide()
@@ -22,12 +23,16 @@ func _process(delta):
 			$CirAnims.play("HIT")
 
 func hit():
-	emit_signal("hitGlass", glassDamage)
+	if shocked:
+		dissapear()
+	else:
+		emit_signal("hitGlass", glassDamage)
 
 func makeNoise():
 	GlobalVariables.tempNoise += glassNoise
 
 func appear():
+	shocked = false
 	show()
 	$CirAnims.play("Fade")
 	active = true
@@ -48,3 +53,7 @@ func _on_cristal_broken():
 	dissapear()
 	await get_tree().create_timer(3).timeout
 	emit_signal("circulinKill")
+
+func _on_ventana_shocking():
+	if !shocked:
+		shocked = true

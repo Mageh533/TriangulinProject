@@ -88,3 +88,6 @@ func _on_blink_timeout():
 		$UIAnims.play_backwards("AlarmBlink")
 	else:
 		$UIAnims.play("AlarmBlink")
+
+func _on_ventana_window_disable():
+	$UIAnims.play("WindowButtonPushed")

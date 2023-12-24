@@ -1,4 +1,4 @@
-[gd_scene load_steps=78 format=3 uid="uid://ci47ylf44fdg8"]
+[gd_scene load_steps=86 format=3 uid="uid://ci47ylf44fdg8"]
 
 [ext_resource type="Script" path="res://Scripts/Game/GameLogic.gd" id="1_sqss8"]
 [ext_resource type="Texture2D" uid="uid://3f28bn54dy1a" path="res://Assets/Static/Escritorio.png" id="2_48fq7"]
@@ -11,12 +11,17 @@
 [ext_resource type="Texture2D" uid="uid://d1x3h41n6h53v" path="res://Assets/Objects/Caja.png" id="7_ki6an"]
 [ext_resource type="Texture2D" uid="uid://dx2ounxchmu4w" path="res://Assets/Monsters/Triangulin/Fase_1.png" id="7_od8ki"]
 [ext_resource type="Texture2D" uid="uid://dyujd2dk7d31l" path="res://Assets/Objects/manivela.png" id="8_adp5h"]
+[ext_resource type="Texture2D" uid="uid://bx32p8nxmcjia" path="res://Assets/Effects/GlassCrack/1.png" id="8_nx5h4"]
 [ext_resource type="Script" path="res://Scripts/Game/Objects/CajaDeMusica.gd" id="8_thh0d"]
 [ext_resource type="Texture2D" uid="uid://dwurdxases13o" path="res://Assets/Monsters/Triangulin/Fase_2.png" id="8_uvl3o"]
 [ext_resource type="Texture2D" uid="uid://bpeaq7c0bq0pr" path="res://Assets/Monsters/Triangulin/Fase_3.png" id="9_to6dm"]
+[ext_resource type="Texture2D" uid="uid://cqmbxaw0v0nty" path="res://Assets/Effects/GlassCrack/2.png" id="9_vlyus"]
+[ext_resource type="Texture2D" uid="uid://b2a22d01nqfe2" path="res://Assets/Effects/GlassCrack/3.png" id="10_bapwq"]
 [ext_resource type="Texture2D" uid="uid://bfkxvfimenoab" path="res://Assets/Monsters/Triangulin/Fase_4.png" id="10_m5mm7"]
 [ext_resource type="Script" path="res://Scripts/Game/Monsters/Triangulin.gd" id="11_pmmvt"]
+[ext_resource type="Texture2D" uid="uid://cqtgjehq7h3y4" path="res://Assets/Effects/GlassCrack/4.png" id="11_s2a83"]
 [ext_resource type="Texture2D" uid="uid://cenpqxnpvn8gu" path="res://Assets/Monsters/Circulin/Circulin.png" id="12_3wvat"]
+[ext_resource type="Texture2D" uid="uid://b66ym3emxg53t" path="res://Assets/Effects/GlassCrack/5.png" id="12_qfss0"]
 [ext_resource type="Texture2D" uid="uid://doae7fjenp4cx" path="res://Assets/Effects/zzz.png" id="12_v4u3i"]
 [ext_resource type="Script" path="res://Scripts/Game/Monsters/Circulin.gd" id="13_hgak7"]
 [ext_resource type="Script" path="res://Scripts/Game/Objects/Despertador.gd" id="13_jswqi"]
@@ -37,6 +42,7 @@
 [ext_resource type="Script" path="res://Scripts/Game/Objects/Radios.gd" id="22_8qmgw"]
 [ext_resource type="Shader" path="res://Assets/Effects/TVNoise.gdshader" id="22_ersd0"]
 [ext_resource type="Texture2D" uid="uid://ctc7650yn8r2c" path="res://Assets/Effects/flaslight.png" id="23_571ms"]
+[ext_resource type="Script" path="res://Scripts/Game/Objects/Ventana.gd" id="27_1ir03"]
 [ext_resource type="Texture2D" uid="uid://cbh438noyaf2j" path="res://Assets/UI/battery.svg" id="31_vrffb"]
 [ext_resource type="Texture2D" uid="uid://u0crq5pyqcw3" path="res://Assets/UI/volume.svg" id="31_xkdqm"]
 [ext_resource type="Texture2D" uid="uid://dsxtb84lfs1d4" path="res://Assets/Monsters/Circulin/1.1.png" id="34_suhq1"]
@@ -44,6 +50,49 @@
 [ext_resource type="Texture2D" uid="uid://ct302ntfp2l3g" path="res://Assets/Monsters/Circulin/3.1.png" id="36_6e3mg"]
 [ext_resource type="Texture2D" uid="uid://bc1eor6tprmix" path="res://Assets/Monsters/Circulin/4.1.png" id="37_a37y8"]
 [ext_resource type="Texture2D" uid="uid://bebj2pooh4rqk" path="res://Assets/Monsters/Circulin/5.1.png" id="38_uvok8"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_e7v5w"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("8_nx5h4")
+}],
+"loop": true,
+"name": &"Stage1",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("9_vlyus")
+}],
+"loop": true,
+"name": &"Stage2",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("10_bapwq")
+}],
+"loop": true,
+"name": &"Stage3",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("11_s2a83")
+}],
+"loop": true,
+"name": &"Stage4",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("12_qfss0")
+}],
+"loop": true,
+"name": &"Stage5",
+"speed": 5.0
+}]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_yqs6t"]
 animations = [{
@@ -561,6 +610,22 @@ tracks/2/keys = {
 "values": [true]
 }
 
+[sub_resource type="Animation" id="Animation_ubodj"]
+resource_name = "WindowButtonPushed"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Interactable/Ventana/BotonAzul:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0.513726)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_hxr4n"]
 _data = {
 "AlarmBlink": SubResource("Animation_jv2oe"),
@@ -569,7 +634,8 @@ _data = {
 "GameLose": SubResource("Animation_8p7iw"),
 "GameWin": SubResource("Animation_1kxgc"),
 "TriangulinGaugeFade": SubResource("Animation_pntbf"),
-"TriangulinKill": SubResource("Animation_c0q0n")
+"TriangulinKill": SubResource("Animation_c0q0n"),
+"WindowButtonPushed": SubResource("Animation_ubodj")
 }
 
 [node name="MainScene" type="Node2D"]
@@ -621,12 +687,6 @@ texture = ExtResource("6_3byo8")
 expand_mode = 1
 script = ExtResource("6_ori24")
 
-[node name="DebugHealth" type="Label" parent="Static/Cristal"]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 23.0
-text = "Health: 100"
-
 [node name="GlassParticles" type="CPUParticles2D" parent="Static/Cristal"]
 position = Vector2(413, 77)
 emitting = false
@@ -641,6 +701,27 @@ initial_velocity_min = 300.0
 initial_velocity_max = 300.0
 scale_amount_min = 3.0
 scale_amount_max = 3.0
+
+[node name="BreakParticles" type="CPUParticles2D" parent="Static/Cristal"]
+position = Vector2(413, 77)
+emitting = false
+amount = 100
+lifetime = 2.0
+one_shot = true
+explosiveness = 1.0
+emission_shape = 3
+emission_rect_extents = Vector2(300, 100)
+spread = 180.0
+initial_velocity_min = 300.0
+initial_velocity_max = 300.0
+scale_amount_min = 3.0
+scale_amount_max = 3.0
+
+[node name="Grietas" type="AnimatedSprite2D" parent="Static/Cristal"]
+position = Vector2(420, 130)
+scale = Vector2(0.94, 0.94)
+sprite_frames = SubResource("SpriteFrames_e7v5w")
+animation = &"Stage1"
 
 [node name="Mosters" type="Node2D" parent="."]
 
@@ -803,6 +884,19 @@ offset_right = 82.0
 offset_bottom = 83.0
 mouse_filter = 1
 
+[node name="BotonAzul" type="Sprite2D" parent="Interactable/Puerta/BotonAzul"]
+position = Vector2(29.75, -72.5)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("16_b2dq5")
+
+[node name="ShockDoor" type="Button" parent="Interactable/Puerta/BotonAzul/BotonAzul"]
+modulate = Color(1, 1, 1, 0)
+offset_left = -85.0
+offset_top = -79.0
+offset_right = 82.0
+offset_bottom = 83.0
+mouse_filter = 1
+
 [node name="BotonRojo" type="Sprite2D" parent="Interactable/Puerta"]
 position = Vector2(29.75, 25)
 scale = Vector2(0.5, 0.5)
@@ -825,10 +919,10 @@ texture = ExtResource("23_571ms")
 texture_scale = 5.5
 
 [node name="UsageGauge" type="ProgressBar" parent="Interactable/Puerta"]
-offset_left = 79.9056
-offset_top = -111.889
-offset_right = 88.9056
-offset_bottom = -22.8889
+offset_left = 80.0
+offset_top = -112.0
+offset_right = 89.0
+offset_bottom = -29.0
 mouse_filter = 1
 theme_override_styles/background = SubResource("StyleBoxFlat_8he2t")
 theme_override_styles/fill = SubResource("StyleBoxFlat_36xep")
@@ -837,6 +931,8 @@ fill_mode = 3
 show_percentage = false
 
 [node name="Ventana" type="Node2D" parent="Interactable"]
+script = ExtResource("27_1ir03")
+shockNoise = 0.5
 
 [node name="Barrera_Ventana" type="Sprite2D" parent="Interactable/Ventana"]
 visible = false
@@ -849,10 +945,44 @@ position = Vector2(1659, 417)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("16_b2dq5")
 
+[node name="ShockWindow" type="Button" parent="Interactable/Ventana/BotonAzul"]
+modulate = Color(1, 1, 1, 0)
+offset_left = -86.0
+offset_top = -80.0
+offset_right = 84.0
+offset_bottom = 82.0
+
 [node name="BotonRojo" type="Sprite2D" parent="Interactable/Ventana"]
 position = Vector2(1758, 415)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("17_eiet5")
+
+[node name="ShockEffect_Ventana" type="CPUParticles2D" parent="Interactable/Ventana"]
+position = Vector2(1707, 225)
+scale = Vector2(0.896094, 0.898611)
+emitting = false
+amount = 62
+lifetime = 2.0
+one_shot = true
+emission_shape = 3
+emission_rect_extents = Vector2(300, 100)
+spread = 180.0
+initial_velocity_min = 323.23
+initial_velocity_max = 323.23
+scale_amount_min = 5.0
+scale_amount_max = 5.0
+color = Color(0.360784, 0.568627, 1, 1)
+
+[node name="UsageGauge" type="ProgressBar" parent="Interactable/Ventana"]
+offset_left = 1617.0
+offset_top = 461.0
+offset_right = 1700.0
+offset_bottom = 471.0
+mouse_filter = 1
+theme_override_styles/background = SubResource("StyleBoxFlat_8he2t")
+theme_override_styles/fill = SubResource("StyleBoxFlat_36xep")
+max_value = 10.0
+show_percentage = false
 
 [node name="Radios" type="Node2D" parent="Interactable"]
 script = ExtResource("22_8qmgw")
@@ -1187,6 +1317,10 @@ libraries = {
 [connection signal="button_up" from="Interactable/CajaDeMusica/Accion" to="Interactable/CajaDeMusica" method="_on_accion_button_up"]
 [connection signal="doorDisable" from="Interactable/Puerta" to="." method="_on_puerta_door_disable"]
 [connection signal="pressed" from="Interactable/Puerta/BotonAzul/ShockDoor" to="Interactable/Puerta" method="_on_shock_door_pressed"]
+[connection signal="pressed" from="Interactable/Puerta/BotonAzul/BotonAzul/ShockDoor" to="Interactable/Puerta" method="_on_shock_door_pressed"]
+[connection signal="shocking" from="Interactable/Ventana" to="Mosters/Circulin" method="_on_ventana_shocking"]
+[connection signal="windowDisable" from="Interactable/Ventana" to="." method="_on_ventana_window_disable"]
+[connection signal="pressed" from="Interactable/Ventana/BotonAzul/ShockWindow" to="Interactable/Ventana" method="_on_shock_window_pressed"]
 [connection signal="pressed" from="Interactable/Radios/Radio1/Apagar" to="Interactable/Radios" method="_on_apagar_pressed"]
 [connection signal="pressed" from="Interactable/Radios/Radio2/Apagar" to="Interactable/Radios" method="_on_apagar_pressed"]
 [connection signal="pressed" from="Interactable/Radios/Radio3/Apagar" to="Interactable/Radios" method="_on_apagar_pressed"]
