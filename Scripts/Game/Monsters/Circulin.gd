@@ -21,6 +21,9 @@ func _process(delta):
 			shovelTime = shovelSpeed
 			$CirAnims.play("HIT")
 
+func hit():
+	emit_signal("hitGlass", glassDamage)
+
 func makeNoise():
 	GlobalVariables.tempNoise += glassNoise
 

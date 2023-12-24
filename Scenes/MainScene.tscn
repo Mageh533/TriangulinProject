@@ -152,8 +152,8 @@ tracks/4/keys = {
 "args": [],
 "method": &"makeNoise"
 }, {
-"args": [&"hitGlass", 10],
-"method": &"emit_signal"
+"args": [],
+"method": &"hit"
 }]
 }
 
@@ -973,7 +973,7 @@ offset_bottom = 40.0
 position = Vector2(600, 295)
 scale = Vector2(0.001, 0.001)
 sprite_frames = SubResource("SpriteFrames_jxpnt")
-frame_progress = 0.968433
+frame_progress = 0.75939
 
 [node name="Circulin" type="Control" parent="POV/UILayer/UI/DeathAnims"]
 layout_mode = 1
