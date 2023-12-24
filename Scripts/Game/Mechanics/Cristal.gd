@@ -4,7 +4,7 @@ signal broken
 
 @export var health = 100
 
-func _process(delta):
+func _process(_delta):
 	if health <= 80 and health > 60:
 		$Grietas.show()
 		$Grietas.play("Stage1")

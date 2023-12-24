@@ -53,9 +53,6 @@ func processCam(delta):
 func winGame():
 	$UIAnims.play("GameWin")
 
-func _on_test_pressed():
-	print("Test")
-
 # Game anims
 func _on_accion_button_down():
 	$UIAnims.play("TriangulinGaugeFade")

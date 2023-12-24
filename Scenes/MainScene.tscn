@@ -138,6 +138,21 @@ bg_color = Color(0.352941, 0.698039, 0.172549, 1)
 _data = [Vector2(0.0393258, 0.021978), 0.0, 0.0, 0, 0, Vector2(0.668539, 0.846154), -2.11253, -2.11253, 0, 0, Vector2(0.932584, 0), 0.0, 0.0, 0, 0]
 point_count = 3
 
+[sub_resource type="Animation" id="Animation_s5vug"]
+resource_name = "Fade"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 0), Color(0, 0, 0, 1), Color(1, 1, 1, 1)]
+}
+
 [sub_resource type="Animation" id="Animation_22yld"]
 resource_name = "HIT"
 length = 1.5
@@ -205,21 +220,6 @@ tracks/4/keys = {
 "args": [],
 "method": &"hit"
 }]
-}
-
-[sub_resource type="Animation" id="Animation_s5vug"]
-resource_name = "Fade"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.5, 1),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Color(0, 0, 0, 0), Color(0, 0, 0, 1), Color(1, 1, 1, 1)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_hohb2"]
@@ -776,7 +776,6 @@ position = Vector2(1697, 275)
 scale = Vector2(0.75, 0.75)
 texture = ExtResource("12_3wvat")
 script = ExtResource("13_hgak7")
-circulinChance = 1.0
 
 [node name="Pala" type="Sprite2D" parent="Mosters/Circulin"]
 position = Vector2(216, -8)
@@ -791,6 +790,23 @@ libraries = {
 [node name="CirculinTimer" type="Timer" parent="Mosters/Circulin"]
 wait_time = 10.0
 autostart = true
+
+[node name="ShockEffect" type="CPUParticles2D" parent="Mosters/Circulin"]
+position = Vector2(9.33301, -53.3333)
+scale = Vector2(0.896094, 0.898611)
+emitting = false
+amount = 62
+lifetime = 2.0
+one_shot = true
+explosiveness = 1.0
+emission_shape = 3
+emission_rect_extents = Vector2(300, 100)
+spread = 180.0
+initial_velocity_min = 323.23
+initial_velocity_max = 323.23
+scale_amount_min = 5.0
+scale_amount_max = 5.0
+color = Color(0.360784, 0.568627, 1, 1)
 
 [node name="Interactable" type="Node2D" parent="."]
 

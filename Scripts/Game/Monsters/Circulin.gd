@@ -24,6 +24,7 @@ func _process(delta):
 
 func hit():
 	if shocked:
+		$ShockEffect.restart()
 		dissapear()
 	else:
 		emit_signal("hitGlass", glassDamage)
