@@ -1,4 +1,4 @@
-[gd_scene load_steps=86 format=3 uid="uid://ci47ylf44fdg8"]
+[gd_scene load_steps=95 format=3 uid="uid://ci47ylf44fdg8"]
 
 [ext_resource type="Script" path="res://Scripts/Game/GameLogic.gd" id="1_sqss8"]
 [ext_resource type="Texture2D" uid="uid://3f28bn54dy1a" path="res://Assets/Static/Escritorio.png" id="2_48fq7"]
@@ -39,9 +39,14 @@
 [ext_resource type="Texture2D" uid="uid://v4ohnposhbde" path="res://Assets/Monsters/Triangulin/6.png" id="20_11aiv"]
 [ext_resource type="Texture2D" uid="uid://cr25vsm6let08" path="res://Assets/Objects/Radio.png" id="21_53fum"]
 [ext_resource type="Texture2D" uid="uid://el4brylng18v" path="res://Assets/Monsters/Triangulin/7.png" id="21_ffoxj"]
+[ext_resource type="Texture2D" uid="uid://tv1o0q2jdpcn" path="res://Assets/Monsters/Rectangulin/1.png" id="22_1rw84"]
 [ext_resource type="Script" path="res://Scripts/Game/Objects/Radios.gd" id="22_8qmgw"]
 [ext_resource type="Shader" path="res://Assets/Effects/TVNoise.gdshader" id="22_ersd0"]
+[ext_resource type="Texture2D" uid="uid://34p5odqgf7p0" path="res://Assets/Monsters/Rectangulin/Rectactulin_Re_Mafioso.png" id="23_6qj5u"]
 [ext_resource type="Texture2D" uid="uid://ctc7650yn8r2c" path="res://Assets/Effects/flaslight.png" id="23_571ms"]
+[ext_resource type="Texture2D" uid="uid://bgjqtc6pmnxlv" path="res://Assets/Monsters/Rectangulin/2.png" id="24_7pq6s"]
+[ext_resource type="Texture2D" uid="uid://bwp1elcph64qs" path="res://Assets/Monsters/Rectangulin/3.png" id="25_talnp"]
+[ext_resource type="Script" path="res://Scripts/Game/Monsters/Rectangulin.gd" id="26_0yk8g"]
 [ext_resource type="Script" path="res://Scripts/Game/Objects/Ventana.gd" id="27_1ir03"]
 [ext_resource type="Texture2D" uid="uid://cbh438noyaf2j" path="res://Assets/UI/battery.svg" id="31_vrffb"]
 [ext_resource type="Texture2D" uid="uid://u0crq5pyqcw3" path="res://Assets/UI/volume.svg" id="31_xkdqm"]
@@ -226,6 +231,74 @@ tracks/4/keys = {
 _data = {
 "Fade": SubResource("Animation_s5vug"),
 "HIT": SubResource("Animation_22yld")
+}
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_hyekf"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("22_1rw84")
+}],
+"loop": true,
+"name": &"angry",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("23_6qj5u")
+}],
+"loop": true,
+"name": &"normal",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("24_7pq6s")
+}],
+"loop": true,
+"name": &"ready",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("25_talnp")
+}],
+"loop": true,
+"name": &"shoot",
+"speed": 5.0
+}]
+
+[sub_resource type="Animation" id="Animation_5qf4g"]
+resource_name = "Appear"
+length = 1.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-869, 379), Vector2(-566, 379)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:self_modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.9, 1.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0.254902, 0.254902, 0.254902, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_xxufo"]
+_data = {
+"Appear": SubResource("Animation_5qf4g")
 }
 
 [sub_resource type="LabelSettings" id="LabelSettings_1bbin"]
@@ -420,6 +493,20 @@ tracks/4/keys = {
 "update": 1,
 "values": [true]
 }
+tracks/5/type = "method"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath(".")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"stopLogic"
+}]
+}
 
 [sub_resource type="Animation" id="Animation_u4fau"]
 resource_name = "DoorButtonPushed"
@@ -553,6 +640,20 @@ tracks/3/keys = {
 "update": 1,
 "values": [true]
 }
+tracks/4/type = "method"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath(".")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"stopLogic"
+}]
+}
 
 [sub_resource type="Animation" id="Animation_pntbf"]
 resource_name = "TriangulinGaugeFade"
@@ -609,6 +710,20 @@ tracks/2/keys = {
 "update": 1,
 "values": [true]
 }
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"stopLogic"
+}]
+}
 
 [sub_resource type="Animation" id="Animation_ubodj"]
 resource_name = "WindowButtonPushed"
@@ -626,6 +741,112 @@ tracks/0/keys = {
 "values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0.513726)]
 }
 
+[sub_resource type="Animation" id="Animation_jd6oc"]
+resource_name = "RectangulinKill"
+length = 3.0
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("UIAnims")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(3),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": ["GameLose"],
+"method": &"play"
+}]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("POV/UILayer/UI/DeathAnims:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"stopLogic"
+}]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("POV/UILayer/UI/DeathAnims/Rectangulin:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("POV/UILayer/UI/DeathAnims/Rectangulin/RectangulinSusto:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-212, 384), Vector2(559, 384)]
+}
+tracks/5/type = "method"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("POV/UILayer/UI/DeathAnims/Rectangulin/RectangulinSusto")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 1.5, 2.4, 2.6, 2.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"values": [{
+"args": [&"angry"],
+"method": &"play"
+}, {
+"args": [&"ready"],
+"method": &"play"
+}, {
+"args": [&"shoot"],
+"method": &"play"
+}, {
+"args": [&"ready"],
+"method": &"play"
+}, {
+"args": [&"shoot"],
+"method": &"play"
+}]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("POV/UILayer/UI/DeathAnims/Rectangulin/Hurt:color")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 0.6, 2.4, 2.7, 2.9),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 0, 0, 1), Color(1, 0, 0, 0.258824), Color(1, 0, 0, 0.258824), Color(1, 0, 0, 0.647059), Color(1, 0, 0, 0.917647)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_hxr4n"]
 _data = {
 "AlarmBlink": SubResource("Animation_jv2oe"),
@@ -633,12 +854,14 @@ _data = {
 "DoorButtonPushed": SubResource("Animation_u4fau"),
 "GameLose": SubResource("Animation_8p7iw"),
 "GameWin": SubResource("Animation_1kxgc"),
+"RectangulinKill": SubResource("Animation_jd6oc"),
 "TriangulinGaugeFade": SubResource("Animation_pntbf"),
 "TriangulinKill": SubResource("Animation_c0q0n"),
 "WindowButtonPushed": SubResource("Animation_ubodj")
 }
 
 [node name="MainScene" type="Node2D"]
+process_mode = 1
 script = ExtResource("1_sqss8")
 
 [node name="Static" type="Node2D" parent="."]
@@ -808,6 +1031,24 @@ scale_amount_min = 5.0
 scale_amount_max = 5.0
 color = Color(0.360784, 0.568627, 1, 1)
 
+[node name="Rectangulin" type="AnimatedSprite2D" parent="Mosters"]
+self_modulate = Color(0, 0, 0, 1)
+z_index = -1
+position = Vector2(-869, 379)
+scale = Vector2(0.68, 0.68)
+sprite_frames = SubResource("SpriteFrames_hyekf")
+animation = &"normal"
+script = ExtResource("26_0yk8g")
+
+[node name="RectAnims" type="AnimationPlayer" parent="Mosters/Rectangulin"]
+libraries = {
+"": SubResource("AnimationLibrary_xxufo")
+}
+
+[node name="RectangulinTimer" type="Timer" parent="Mosters/Rectangulin"]
+wait_time = 10.0
+autostart = true
+
 [node name="Interactable" type="Node2D" parent="."]
 
 [node name="Despertador" type="Sprite2D" parent="Interactable"]
@@ -893,19 +1134,6 @@ scale = Vector2(0.5, 0.5)
 texture = ExtResource("16_b2dq5")
 
 [node name="ShockDoor" type="Button" parent="Interactable/Puerta/BotonAzul"]
-modulate = Color(1, 1, 1, 0)
-offset_left = -85.0
-offset_top = -79.0
-offset_right = 82.0
-offset_bottom = 83.0
-mouse_filter = 1
-
-[node name="BotonAzul" type="Sprite2D" parent="Interactable/Puerta/BotonAzul"]
-position = Vector2(29.75, -72.5)
-scale = Vector2(0.5, 0.5)
-texture = ExtResource("16_b2dq5")
-
-[node name="ShockDoor" type="Button" parent="Interactable/Puerta/BotonAzul/BotonAzul"]
 modulate = Color(1, 1, 1, 0)
 offset_left = -85.0
 offset_top = -79.0
@@ -1113,6 +1341,7 @@ shape = SubResource("RectangleShape2D_d7ua2")
 layer = 2
 
 [node name="UI" type="Control" parent="POV/UILayer"]
+process_mode = 3
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -1169,6 +1398,7 @@ sprite_frames = SubResource("SpriteFrames_jxpnt")
 frame_progress = 0.75939
 
 [node name="Circulin" type="Control" parent="POV/UILayer/UI/DeathAnims"]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -1180,6 +1410,29 @@ grow_vertical = 2
 position = Vector2(568, 336)
 scale = Vector2(0.01, 0.01)
 sprite_frames = SubResource("SpriteFrames_lui14")
+
+[node name="Rectangulin" type="Control" parent="POV/UILayer/UI/DeathAnims"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="RectangulinSusto" type="AnimatedSprite2D" parent="POV/UILayer/UI/DeathAnims/Rectangulin"]
+position = Vector2(559, 384)
+sprite_frames = SubResource("SpriteFrames_hyekf")
+animation = &"ready"
+
+[node name="Hurt" type="ColorRect" parent="POV/UILayer/UI/DeathAnims/Rectangulin"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 0, 0, 0.917647)
 
 [node name="TextureRect" type="TextureRect" parent="POV/UILayer/UI/DeathAnims"]
 visible = false
@@ -1312,6 +1565,7 @@ text = "Recargar: R"
 label_settings = SubResource("LabelSettings_o3kgp")
 
 [node name="UIAnims" type="AnimationPlayer" parent="."]
+process_mode = 3
 libraries = {
 "": SubResource("AnimationLibrary_hxr4n")
 }
@@ -1323,6 +1577,8 @@ libraries = {
 [connection signal="circulinKill" from="Mosters/Circulin" to="." method="_on_circulin_circulin_kill"]
 [connection signal="hitGlass" from="Mosters/Circulin" to="Static/Cristal" method="_on_circulin_hit_glass"]
 [connection signal="timeout" from="Mosters/Circulin/CirculinTimer" to="Mosters/Circulin" method="_on_circulin_timer_timeout"]
+[connection signal="rectangulinKill" from="Mosters/Rectangulin" to="." method="_on_rectangulin_rectangulin_kill"]
+[connection signal="timeout" from="Mosters/Rectangulin/RectangulinTimer" to="Mosters/Rectangulin" method="_on_rectangulin_timer_timeout"]
 [connection signal="pressed" from="Interactable/Despertador/Apagar" to="Interactable/Despertador" method="_on_apagar_pressed"]
 [connection signal="timeout" from="Interactable/Despertador/Blink" to="." method="_on_blink_timeout"]
 [connection signal="timeout" from="Interactable/Despertador/Alarm" to="Interactable/Despertador" method="_on_alarm_timeout"]
@@ -1332,8 +1588,8 @@ libraries = {
 [connection signal="button_up" from="Interactable/CajaDeMusica/Accion" to="." method="_on_accion_button_up"]
 [connection signal="button_up" from="Interactable/CajaDeMusica/Accion" to="Interactable/CajaDeMusica" method="_on_accion_button_up"]
 [connection signal="doorDisable" from="Interactable/Puerta" to="." method="_on_puerta_door_disable"]
+[connection signal="shocking" from="Interactable/Puerta" to="Mosters/Rectangulin" method="_on_puerta_shocking"]
 [connection signal="pressed" from="Interactable/Puerta/BotonAzul/ShockDoor" to="Interactable/Puerta" method="_on_shock_door_pressed"]
-[connection signal="pressed" from="Interactable/Puerta/BotonAzul/BotonAzul/ShockDoor" to="Interactable/Puerta" method="_on_shock_door_pressed"]
 [connection signal="shocking" from="Interactable/Ventana" to="Mosters/Circulin" method="_on_ventana_shocking"]
 [connection signal="windowDisable" from="Interactable/Ventana" to="." method="_on_ventana_window_disable"]
 [connection signal="pressed" from="Interactable/Ventana/BotonAzul/ShockWindow" to="Interactable/Ventana" method="_on_shock_window_pressed"]

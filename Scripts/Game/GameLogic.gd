@@ -6,6 +6,7 @@ var movingRight = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	get_tree().paused = false
 	$POV/UILayer/UI.show()
 	$POV/UILayer/UI/WinAnims.hide()
 	$POV/UILayer/UI/DeathAnims.hide()
@@ -74,7 +75,14 @@ func _on_circulin_circulin_kill():
 	$POV/UILayer/UI/DeathAnims.show()
 	$UIAnims.play("CirculinKill")
 
+func _on_rectangulin_rectangulin_kill():
+	gameActive = false
+	$POV/UILayer/UI.show()
+	$POV/UILayer/UI/DeathAnims.show()
+	$UIAnims.play("RectangulinKill")
+
 func returnToMenu():
+	get_tree().paused = false
 	get_tree().change_scene_to_file("res://Scenes/MainMenu.tscn")
 
 func _on_puerta_door_disable():
@@ -88,3 +96,6 @@ func _on_blink_timeout():
 
 func _on_ventana_window_disable():
 	$UIAnims.play("WindowButtonPushed")
+
+func stopLogic():
+	get_tree().paused = true

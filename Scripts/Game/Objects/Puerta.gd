@@ -1,6 +1,7 @@
 extends Node2D
 
 signal doorDisable
+signal shocking
 
 @export var usageTime = 10
 @export var shockNoise : float = 10
@@ -16,6 +17,7 @@ func _process(delta):
 	$UsageGauge.value = currentUsage
 	if activated and currentUsage > 0:
 		currentUsage -= delta
+		emit_signal("shocking")
 		if currentUsage <= 0:
 			disableDoor()
 
