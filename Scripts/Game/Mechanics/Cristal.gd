@@ -1,4 +1,4 @@
-extends ColorRect
+extends TextureRect
 
 signal broken
 
@@ -11,3 +11,4 @@ func _on_circulin_hit_glass(damage):
 	health -= damage
 	if health <= 0:
 		emit_signal("broken")
+	$GlassParticles.restart()

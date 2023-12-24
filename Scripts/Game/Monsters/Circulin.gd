@@ -41,5 +41,6 @@ func _on_circulin_timer_timeout():
 		appear()
 
 func _on_cristal_broken():
+	dissapear()
 	await get_tree().create_timer(3).timeout
 	emit_signal("circulinKill")
