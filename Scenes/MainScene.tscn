@@ -1,4 +1,4 @@
-[gd_scene load_steps=77 format=3 uid="uid://ci47ylf44fdg8"]
+[gd_scene load_steps=78 format=3 uid="uid://ci47ylf44fdg8"]
 
 [ext_resource type="Script" path="res://Scripts/Game/GameLogic.gd" id="1_sqss8"]
 [ext_resource type="Texture2D" uid="uid://3f28bn54dy1a" path="res://Assets/Static/Escritorio.png" id="2_48fq7"]
@@ -158,8 +158,24 @@ tracks/4/keys = {
 }]
 }
 
+[sub_resource type="Animation" id="Animation_s5vug"]
+resource_name = "Fade"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 0), Color(0, 0, 0, 1), Color(1, 1, 1, 1)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_hohb2"]
 _data = {
+"Fade": SubResource("Animation_s5vug"),
 "HIT": SubResource("Animation_22yld")
 }
 
@@ -682,8 +698,8 @@ script = ExtResource("13_hgak7")
 circulinChance = 1.0
 
 [node name="Pala" type="Sprite2D" parent="Mosters/Circulin"]
-position = Vector2(216, -48)
-rotation = 0.212065
+position = Vector2(216, -8)
+rotation = 0.445701
 texture = ExtResource("13_rmkaw")
 
 [node name="CirAnims" type="AnimationPlayer" parent="Mosters/Circulin"]
@@ -824,15 +840,19 @@ show_percentage = false
 
 [node name="Barrera_Ventana" type="Sprite2D" parent="Interactable/Ventana"]
 visible = false
-position = Vector2(-1704, 328)
+position = Vector2(1727, 328)
 scale = Vector2(0.896094, 0.898611)
 texture = ExtResource("18_b2ip2")
 
-[node name="Barrera_Ventana2" type="Sprite2D" parent="Interactable/Ventana"]
-visible = false
-position = Vector2(2872, 328)
-scale = Vector2(0.896094, 0.898611)
-texture = ExtResource("18_b2ip2")
+[node name="BotonAzul" type="Sprite2D" parent="Interactable/Ventana"]
+position = Vector2(1659, 417)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("16_b2dq5")
+
+[node name="BotonRojo" type="Sprite2D" parent="Interactable/Ventana"]
+position = Vector2(1758, 415)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("17_eiet5")
 
 [node name="Radios" type="Node2D" parent="Interactable"]
 script = ExtResource("22_8qmgw")
@@ -840,7 +860,7 @@ radioChance = 0.05
 
 [node name="Radio1" type="Sprite2D" parent="Interactable/Radios"]
 visible = false
-position = Vector2(1712, 304)
+position = Vector2(1443, 304)
 scale = Vector2(0.25, 0.25)
 texture = ExtResource("21_53fum")
 

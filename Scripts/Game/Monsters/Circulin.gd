@@ -29,16 +29,20 @@ func makeNoise():
 
 func appear():
 	show()
+	$CirAnims.play("Fade")
 	active = true
 
 func dissapear():
-	hide()
+	$CirAnims.play_backwards("Fade")
 	active = false
+	await $CirAnims.animation_finished
+	hide()
 
 func _on_circulin_timer_timeout():
-	randomize()
-	if randf_range(0, 1) <= circulinChance:
-		appear()
+	if !active:
+		randomize()
+		if randf_range(0, 1) <= circulinChance:
+			appear()
 
 func _on_cristal_broken():
 	dissapear()
