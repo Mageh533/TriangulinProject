@@ -51,34 +51,40 @@ func processCam(delta):
 
 # Win game
 func winGame():
-	$GameAnims.play("GameWin")
+	$UIAnims.play("GameWin")
 
 func _on_test_pressed():
 	print("Test")
 
 # Game anims
 func _on_accion_button_down():
-	$GameAnims.play("TriangulinGaugeFadeIn")
+	$UIAnims.play("TriangulinGaugeFade")
 
 func _on_accion_button_up():
-	$GameAnims.play("TriangulinGaugeFadeOut")
+	$UIAnims.play_backwards("TriangulinGaugeFade")
 
 func _on_triangulin_triangulin_kill():
 	gameActive = false
 	$POV/UILayer/UI.show()
 	$POV/UILayer/UI/DeathAnims.show()
 	$POV/UILayer/UI/DeathAnims/Triangulin.show()
-	$GameAnims.play("TriangulinKill")
+	$UIAnims.play("TriangulinKill")
 	$POV/UILayer/UI/DeathAnims/Triangulin/TriangulinSusto.play("default")
+
+func _on_circulin_circulin_kill():
+	gameActive = false
+	$POV/UILayer/UI.show()
+	$POV/UILayer/UI/DeathAnims.show()
+	$UIAnims.play("CirculinKill")
 
 func returnToMenu():
 	get_tree().change_scene_to_file("res://Scenes/MainMenu.tscn")
 
 func _on_puerta_door_disable():
-	$GameAnims.play("DoorButtonPushed")
+	$UIAnims.play("DoorButtonPushed")
 
 func _on_blink_timeout():
 	if $Interactable/Despertador/Time.modulate.a == 0:
-		$GameAnims.play_backwards("AlarmBlink")
+		$UIAnims.play_backwards("AlarmBlink")
 	else:
-		$GameAnims.play("AlarmBlink")
+		$UIAnims.play("AlarmBlink")

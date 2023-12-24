@@ -1,10 +1,11 @@
-[gd_scene load_steps=64 format=3 uid="uid://ci47ylf44fdg8"]
+[gd_scene load_steps=76 format=3 uid="uid://ci47ylf44fdg8"]
 
 [ext_resource type="Script" path="res://Scripts/Game/GameLogic.gd" id="1_sqss8"]
 [ext_resource type="Texture2D" uid="uid://3f28bn54dy1a" path="res://Assets/Static/Escritorio.png" id="2_48fq7"]
 [ext_resource type="Texture2D" uid="uid://n7r0m3ichfvj" path="res://Assets/Static/Ventana_izquierda.png" id="4_8wcoh"]
 [ext_resource type="Texture2D" uid="uid://2p2usg3o5g1q" path="res://Assets/Static/Estanterias.png" id="5_podnf"]
 [ext_resource type="Texture2D" uid="uid://c2nrmodxfpdqm" path="res://Assets/Static/Puerta.png" id="5_vcdfj"]
+[ext_resource type="Script" path="res://Scripts/Game/Mechanics/Cristal.gd" id="6_ori24"]
 [ext_resource type="Texture2D" uid="uid://bv82qh0ytlh75" path="res://Assets/Objects/Despertador.png" id="6_ux8r6"]
 [ext_resource type="Texture2D" uid="uid://d1x3h41n6h53v" path="res://Assets/Objects/Caja.png" id="7_ki6an"]
 [ext_resource type="Texture2D" uid="uid://dx2ounxchmu4w" path="res://Assets/Monsters/Triangulin/Fase_1.png" id="7_od8ki"]
@@ -14,8 +15,11 @@
 [ext_resource type="Texture2D" uid="uid://bpeaq7c0bq0pr" path="res://Assets/Monsters/Triangulin/Fase_3.png" id="9_to6dm"]
 [ext_resource type="Texture2D" uid="uid://bfkxvfimenoab" path="res://Assets/Monsters/Triangulin/Fase_4.png" id="10_m5mm7"]
 [ext_resource type="Script" path="res://Scripts/Game/Monsters/Triangulin.gd" id="11_pmmvt"]
+[ext_resource type="Texture2D" uid="uid://cenpqxnpvn8gu" path="res://Assets/Monsters/Circulin/Circulin.png" id="12_3wvat"]
 [ext_resource type="Texture2D" uid="uid://doae7fjenp4cx" path="res://Assets/Effects/zzz.png" id="12_v4u3i"]
+[ext_resource type="Script" path="res://Scripts/Game/Monsters/Circulin.gd" id="13_hgak7"]
 [ext_resource type="Script" path="res://Scripts/Game/Objects/Despertador.gd" id="13_jswqi"]
+[ext_resource type="Texture2D" uid="uid://dcd2cfnoyuwfm" path="res://Assets/Monsters/Circulin/Pala_agarrada.png" id="13_rmkaw"]
 [ext_resource type="Texture2D" uid="uid://bgtkyy37vsw1j" path="res://Assets/Objects/Boton_azul.png" id="16_b2dq5"]
 [ext_resource type="Texture2D" uid="uid://c3imkdw4n7gxd" path="res://Assets/Monsters/Triangulin/1.png" id="16_rs500"]
 [ext_resource type="Script" path="res://Scripts/Game/Objects/Puerta.gd" id="16_t1obs"]
@@ -34,6 +38,11 @@
 [ext_resource type="Texture2D" uid="uid://ctc7650yn8r2c" path="res://Assets/Effects/flaslight.png" id="23_571ms"]
 [ext_resource type="Texture2D" uid="uid://cbh438noyaf2j" path="res://Assets/UI/battery.svg" id="31_vrffb"]
 [ext_resource type="Texture2D" uid="uid://u0crq5pyqcw3" path="res://Assets/UI/volume.svg" id="31_xkdqm"]
+[ext_resource type="Texture2D" uid="uid://dsxtb84lfs1d4" path="res://Assets/Monsters/Circulin/1.1.png" id="34_suhq1"]
+[ext_resource type="Texture2D" uid="uid://beer1ypds5hu1" path="res://Assets/Monsters/Circulin/2.1.png" id="35_aoo03"]
+[ext_resource type="Texture2D" uid="uid://ct302ntfp2l3g" path="res://Assets/Monsters/Circulin/3.1.png" id="36_6e3mg"]
+[ext_resource type="Texture2D" uid="uid://bc1eor6tprmix" path="res://Assets/Monsters/Circulin/4.1.png" id="37_a37y8"]
+[ext_resource type="Texture2D" uid="uid://bebj2pooh4rqk" path="res://Assets/Monsters/Circulin/5.1.png" id="38_uvok8"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_yqs6t"]
 animations = [{
@@ -78,6 +87,80 @@ bg_color = Color(0.352941, 0.698039, 0.172549, 1)
 [sub_resource type="Curve" id="Curve_te5nk"]
 _data = [Vector2(0.0393258, 0.021978), 0.0, 0.0, 0, 0, Vector2(0.668539, 0.846154), -2.11253, -2.11253, 0, 0, Vector2(0.932584, 0), 0.0, 0.0, 0, 0]
 point_count = 3
+
+[sub_resource type="Animation" id="Animation_22yld"]
+resource_name = "HIT"
+length = 1.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Pala:rotation")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1, 1.1, 1.3, 1.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.445701, -0.353376, -0.655222, 0.212065, 0.212065, 0.445701]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Pala:scale")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5, 1, 1.1, 1.3, 1.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(0.8, 0.8), Vector2(0.8, 0.8), Vector2(1, 1), Vector2(1, 1), Vector2(1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Pala:position")
+tracks/2/interp = 2
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.5, 1, 1.1, 1.3, 1.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(216, -8), Vector2(176, -96), Vector2(120, -160), Vector2(216, -48), Vector2(216, -48), Vector2(216, -8)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".:rotation")
+tracks/3/interp = 4
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 1, 1.1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, -0.342042, 0.0]
+}
+tracks/4/type = "method"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath(".")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(1.2, 1.3),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [],
+"method": &"makeNoise"
+}, {
+"args": [&"hitGlass", 10],
+"method": &"emit_signal"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_hohb2"]
+_data = {
+"HIT": SubResource("Animation_22yld")
+}
 
 [sub_resource type="LabelSettings" id="LabelSettings_1bbin"]
 font_size = 31
@@ -127,6 +210,29 @@ animations = [{
 "speed": 30.0
 }]
 
+[sub_resource type="SpriteFrames" id="SpriteFrames_lui14"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("34_suhq1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("35_aoo03")
+}, {
+"duration": 1.0,
+"texture": ExtResource("36_6e3mg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("37_a37y8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("38_uvok8")
+}],
+"loop": false,
+"name": &"default",
+"speed": 5.0
+}]
+
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_stuu6"]
 shader = ExtResource("22_ersd0")
 shader_parameter/amount = 40.0
@@ -165,6 +271,22 @@ font_size = 15
 
 [sub_resource type="LabelSettings" id="LabelSettings_o3kgp"]
 font_size = 12
+
+[sub_resource type="Animation" id="Animation_jv2oe"]
+resource_name = "AlarmBlink"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Interactable/Despertador/Time:modulate")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
 
 [sub_resource type="Animation" id="Animation_u4fau"]
 resource_name = "DoorButtonPushed"
@@ -299,36 +421,6 @@ tracks/3/keys = {
 "values": [true]
 }
 
-[sub_resource type="Animation" id="Animation_pntbf"]
-resource_name = "TriangulinGaugeFadeIn"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Mosters/Triangulin/ProgressBar:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 0.0352941), Color(1, 1, 1, 1)]
-}
-
-[sub_resource type="Animation" id="Animation_w8qli"]
-resource_name = "TriangulinGaugeFadeOut"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Mosters/Triangulin/ProgressBar:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
-}
-
 [sub_resource type="Animation" id="Animation_c0q0n"]
 resource_name = "TriangulinKill"
 tracks/0/type = "value"
@@ -346,7 +438,7 @@ tracks/0/keys = {
 tracks/1/type = "method"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("GameAnims")
+tracks/1/path = NodePath("UIAnims")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -370,30 +462,96 @@ tracks/2/keys = {
 "values": [true]
 }
 
-[sub_resource type="Animation" id="Animation_jv2oe"]
-resource_name = "AlarmBlink"
-length = 0.2
+[sub_resource type="Animation" id="Animation_pntbf"]
+resource_name = "TriangulinGaugeFade"
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Interactable/Despertador/Time:modulate")
-tracks/0/interp = 2
+tracks/0/path = NodePath("Mosters/Triangulin/ProgressBar:modulate")
+tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.2),
+"times": PackedFloat32Array(0, 1),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+"values": [Color(1, 1, 1, 0.0352941), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_vlrvt"]
+resource_name = "CirculinKill"
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("UIAnims")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(1),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": ["GameLose"],
+"method": &"play"
+}]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("POV/UILayer/UI/DeathAnims:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("POV/UILayer/UI/DeathAnims/Circulin/CirculinSusto:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0.01, 0.01), Vector2(1, 1)]
+}
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("POV/UILayer/UI/DeathAnims/Circulin/CirculinSusto")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [&"default"],
+"method": &"play"
+}]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("POV/UILayer/UI/DeathAnims/Circulin:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_hxr4n"]
 _data = {
 "AlarmBlink": SubResource("Animation_jv2oe"),
+"CirculinKill": SubResource("Animation_vlrvt"),
 "DoorButtonPushed": SubResource("Animation_u4fau"),
 "GameLose": SubResource("Animation_8p7iw"),
 "GameWin": SubResource("Animation_1kxgc"),
-"TriangulinGaugeFadeIn": SubResource("Animation_pntbf"),
-"TriangulinGaugeFadeOut": SubResource("Animation_w8qli"),
+"TriangulinGaugeFade": SubResource("Animation_pntbf"),
 "TriangulinKill": SubResource("Animation_c0q0n")
 }
 
@@ -427,6 +585,21 @@ position = Vector2(2864, 328)
 scale = Vector2(0.896094, 0.898611)
 texture = ExtResource("5_podnf")
 
+[node name="Cristal" type="ColorRect" parent="Static"]
+offset_left = 1304.0
+offset_top = 116.0
+offset_right = 2142.0
+offset_bottom = 364.0
+mouse_filter = 1
+color = Color(1, 1, 1, 0.168627)
+script = ExtResource("6_ori24")
+
+[node name="DebugHealth" type="Label" parent="Static/Cristal"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+text = "Health: 100"
+
 [node name="Mosters" type="Node2D" parent="."]
 
 [node name="Triangulin" type="AnimatedSprite2D" parent="Mosters"]
@@ -438,6 +611,7 @@ frame_progress = 0.535346
 script = ExtResource("11_pmmvt")
 
 [node name="ProgressBar" type="ProgressBar" parent="Mosters/Triangulin"]
+modulate = Color(1, 1, 1, 0.0352941)
 offset_left = -185.855
 offset_top = -225.815
 offset_right = 198.145
@@ -471,6 +645,27 @@ one_shot = true
 
 [node name="ParticleTimer" type="Timer" parent="Mosters/Triangulin"]
 wait_time = 6.0
+autostart = true
+
+[node name="Circulin" type="Sprite2D" parent="Mosters"]
+position = Vector2(1720, 296)
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("12_3wvat")
+script = ExtResource("13_hgak7")
+circulinChance = 1.0
+
+[node name="Pala" type="Sprite2D" parent="Mosters/Circulin"]
+position = Vector2(216, -48)
+rotation = 0.212065
+texture = ExtResource("13_rmkaw")
+
+[node name="CirAnims" type="AnimationPlayer" parent="Mosters/Circulin"]
+libraries = {
+"": SubResource("AnimationLibrary_hohb2")
+}
+
+[node name="CirculinTimer" type="Timer" parent="Mosters/Circulin"]
+wait_time = 10.0
 autostart = true
 
 [node name="Interactable" type="Node2D" parent="."]
@@ -749,7 +944,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(1, 1, 1, 0.98)
+color = Color(1, 1, 1, 0)
 
 [node name="Label" type="Label" parent="POV/UILayer/UI/WinAnims"]
 layout_mode = 0
@@ -761,7 +956,6 @@ text = "Yay!"
 label_settings = SubResource("LabelSettings_b50o2")
 
 [node name="DeathAnims" type="Control" parent="POV/UILayer/UI"]
-visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -770,6 +964,7 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="Triangulin" type="Control" parent="POV/UILayer/UI/DeathAnims"]
+visible = false
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
@@ -778,7 +973,20 @@ offset_bottom = 40.0
 position = Vector2(600, 295)
 scale = Vector2(0.001, 0.001)
 sprite_frames = SubResource("SpriteFrames_jxpnt")
-frame_progress = 0.736914
+frame_progress = 0.968433
+
+[node name="Circulin" type="Control" parent="POV/UILayer/UI/DeathAnims"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CirculinSusto" type="AnimatedSprite2D" parent="POV/UILayer/UI/DeathAnims/Circulin"]
+position = Vector2(568, 336)
+scale = Vector2(0.01, 0.01)
+sprite_frames = SubResource("SpriteFrames_lui14")
 
 [node name="TextureRect" type="TextureRect" parent="POV/UILayer/UI/DeathAnims"]
 visible = false
@@ -910,14 +1118,18 @@ scale = Vector2(0.36, 0.36)
 text = "Recargar: R"
 label_settings = SubResource("LabelSettings_o3kgp")
 
-[node name="GameAnims" type="AnimationPlayer" parent="."]
+[node name="UIAnims" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_hxr4n")
 }
 
+[connection signal="broken" from="Static/Cristal" to="Mosters/Circulin" method="_on_cristal_broken"]
 [connection signal="triangulinKill" from="Mosters/Triangulin" to="." method="_on_triangulin_triangulin_kill"]
 [connection signal="timeout" from="Mosters/Triangulin/KillTimer" to="Mosters/Triangulin" method="_on_kill_timer_timeout"]
 [connection signal="timeout" from="Mosters/Triangulin/ParticleTimer" to="Mosters/Triangulin" method="_on_particle_timer_timeout"]
+[connection signal="circulinKill" from="Mosters/Circulin" to="." method="_on_circulin_circulin_kill"]
+[connection signal="hitGlass" from="Mosters/Circulin" to="Static/Cristal" method="_on_circulin_hit_glass"]
+[connection signal="timeout" from="Mosters/Circulin/CirculinTimer" to="Mosters/Circulin" method="_on_circulin_timer_timeout"]
 [connection signal="pressed" from="Interactable/Despertador/Apagar" to="Interactable/Despertador" method="_on_apagar_pressed"]
 [connection signal="timeout" from="Interactable/Despertador/Blink" to="." method="_on_blink_timeout"]
 [connection signal="timeout" from="Interactable/Despertador/Alarm" to="Interactable/Despertador" method="_on_alarm_timeout"]
