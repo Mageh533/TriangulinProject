@@ -1,4 +1,4 @@
-[gd_scene load_steps=96 format=3 uid="uid://ci47ylf44fdg8"]
+[gd_scene load_steps=99 format=3 uid="uid://ci47ylf44fdg8"]
 
 [ext_resource type="Script" path="res://Scripts/Game/GameLogic.gd" id="1_sqss8"]
 [ext_resource type="Texture2D" uid="uid://3f28bn54dy1a" path="res://Assets/Static/Escritorio.png" id="2_48fq7"]
@@ -50,6 +50,9 @@
 [ext_resource type="Script" path="res://Scripts/Game/Objects/Ventana.gd" id="27_1ir03"]
 [ext_resource type="Texture2D" uid="uid://cbh438noyaf2j" path="res://Assets/UI/battery.svg" id="31_vrffb"]
 [ext_resource type="Texture2D" uid="uid://u0crq5pyqcw3" path="res://Assets/UI/volume.svg" id="31_xkdqm"]
+[ext_resource type="AudioStream" uid="uid://bnr6xori48s1f" path="res://Assets/SoundEffects/Objects/MusicBoxForward.wav" id="32_ek67o"]
+[ext_resource type="AudioStream" uid="uid://c5qan1ovebupj" path="res://Assets/SoundEffects/Objects/MusicBoxBackwards.wav" id="33_n062q"]
+[ext_resource type="AudioStream" uid="uid://blfyopx5kh2vd" path="res://Assets/SoundEffects/Objects/MusicBoxEnd.wav" id="34_qsvb6"]
 [ext_resource type="Texture2D" uid="uid://dsxtb84lfs1d4" path="res://Assets/Monsters/Circulin/1.1.png" id="34_suhq1"]
 [ext_resource type="Texture2D" uid="uid://beer1ypds5hu1" path="res://Assets/Monsters/Circulin/2.1.png" id="35_aoo03"]
 [ext_resource type="Texture2D" uid="uid://ct302ntfp2l3g" path="res://Assets/Monsters/Circulin/3.1.png" id="36_6e3mg"]
@@ -656,92 +659,6 @@ tracks/4/keys = {
 }]
 }
 
-[sub_resource type="Animation" id="Animation_pntbf"]
-resource_name = "TriangulinGaugeFade"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Mosters/Triangulin/ProgressBar:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 0.0352941), Color(1, 1, 1, 1)]
-}
-
-[sub_resource type="Animation" id="Animation_c0q0n"]
-resource_name = "TriangulinKill"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("POV/UILayer/UI/DeathAnims/Triangulin/TriangulinSusto:scale")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(0.001, 0.001), Vector2(2, 2)]
-}
-tracks/1/type = "method"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("UIAnims")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(1),
-"transitions": PackedFloat32Array(1),
-"values": [{
-"args": ["GameLose"],
-"method": &"play"
-}]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("POV/UILayer/UI/DeathAnims:visible")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-tracks/3/type = "method"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath(".")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"values": [{
-"args": [],
-"method": &"stopLogic"
-}]
-}
-
-[sub_resource type="Animation" id="Animation_ubodj"]
-resource_name = "WindowButtonPushed"
-length = 0.5
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Interactable/Ventana/BotonAzul:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0.513726)]
-}
-
 [sub_resource type="Animation" id="Animation_jd6oc"]
 resource_name = "RectangulinKill"
 length = 3.0
@@ -846,6 +763,92 @@ tracks/6/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1),
 "update": 0,
 "values": [Color(1, 0, 0, 1), Color(1, 0, 0, 0.258824), Color(1, 0, 0, 0.258824), Color(1, 0, 0, 0.647059), Color(1, 0, 0, 0.917647)]
+}
+
+[sub_resource type="Animation" id="Animation_pntbf"]
+resource_name = "TriangulinGaugeFade"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Mosters/Triangulin/ProgressBar:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0.0352941), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_c0q0n"]
+resource_name = "TriangulinKill"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("POV/UILayer/UI/DeathAnims/Triangulin/TriangulinSusto:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0.001, 0.001), Vector2(2, 2)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("UIAnims")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(1),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": ["GameLose"],
+"method": &"play"
+}]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("POV/UILayer/UI/DeathAnims:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"stopLogic"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_ubodj"]
+resource_name = "WindowButtonPushed"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Interactable/Ventana/BotonAzul:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0.513726)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_hxr4n"]
@@ -1107,6 +1110,17 @@ offset_top = -157.0
 offset_right = 163.0
 offset_bottom = 160.0
 mouse_filter = 1
+
+[node name="Forward" type="AudioStreamPlayer2D" parent="Interactable/CajaDeMusica"]
+stream = ExtResource("32_ek67o")
+
+[node name="Backwards" type="AudioStreamPlayer2D" parent="Interactable/CajaDeMusica"]
+stream = ExtResource("33_n062q")
+volume_db = -10.0
+
+[node name="Stop" type="AudioStreamPlayer2D" parent="Interactable/CajaDeMusica"]
+stream = ExtResource("34_qsvb6")
+volume_db = -10.0
 
 [node name="Puerta" type="Node2D" parent="Interactable"]
 position = Vector2(-328, 368)
@@ -1428,6 +1442,7 @@ text = "Yay!"
 label_settings = SubResource("LabelSettings_b50o2")
 
 [node name="DeathAnims" type="Control" parent="POV/UILayer/UI"]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -1663,6 +1678,6 @@ autostart = true
 [connection signal="mouse_exited" from="POV/MoveRight" to="." method="_on_move_right_mouse_exited"]
 [connection signal="timeout" from="DifficultyTimer" to="Mosters/Triangulin" method="_on_difficulty_timer_timeout"]
 [connection signal="timeout" from="DifficultyTimer" to="Mosters/Circulin" method="_on_difficulty_timer_timeout"]
+[connection signal="timeout" from="DifficultyTimer" to="Mosters/Rectangulin" method="_on_difficulty_timer_timeout"]
 [connection signal="timeout" from="DifficultyTimer" to="Interactable/Despertador" method="_on_difficulty_timer_timeout"]
 [connection signal="timeout" from="DifficultyTimer" to="Interactable/Radios" method="_on_difficulty_timer_timeout"]
-[connection signal="timeout" from="DifficultyTimer" to="Mosters/Rectangulin" method="_on_difficulty_timer_timeout"]
