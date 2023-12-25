@@ -1,4 +1,4 @@
-[gd_scene load_steps=99 format=3 uid="uid://ci47ylf44fdg8"]
+[gd_scene load_steps=102 format=3 uid="uid://ci47ylf44fdg8"]
 
 [ext_resource type="Script" path="res://Scripts/Game/GameLogic.gd" id="1_sqss8"]
 [ext_resource type="Texture2D" uid="uid://3f28bn54dy1a" path="res://Assets/Static/Escritorio.png" id="2_48fq7"]
@@ -36,18 +36,21 @@
 [ext_resource type="Texture2D" uid="uid://c5vsou4cbcrye" path="res://Assets/Monsters/Triangulin/4.png" id="18_pj707"]
 [ext_resource type="Texture2D" uid="uid://bwww4ewa85nv1" path="res://Assets/Monsters/Triangulin/5.png" id="19_5gdqe"]
 [ext_resource type="Texture2D" uid="uid://y1tl32obuluk" path="res://Assets/Objects/Barrera_Puerta.png" id="19_uu3fg"]
+[ext_resource type="AudioStream" uid="uid://doexkfmafmo6w" path="res://Assets/SoundEffects/Effects/Snore.wav" id="19_xef3o"]
 [ext_resource type="Texture2D" uid="uid://v4ohnposhbde" path="res://Assets/Monsters/Triangulin/6.png" id="20_11aiv"]
 [ext_resource type="Texture2D" uid="uid://cr25vsm6let08" path="res://Assets/Objects/Radio.png" id="21_53fum"]
 [ext_resource type="Texture2D" uid="uid://el4brylng18v" path="res://Assets/Monsters/Triangulin/7.png" id="21_ffoxj"]
 [ext_resource type="Texture2D" uid="uid://tv1o0q2jdpcn" path="res://Assets/Monsters/Rectangulin/1.png" id="22_1rw84"]
 [ext_resource type="Script" path="res://Scripts/Game/Objects/Radios.gd" id="22_8qmgw"]
 [ext_resource type="Shader" path="res://Assets/Effects/TVNoise.gdshader" id="22_ersd0"]
+[ext_resource type="AudioStream" uid="uid://d4cixe1xpqy2b" path="res://Assets/SoundEffects/Effects/Golpe_ventana.wav" id="22_s47mo"]
 [ext_resource type="Texture2D" uid="uid://34p5odqgf7p0" path="res://Assets/Monsters/Rectangulin/Rectactulin_Re_Mafioso.png" id="23_6qj5u"]
 [ext_resource type="Texture2D" uid="uid://ctc7650yn8r2c" path="res://Assets/Effects/flaslight.png" id="23_571ms"]
 [ext_resource type="Texture2D" uid="uid://bgjqtc6pmnxlv" path="res://Assets/Monsters/Rectangulin/2.png" id="24_7pq6s"]
 [ext_resource type="Texture2D" uid="uid://bwp1elcph64qs" path="res://Assets/Monsters/Rectangulin/3.png" id="25_talnp"]
 [ext_resource type="Script" path="res://Scripts/Game/Monsters/Rectangulin.gd" id="26_0yk8g"]
 [ext_resource type="Script" path="res://Scripts/Game/Objects/Ventana.gd" id="27_1ir03"]
+[ext_resource type="AudioStream" uid="uid://dfqhcra7viira" path="res://Assets/SoundEffects/Objects/Alarma_Reloj.wav" id="29_1cc5i"]
 [ext_resource type="Texture2D" uid="uid://cbh438noyaf2j" path="res://Assets/UI/battery.svg" id="31_vrffb"]
 [ext_resource type="Texture2D" uid="uid://u0crq5pyqcw3" path="res://Assets/UI/volume.svg" id="31_xkdqm"]
 [ext_resource type="AudioStream" uid="uid://bnr6xori48s1f" path="res://Assets/SoundEffects/Objects/MusicBoxForward.wav" id="32_ek67o"]
@@ -997,6 +1000,10 @@ one_shot = true
 wait_time = 6.0
 autostart = true
 
+[node name="Mimiendo" type="AudioStreamPlayer2D" parent="Mosters/Triangulin"]
+stream = ExtResource("19_xef3o")
+volume_db = -10.0
+
 [node name="Circulin" type="Sprite2D" parent="Mosters"]
 z_index = -1
 position = Vector2(1697, 275)
@@ -1034,6 +1041,9 @@ initial_velocity_max = 323.23
 scale_amount_min = 5.0
 scale_amount_max = 5.0
 color = Color(0.360784, 0.568627, 1, 1)
+
+[node name="GlassHit" type="AudioStreamPlayer2D" parent="Mosters/Circulin"]
+stream = ExtResource("22_s47mo")
 
 [node name="Rectangulin" type="AnimatedSprite2D" parent="Mosters"]
 self_modulate = Color(0, 0, 0, 1)
@@ -1090,6 +1100,9 @@ wait_time = 0.5
 [node name="Alarm" type="Timer" parent="Interactable/Despertador"]
 wait_time = 60.0
 autostart = true
+
+[node name="AlarmSFX" type="AudioStreamPlayer2D" parent="Interactable/Despertador"]
+stream = ExtResource("29_1cc5i")
 
 [node name="CajaDeMusica" type="Sprite2D" parent="Interactable"]
 position = Vector2(832, 352)
@@ -1651,6 +1664,7 @@ autostart = true
 [connection signal="pressed" from="Interactable/Despertador/Apagar" to="Interactable/Despertador" method="_on_apagar_pressed"]
 [connection signal="timeout" from="Interactable/Despertador/Blink" to="." method="_on_blink_timeout"]
 [connection signal="timeout" from="Interactable/Despertador/Alarm" to="Interactable/Despertador" method="_on_alarm_timeout"]
+[connection signal="finished" from="Interactable/Despertador/AlarmSFX" to="Interactable/Despertador" method="_on_alarm_sfx_finished"]
 [connection signal="isWinding" from="Interactable/CajaDeMusica" to="Mosters/Triangulin" method="_on_caja_de_musica_is_winding"]
 [connection signal="button_down" from="Interactable/CajaDeMusica/Accion" to="." method="_on_accion_button_down"]
 [connection signal="button_down" from="Interactable/CajaDeMusica/Accion" to="Interactable/CajaDeMusica" method="_on_accion_button_down"]

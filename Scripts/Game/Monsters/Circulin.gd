@@ -28,6 +28,7 @@ func hit():
 		dissapear()
 	else:
 		emit_signal("hitGlass", glassDamage)
+		$GlassHit.play()
 
 func makeNoise():
 	GlobalVariables.tempNoise += glassNoise

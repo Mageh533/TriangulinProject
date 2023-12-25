@@ -9,6 +9,7 @@ var active = false
 
 func _ready():
 	GlobalVariables.time = startTime
+	$AlarmSFX
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
@@ -27,6 +28,7 @@ func activateAlarm():
 		active = true
 		GlobalVariables.permNoise += alarmNoise
 		$Blink.start()
+		$AlarmSFX.play()
 
 func _on_apagar_pressed():
 	if active:
@@ -34,6 +36,7 @@ func _on_apagar_pressed():
 		$Time.modulate.a = 1
 		GlobalVariables.permNoise -= alarmNoise
 		$Blink.stop()
+		$AlarmSFX.stop()
 
 func _on_alarm_timeout():
 	randomize()
@@ -42,3 +45,6 @@ func _on_alarm_timeout():
 
 func _on_difficulty_timer_timeout():
 	alarmChance += 0.1
+
+func _on_alarm_sfx_finished():
+	$AlarmSFX.play()

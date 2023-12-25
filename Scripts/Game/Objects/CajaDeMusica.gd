@@ -24,8 +24,7 @@ func _process(delta):
 func _on_accion_button_down():
 	winding = true
 	$Backwards.stop()
-	$Forward.play()
-	$Forward.seek(forwardSfxPos)
+	$Forward.play(forwardSfxPos)
 
 func _on_accion_button_up():
 	winding = false

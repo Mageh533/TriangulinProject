@@ -10,6 +10,7 @@ var particleAmounts = 8
 func _ready():
 	$ParticulasMimir.amount = particleAmounts
 	$ParticulasMimir.restart()
+	$Mimiendo.play()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -47,6 +48,10 @@ func _on_particle_timer_timeout():
 	if particleAmounts > 0:
 		$ParticulasMimir.amount = particleAmounts
 		$ParticulasMimir.restart()
+		if particleAmounts >= 6 and !$Mimiendo.playing:
+			$Mimiendo.play()
+	else:
+		$Mimiendo.stop()
 
 func _on_difficulty_timer_timeout():
 	pass # Replace with function body.
