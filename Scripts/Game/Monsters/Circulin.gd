@@ -26,6 +26,7 @@ func hit():
 	if shocked:
 		$ShockEffect.restart()
 		dissapear()
+		$Shock.play()
 	else:
 		emit_signal("hitGlass", glassDamage)
 		$GlassHit.play()

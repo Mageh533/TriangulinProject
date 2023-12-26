@@ -37,10 +37,12 @@ func _on_shock_window_pressed():
 	if currentUsage > 0:
 		if activated:
 			$Barrera_Ventana.hide()
+			$Barrera_Ventana/Electricidad.stop()
 			activated = false
 			GlobalVariables.permNoise -= shockNoise
 		else:
 			$Barrera_Ventana.show()
+			$Barrera_Ventana/Electricidad.play()
 			$ShockEffect_Ventana.restart()
 			activated = true
 			GlobalVariables.permNoise += shockNoise
@@ -49,8 +51,10 @@ func _on_alert_button_pressed():
 	emit_signal("alarmActive")
 	$BotonRojo/AlertButton.disabled = true
 	$Alert.show()
+	$Alarm.play()
 	GlobalVariables.permNoise += alarmNoise
 	await get_tree().create_timer(3).timeout
 	$Alert.hide()
 	GlobalVariables.permNoise -= alarmNoise
 	$BotonRojo/AlertButton.disabled = false
+	$Alarm.stop()

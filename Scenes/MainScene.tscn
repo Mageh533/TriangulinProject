@@ -1,4 +1,4 @@
-[gd_scene load_steps=102 format=3 uid="uid://ci47ylf44fdg8"]
+[gd_scene load_steps=109 format=3 uid="uid://ci47ylf44fdg8"]
 
 [ext_resource type="Script" path="res://Scripts/Game/GameLogic.gd" id="1_sqss8"]
 [ext_resource type="Texture2D" uid="uid://3f28bn54dy1a" path="res://Assets/Static/Escritorio.png" id="2_48fq7"]
@@ -25,6 +25,7 @@
 [ext_resource type="Texture2D" uid="uid://doae7fjenp4cx" path="res://Assets/Effects/zzz.png" id="12_v4u3i"]
 [ext_resource type="Script" path="res://Scripts/Game/Monsters/Circulin.gd" id="13_hgak7"]
 [ext_resource type="Script" path="res://Scripts/Game/Objects/Despertador.gd" id="13_jswqi"]
+[ext_resource type="AudioStream" uid="uid://dltssk8a5enlo" path="res://Assets/SoundEffects/Effects/Cristal_roto.mp3" id="13_raib4"]
 [ext_resource type="Texture2D" uid="uid://dcd2cfnoyuwfm" path="res://Assets/Monsters/Circulin/Pala_agarrada.png" id="13_rmkaw"]
 [ext_resource type="Texture2D" uid="uid://bgtkyy37vsw1j" path="res://Assets/Objects/Boton_azul.png" id="16_b2dq5"]
 [ext_resource type="Texture2D" uid="uid://c3imkdw4n7gxd" path="res://Assets/Monsters/Triangulin/1.png" id="16_rs500"]
@@ -47,13 +48,16 @@
 [ext_resource type="Texture2D" uid="uid://34p5odqgf7p0" path="res://Assets/Monsters/Rectangulin/Rectactulin_Re_Mafioso.png" id="23_6qj5u"]
 [ext_resource type="Texture2D" uid="uid://ctc7650yn8r2c" path="res://Assets/Effects/flaslight.png" id="23_571ms"]
 [ext_resource type="Texture2D" uid="uid://bgjqtc6pmnxlv" path="res://Assets/Monsters/Rectangulin/2.png" id="24_7pq6s"]
+[ext_resource type="AudioStream" uid="uid://brjvkbm0mr7fh" path="res://Assets/SoundEffects/Effects/Zap.wav" id="24_wogn3"]
 [ext_resource type="Texture2D" uid="uid://bwp1elcph64qs" path="res://Assets/Monsters/Rectangulin/3.png" id="25_talnp"]
 [ext_resource type="Script" path="res://Scripts/Game/Monsters/Rectangulin.gd" id="26_0yk8g"]
 [ext_resource type="Script" path="res://Scripts/Game/Objects/Ventana.gd" id="27_1ir03"]
 [ext_resource type="AudioStream" uid="uid://dfqhcra7viira" path="res://Assets/SoundEffects/Objects/Alarma_Reloj.wav" id="29_1cc5i"]
+[ext_resource type="AudioStream" uid="uid://c28ckfqt75p2h" path="res://Assets/SoundEffects/Effects/Draw_pistol.wav" id="31_1u4vg"]
 [ext_resource type="Texture2D" uid="uid://cbh438noyaf2j" path="res://Assets/UI/battery.svg" id="31_vrffb"]
 [ext_resource type="Texture2D" uid="uid://u0crq5pyqcw3" path="res://Assets/UI/volume.svg" id="31_xkdqm"]
 [ext_resource type="AudioStream" uid="uid://bnr6xori48s1f" path="res://Assets/SoundEffects/Objects/MusicBoxForward.wav" id="32_ek67o"]
+[ext_resource type="AudioStream" uid="uid://h73v5atw2qkb" path="res://Assets/SoundEffects/Effects/Pium.wav" id="32_eqjs7"]
 [ext_resource type="AudioStream" uid="uid://c5qan1ovebupj" path="res://Assets/SoundEffects/Objects/MusicBoxBackwards.wav" id="33_n062q"]
 [ext_resource type="AudioStream" uid="uid://blfyopx5kh2vd" path="res://Assets/SoundEffects/Objects/MusicBoxEnd.wav" id="34_qsvb6"]
 [ext_resource type="Texture2D" uid="uid://dsxtb84lfs1d4" path="res://Assets/Monsters/Circulin/1.1.png" id="34_suhq1"]
@@ -62,6 +66,9 @@
 [ext_resource type="Texture2D" uid="uid://bc1eor6tprmix" path="res://Assets/Monsters/Circulin/4.1.png" id="37_a37y8"]
 [ext_resource type="Texture2D" uid="uid://bebj2pooh4rqk" path="res://Assets/Monsters/Circulin/5.1.png" id="38_uvok8"]
 [ext_resource type="Texture2D" uid="uid://c1c5m3yokxwax" path="res://Assets/Effects/spotlight.png" id="42_g3qvk"]
+[ext_resource type="AudioStream" uid="uid://dhfdw0pt7fg06" path="res://Assets/SoundEffects/Effects/Alarm.mp3" id="47_crlr7"]
+[ext_resource type="AudioStream" uid="uid://bitjh3ioumyb5" path="res://Assets/SoundEffects/Effects/393066__wakerone__electric-zap-electricity-2.wav" id="47_u1p6k"]
+[ext_resource type="AudioStream" uid="uid://chc0e7npf5qgg" path="res://Assets/SoundEffects/Effects/Recarga.wav" id="53_7hjjc"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_e7v5w"]
 animations = [{
@@ -767,6 +774,37 @@ tracks/6/keys = {
 "update": 0,
 "values": [Color(1, 0, 0, 1), Color(1, 0, 0, 0.258824), Color(1, 0, 0, 0.258824), Color(1, 0, 0, 0.647059), Color(1, 0, 0, 0.917647)]
 }
+tracks/7/type = "method"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("POV/UILayer/UI/DeathAnims/Rectangulin/Ready")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(1.5),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [0.0],
+"method": &"play"
+}]
+}
+tracks/8/type = "method"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("POV/UILayer/UI/DeathAnims/Rectangulin/Shot")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(2.4, 2.8),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [0.0],
+"method": &"play"
+}, {
+"args": [0.0],
+"method": &"play"
+}]
+}
 
 [sub_resource type="Animation" id="Animation_pntbf"]
 resource_name = "TriangulinGaugeFade"
@@ -953,6 +991,10 @@ scale = Vector2(0.94, 0.94)
 sprite_frames = SubResource("SpriteFrames_e7v5w")
 animation = &"Stage1"
 
+[node name="Break" type="AudioStreamPlayer2D" parent="Static/Cristal"]
+position = Vector2(412, 128)
+stream = ExtResource("13_raib4")
+
 [node name="Mosters" type="Node2D" parent="."]
 
 [node name="Triangulin" type="AnimatedSprite2D" parent="Mosters"]
@@ -1045,6 +1087,9 @@ color = Color(0.360784, 0.568627, 1, 1)
 [node name="GlassHit" type="AudioStreamPlayer2D" parent="Mosters/Circulin"]
 stream = ExtResource("22_s47mo")
 
+[node name="Shock" type="AudioStreamPlayer2D" parent="Mosters/Circulin"]
+stream = ExtResource("24_wogn3")
+
 [node name="Rectangulin" type="AnimatedSprite2D" parent="Mosters"]
 self_modulate = Color(0, 0, 0, 1)
 z_index = -1
@@ -1053,6 +1098,7 @@ scale = Vector2(0.68, 0.68)
 sprite_frames = SubResource("SpriteFrames_hyekf")
 animation = &"normal"
 script = ExtResource("26_0yk8g")
+rectangulinChance = 1.0
 
 [node name="RectAnims" type="AnimationPlayer" parent="Mosters/Rectangulin"]
 libraries = {
@@ -1062,6 +1108,15 @@ libraries = {
 [node name="RectangulinTimer" type="Timer" parent="Mosters/Rectangulin"]
 wait_time = 10.0
 autostart = true
+
+[node name="Shock" type="AudioStreamPlayer2D" parent="Mosters/Rectangulin"]
+stream = ExtResource("24_wogn3")
+
+[node name="GunDraw" type="AudioStreamPlayer2D" parent="Mosters/Rectangulin"]
+stream = ExtResource("31_1u4vg")
+
+[node name="GunShot" type="AudioStreamPlayer2D" parent="Mosters/Rectangulin"]
+stream = ExtResource("32_eqjs7")
 
 [node name="Interactable" type="Node2D" parent="."]
 
@@ -1197,6 +1252,9 @@ shadow_enabled = true
 texture = ExtResource("23_571ms")
 texture_scale = 5.5
 
+[node name="Electricidad" type="AudioStreamPlayer2D" parent="Interactable/Puerta/Barrera_Puerta"]
+stream = ExtResource("47_u1p6k")
+
 [node name="UsageGauge" type="ProgressBar" parent="Interactable/Puerta"]
 offset_left = 80.0
 offset_top = -112.0
@@ -1223,6 +1281,10 @@ color = Color(0.760784, 0, 0, 1)
 energy = 15.0
 texture = ExtResource("42_g3qvk")
 
+[node name="Alarm" type="AudioStreamPlayer2D" parent="Interactable/Puerta"]
+position = Vector2(-238, -729)
+stream = ExtResource("47_crlr7")
+
 [node name="Ventana" type="Node2D" parent="Interactable"]
 script = ExtResource("27_1ir03")
 alarmNoise = 20.0
@@ -1232,6 +1294,9 @@ visible = false
 position = Vector2(1727, 328)
 scale = Vector2(0.896094, 0.898611)
 texture = ExtResource("18_b2ip2")
+
+[node name="Electricidad" type="AudioStreamPlayer2D" parent="Interactable/Ventana/Barrera_Ventana"]
+stream = ExtResource("47_u1p6k")
 
 [node name="BotonAzul" type="Sprite2D" parent="Interactable/Ventana"]
 position = Vector2(1659, 417)
@@ -1299,6 +1364,10 @@ scale = Vector2(1.56623, 1.872)
 color = Color(0.760784, 0, 0, 1)
 energy = 15.0
 texture = ExtResource("42_g3qvk")
+
+[node name="Alarm" type="AudioStreamPlayer2D" parent="Interactable/Ventana"]
+position = Vector2(1693, -482)
+stream = ExtResource("47_crlr7")
 
 [node name="Radios" type="Node2D" parent="Interactable"]
 script = ExtResource("22_8qmgw")
@@ -1391,6 +1460,10 @@ shadow_enabled = true
 texture = ExtResource("23_571ms")
 texture_scale = 3.0
 script = ExtResource("17_kt7nn")
+battery = 1.0
+
+[node name="Recarga" type="AudioStreamPlayer2D" parent="Flashlight"]
+stream = ExtResource("53_7hjjc")
 
 [node name="Darkness" type="DirectionalLight2D" parent="."]
 visible = false
@@ -1455,7 +1528,6 @@ text = "Yay!"
 label_settings = SubResource("LabelSettings_b50o2")
 
 [node name="DeathAnims" type="Control" parent="POV/UILayer/UI"]
-visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -1490,7 +1562,6 @@ scale = Vector2(0.01, 0.01)
 sprite_frames = SubResource("SpriteFrames_lui14")
 
 [node name="Rectangulin" type="Control" parent="POV/UILayer/UI/DeathAnims"]
-visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -1510,7 +1581,15 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(1, 0, 0, 0.917647)
+color = Color(1, 0, 0, 0.258824)
+
+[node name="Ready" type="AudioStreamPlayer" parent="POV/UILayer/UI/DeathAnims/Rectangulin"]
+process_mode = 3
+stream = ExtResource("31_1u4vg")
+
+[node name="Shot" type="AudioStreamPlayer" parent="POV/UILayer/UI/DeathAnims/Rectangulin"]
+process_mode = 3
+stream = ExtResource("32_eqjs7")
 
 [node name="TextureRect" type="TextureRect" parent="POV/UILayer/UI/DeathAnims"]
 visible = false

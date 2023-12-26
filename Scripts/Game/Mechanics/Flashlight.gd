@@ -2,9 +2,6 @@ extends PointLight2D
 
 @export var battery : float
 
-func _ready():
-	battery = 1
-
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	global_position = get_global_mouse_position()
@@ -17,5 +14,10 @@ func _process(delta):
 		if battery < 1:
 			battery += 0.05
 			GlobalVariables.tempNoise += 0.5
+			var recargadup = $Recarga.duplicate()
+			add_child(recargadup)
+			recargadup.play()
+			await recargadup.finished
+			recargadup.queue_free()
 		if battery > 1:
 			battery = 1

@@ -49,8 +49,10 @@ func prepareToShoot():
 		play("ready")
 		GlobalVariables.tempNoise += 0.5
 		currentHolster = gunHolsterSpeed
+		$GunDraw.play()
 	else:
 		play("shoot")
+		$GunShot.play()
 		await get_tree().create_timer(0.3).timeout
 		hide()
 		emit_signal("rectangulinKill")
@@ -64,6 +66,7 @@ func _on_rectangulin_timer_timeout():
 func _on_puerta_shocking():
 	if !shocked and active:
 		shocked = true
+		$Shock.play()
 		dissapear()
 
 func _on_puerta_alarm_active():

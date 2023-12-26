@@ -29,4 +29,5 @@ func _on_circulin_hit_glass(damage):
 		emit_signal("broken")
 		self_modulate.a = 0
 		$BreakParticles.restart()
+		$Break.play()
 	$GlassParticles.restart()

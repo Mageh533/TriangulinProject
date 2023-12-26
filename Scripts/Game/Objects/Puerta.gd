@@ -27,11 +27,13 @@ func _on_shock_door_pressed():
 	if currentUsage > 0:
 		if activated:
 			$Barrera_Puerta.hide()
+			$Barrera_Puerta/Electricidad.stop()
 			activated = false
 			GlobalVariables.permNoise -= shockNoise
 		else:
 			$Barrera_Puerta.show()
 			$ShockEffect_Puerta.restart()
+			$Barrera_Puerta/Electricidad.play()
 			activated = true
 			GlobalVariables.permNoise += shockNoise
 
@@ -39,11 +41,13 @@ func _on_alert_button_pressed():
 	emit_signal("alarmActive")
 	$BotonRojo/AlertButton.disabled = true
 	$Alert.show()
+	$Alarm.play()
 	GlobalVariables.permNoise += alarmNoise
 	await get_tree().create_timer(3).timeout
 	$Alert.hide()
 	GlobalVariables.permNoise -= alarmNoise
 	$BotonRojo/AlertButton.disabled = false
+	$Alarm.stop()
 
 func disableDoor():
 	if activated:
