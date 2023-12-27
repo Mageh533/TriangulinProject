@@ -11,6 +11,9 @@ func _on_apagar_pressed():
 	if radioActive:
 		radioActive = false
 		GlobalVariables.permNoise -= radioNoise
+		for radio in get_children():
+			if str(activeRadio) in radio.name:
+				get_node(radio.name + "/SFX").stop()
 
 func turnRadioOn():
 	if !radioActive:
@@ -24,6 +27,7 @@ func turnRadioOn():
 		for radio in get_children():
 			if str(activeRadio) in radio.name:
 				radio.show()
+				get_node(radio.name + "/SFX").play()
 		GlobalVariables.permNoise += radioNoise
 
 func _on_radio_timer_timeout():

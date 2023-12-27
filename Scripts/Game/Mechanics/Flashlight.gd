@@ -10,14 +10,12 @@ func _process(delta):
 		energy = 1 * battery
 		texture_scale = 4 * battery + 0.01
 	
-	if(Input.is_action_just_pressed("recharge")):
-		if battery < 1:
-			battery += 0.05
-			GlobalVariables.tempNoise += 0.5
-			var recargadup = $Recarga.duplicate()
-			add_child(recargadup)
-			recargadup.play()
-			await recargadup.finished
-			recargadup.queue_free()
+	if(Input.is_action_pressed("recharge")):
+		battery += 0.05 * delta
 		if battery > 1:
 			battery = 1
+		GlobalVariables.tempNoise += delta * 2
+	if(Input.is_action_just_pressed("recharge")):
+		$Recarga.play()
+	if(Input.is_action_just_released("recharge")):
+		$Recarga.stop()

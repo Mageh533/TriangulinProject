@@ -1,4 +1,4 @@
-[gd_scene load_steps=109 format=3 uid="uid://ci47ylf44fdg8"]
+[gd_scene load_steps=114 format=3 uid="uid://ci47ylf44fdg8"]
 
 [ext_resource type="Script" path="res://Scripts/Game/GameLogic.gd" id="1_sqss8"]
 [ext_resource type="Texture2D" uid="uid://3f28bn54dy1a" path="res://Assets/Static/Escritorio.png" id="2_48fq7"]
@@ -27,6 +27,7 @@
 [ext_resource type="Script" path="res://Scripts/Game/Objects/Despertador.gd" id="13_jswqi"]
 [ext_resource type="AudioStream" uid="uid://dltssk8a5enlo" path="res://Assets/SoundEffects/Effects/Cristal_roto.mp3" id="13_raib4"]
 [ext_resource type="Texture2D" uid="uid://dcd2cfnoyuwfm" path="res://Assets/Monsters/Circulin/Pala_agarrada.png" id="13_rmkaw"]
+[ext_resource type="AudioStream" uid="uid://52gx3p0vrtr3" path="res://Assets/SoundEffects/Monsters/Pasos.ogg" id="14_2od4f"]
 [ext_resource type="Texture2D" uid="uid://bgtkyy37vsw1j" path="res://Assets/Objects/Boton_azul.png" id="16_b2dq5"]
 [ext_resource type="Texture2D" uid="uid://c3imkdw4n7gxd" path="res://Assets/Monsters/Triangulin/1.png" id="16_rs500"]
 [ext_resource type="Script" path="res://Scripts/Game/Objects/Puerta.gd" id="16_t1obs"]
@@ -68,7 +69,11 @@
 [ext_resource type="Texture2D" uid="uid://c1c5m3yokxwax" path="res://Assets/Effects/spotlight.png" id="42_g3qvk"]
 [ext_resource type="AudioStream" uid="uid://dhfdw0pt7fg06" path="res://Assets/SoundEffects/Effects/Alarm.mp3" id="47_crlr7"]
 [ext_resource type="AudioStream" uid="uid://bitjh3ioumyb5" path="res://Assets/SoundEffects/Effects/393066__wakerone__electric-zap-electricity-2.wav" id="47_u1p6k"]
-[ext_resource type="AudioStream" uid="uid://chc0e7npf5qgg" path="res://Assets/SoundEffects/Effects/Recarga.wav" id="53_7hjjc"]
+[ext_resource type="AudioStream" uid="uid://ccwr2navfp5ui" path="res://Assets/SoundEffects/Effects/Recarga_act.ogg" id="55_3m1ea"]
+[ext_resource type="AudioStream" uid="uid://csef74csc6ls1" path="res://Assets/SoundEffects/Objects/Radio.mp3" id="55_8qdb1"]
+[ext_resource type="AudioStream" uid="uid://pjhnhj578tn2" path="res://Assets/SoundEffects/Monsters/Triangulin.ogg" id="62_5b5md"]
+[ext_resource type="AudioStream" uid="uid://5aercnuueabc" path="res://Assets/SoundEffects/Monsters/CirculinJumpscare.ogg" id="68_264y6"]
+[ext_resource type="AudioStream" uid="uid://cntpshtenchcn" path="res://Assets/SoundEffects/Monsters/PastaLaVista.ogg" id="69_ni1gt"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_e7v5w"]
 animations = [{
@@ -521,6 +526,23 @@ tracks/5/keys = {
 "method": &"stopLogic"
 }]
 }
+tracks/6/type = "method"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("POV/UILayer/UI/DeathAnims/Circulin/CirculinSusto/Jumpscare")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [0.0],
+"method": &"play"
+}, {
+"args": [],
+"method": &"stop"
+}]
+}
 
 [sub_resource type="Animation" id="Animation_u4fau"]
 resource_name = "DoorButtonPushed"
@@ -805,6 +827,20 @@ tracks/8/keys = {
 "method": &"play"
 }]
 }
+tracks/9/type = "method"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("POV/UILayer/UI/DeathAnims/Rectangulin/RectangulinSusto/Jumpscare")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0.8),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [0.0],
+"method": &"play"
+}]
+}
 
 [sub_resource type="Animation" id="Animation_pntbf"]
 resource_name = "TriangulinGaugeFade"
@@ -873,6 +909,20 @@ tracks/3/keys = {
 "values": [{
 "args": [],
 "method": &"stopLogic"
+}]
+}
+tracks/4/type = "method"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("POV/UILayer/UI/DeathAnims/Triangulin/TriangulinSusto/Jumpscare")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [0.0],
+"method": &"play"
 }]
 }
 
@@ -995,6 +1045,14 @@ animation = &"Stage1"
 position = Vector2(412, 128)
 stream = ExtResource("13_raib4")
 
+[node name="Pasos" type="AudioStreamPlayer2D" parent="Static"]
+position = Vector2(1731, 282)
+stream = ExtResource("14_2od4f")
+
+[node name="Pasos2" type="AudioStreamPlayer2D" parent="Static"]
+position = Vector2(-552, 395)
+stream = ExtResource("14_2od4f")
+
 [node name="Mosters" type="Node2D" parent="."]
 
 [node name="Triangulin" type="AnimatedSprite2D" parent="Mosters"]
@@ -1098,7 +1156,6 @@ scale = Vector2(0.68, 0.68)
 sprite_frames = SubResource("SpriteFrames_hyekf")
 animation = &"normal"
 script = ExtResource("26_0yk8g")
-rectangulinChance = 1.0
 
 [node name="RectAnims" type="AnimationPlayer" parent="Mosters/Rectangulin"]
 libraries = {
@@ -1387,6 +1444,10 @@ offset_right = 336.0
 offset_bottom = 236.0
 mouse_filter = 1
 
+[node name="SFX" type="AudioStreamPlayer2D" parent="Interactable/Radios/Radio1"]
+stream = ExtResource("55_8qdb1")
+max_distance = 3000.0
+
 [node name="Radio2" type="Sprite2D" parent="Interactable/Radios"]
 visible = false
 position = Vector2(813, 578)
@@ -1400,6 +1461,10 @@ offset_top = -84.0
 offset_right = 336.0
 offset_bottom = 236.0
 mouse_filter = 1
+
+[node name="SFX" type="AudioStreamPlayer2D" parent="Interactable/Radios/Radio2"]
+stream = ExtResource("55_8qdb1")
+max_distance = 3000.0
 
 [node name="Radio3" type="Sprite2D" parent="Interactable/Radios"]
 visible = false
@@ -1415,6 +1480,10 @@ offset_right = 336.0
 offset_bottom = 236.0
 mouse_filter = 1
 
+[node name="SFX" type="AudioStreamPlayer2D" parent="Interactable/Radios/Radio3"]
+stream = ExtResource("55_8qdb1")
+max_distance = 3000.0
+
 [node name="Radio4First" type="Sprite2D" parent="Interactable/Radios"]
 visible = false
 position = Vector2(2872, 160)
@@ -1429,6 +1498,10 @@ offset_right = 336.0
 offset_bottom = 236.0
 mouse_filter = 1
 
+[node name="SFX" type="AudioStreamPlayer2D" parent="Interactable/Radios/Radio4First"]
+stream = ExtResource("55_8qdb1")
+max_distance = 3000.0
+
 [node name="Radio4Last" type="Sprite2D" parent="Interactable/Radios"]
 visible = false
 position = Vector2(-1712, 160)
@@ -1442,6 +1515,10 @@ offset_top = -84.0
 offset_right = 336.0
 offset_bottom = 236.0
 mouse_filter = 1
+
+[node name="SFX" type="AudioStreamPlayer2D" parent="Interactable/Radios/Radio4Last"]
+stream = ExtResource("55_8qdb1")
+max_distance = 3000.0
 
 [node name="RadioTimer" type="Timer" parent="Interactable/Radios"]
 wait_time = 10.0
@@ -1463,7 +1540,7 @@ script = ExtResource("17_kt7nn")
 battery = 1.0
 
 [node name="Recarga" type="AudioStreamPlayer2D" parent="Flashlight"]
-stream = ExtResource("53_7hjjc")
+stream = ExtResource("55_3m1ea")
 
 [node name="Darkness" type="DirectionalLight2D" parent="."]
 visible = false
@@ -1547,8 +1624,10 @@ scale = Vector2(0.001, 0.001)
 sprite_frames = SubResource("SpriteFrames_jxpnt")
 frame_progress = 0.75939
 
+[node name="Jumpscare" type="AudioStreamPlayer2D" parent="POV/UILayer/UI/DeathAnims/Triangulin/TriangulinSusto"]
+stream = ExtResource("62_5b5md")
+
 [node name="Circulin" type="Control" parent="POV/UILayer/UI/DeathAnims"]
-visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -1561,7 +1640,11 @@ position = Vector2(568, 336)
 scale = Vector2(0.01, 0.01)
 sprite_frames = SubResource("SpriteFrames_lui14")
 
+[node name="Jumpscare" type="AudioStreamPlayer2D" parent="POV/UILayer/UI/DeathAnims/Circulin/CirculinSusto"]
+stream = ExtResource("68_264y6")
+
 [node name="Rectangulin" type="Control" parent="POV/UILayer/UI/DeathAnims"]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -1570,9 +1653,12 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="RectangulinSusto" type="AnimatedSprite2D" parent="POV/UILayer/UI/DeathAnims/Rectangulin"]
-position = Vector2(559, 384)
+position = Vector2(96.4, 384)
 sprite_frames = SubResource("SpriteFrames_hyekf")
 animation = &"ready"
+
+[node name="Jumpscare" type="AudioStreamPlayer2D" parent="POV/UILayer/UI/DeathAnims/Rectangulin/RectangulinSusto"]
+stream = ExtResource("69_ni1gt")
 
 [node name="Hurt" type="ColorRect" parent="POV/UILayer/UI/DeathAnims/Rectangulin"]
 layout_mode = 1
@@ -1581,7 +1667,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(1, 0, 0, 0.258824)
+color = Color(1, 0, 0, 0.505883)
 
 [node name="Ready" type="AudioStreamPlayer" parent="POV/UILayer/UI/DeathAnims/Rectangulin"]
 process_mode = 3
@@ -1769,6 +1855,7 @@ autostart = true
 [connection signal="mouse_exited" from="POV/MoveLeft" to="." method="_on_move_left_mouse_exited"]
 [connection signal="mouse_entered" from="POV/MoveRight" to="." method="_on_move_right_mouse_entered"]
 [connection signal="mouse_exited" from="POV/MoveRight" to="." method="_on_move_right_mouse_exited"]
+[connection signal="timeout" from="DifficultyTimer" to="." method="_on_difficulty_timer_timeout"]
 [connection signal="timeout" from="DifficultyTimer" to="Mosters/Triangulin" method="_on_difficulty_timer_timeout"]
 [connection signal="timeout" from="DifficultyTimer" to="Mosters/Circulin" method="_on_difficulty_timer_timeout"]
 [connection signal="timeout" from="DifficultyTimer" to="Mosters/Rectangulin" method="_on_difficulty_timer_timeout"]

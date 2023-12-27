@@ -99,3 +99,11 @@ func _on_ventana_window_disable():
 
 func stopLogic():
 	get_tree().paused = true
+
+func _on_difficulty_timer_timeout():
+	randomize()
+	var rand = randi_range(0, 2)
+	if rand == 1:
+		$Static/Pasos.play()
+	elif rand == 2:
+		$Static/Pasos2.play()
