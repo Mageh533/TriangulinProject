@@ -18,7 +18,6 @@ func _on_apagar_pressed():
 func turnRadioOn():
 	if !radioActive:
 		activeRadio = randi_range(1, 4)
-		print(activeRadio)
 		for radio in get_children():
 			if radio is Sprite2D:
 				radio.hide()

@@ -17,8 +17,9 @@ func _process(_delta):
 
 # Time display
 func processTime():
-	if(GlobalVariables.time < 60):
+	if(GlobalVariables.time < 60 and GlobalVariables.time > 0):
 		timeText = "12:" + str(int(fmod(GlobalVariables.time, 60))).pad_zeros(2)
+		$AM.text = "AM"
 	else:
 		timeText = str(int(GlobalVariables.time / 60)).pad_zeros(2) + ":" + str(int(fmod(GlobalVariables.time, 60))).pad_zeros(2)
 	$Time.text = timeText

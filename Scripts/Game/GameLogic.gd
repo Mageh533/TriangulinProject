@@ -1,22 +1,56 @@
 extends Node2D
 
+signal gameStart
+
 var gameActive = true
 var movingLeft = false
 var movingRight = false
+
+var hintShown = false
+var gameStarted = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	get_tree().paused = false
 	$POV/UILayer/UI.show()
+	$POV/UILayer/UI/Note.hide()
 	$POV/UILayer/UI/WinAnims.hide()
 	$POV/UILayer/UI/DeathAnims.hide()
 	$POV/UILayer/UI/LoseAnims.hide()
 	$Mosters/Triangulin/ProgressBar.modulate.a = 0
 	$Darkness.show()
+	$POV/UILayer/UI/LeftGuide.modulate.a = 0
+	$POV/UILayer/UI/RightGuide.modulate.a = 0
+	await get_tree().create_timer(1).timeout
+	get_tree().create_tween().tween_property($POV/UILayer/UI/Hint, "modulate:a", 1, 2)
+	await get_tree().create_timer(3).timeout
+	get_tree().create_tween().tween_property($POV/UILayer/UI/Hint, "modulate:a", 0, 2)
+
+func _on_read_pressed():
+	$POV/UILayer/UI/Note.modulate.a = 0
+	$POV/UILayer/UI/Note.show()
+	get_tree().create_tween().tween_property($POV/UILayer/UI/Note, "modulate:a", 1, 0.5)
+
+func _on_close_pressed():
+	var tween = get_tree().create_tween()
+	tween.tween_property($POV/UILayer/UI/Note, "modulate:a", 0, 0.5)
+	await tween.finished
+	$POV/UILayer/UI/Note.queue_free()
+	$Interactable/Note_GameStart.queue_free()
+	startGame()
+
+func startGame():
+	$DifficultyTimer.start()
+	$Interactable/Radios/RadioTimer.start()
+	$Mosters/Circulin/CirculinTimer.start()
+	$Mosters/Rectangulin/RectangulinTimer.start()
+	gameStarted = true
+	get_tree().create_tween().tween_property($POV/UILayer/UI/LeftGuide, "modulate:a", 1, 2)
+	get_tree().create_tween().tween_property($POV/UILayer/UI/RightGuide, "modulate:a", 1, 2)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	if(gameActive):
+	if(gameActive and gameStarted):
 		processCam(delta)
 		GlobalVariables.time += delta
 	if(GlobalVariables.time >= 360 and gameActive):
@@ -107,3 +141,4 @@ func _on_difficulty_timer_timeout():
 		$Static/Pasos.play()
 	elif rand == 2:
 		$Static/Pasos2.play()
+
