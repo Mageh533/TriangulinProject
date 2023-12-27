@@ -90,6 +90,7 @@ func processCam(delta):
 # Win game
 func winGame():
 	$UIAnims.play("GameWin")
+	$POV/UILayer/UI/Inventory.hide()
 
 # Game anims
 func _on_accion_button_down():

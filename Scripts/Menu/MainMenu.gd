@@ -4,6 +4,8 @@ extends Node
 func _ready():
 	$MainMenu/UI/Menu.hide()
 	$MainMenu/UI/Locale.show()
+	if OS.get_name() == "Web":
+		$MainMenu/UI/Menu/Quit.hide()
 
 func _on_es_pressed():
 	TranslationServer.set_locale("es")
