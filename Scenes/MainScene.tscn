@@ -1,4 +1,4 @@
-[gd_scene load_steps=120 format=3 uid="uid://ci47ylf44fdg8"]
+[gd_scene load_steps=121 format=3 uid="uid://ci47ylf44fdg8"]
 
 [ext_resource type="Script" path="res://Scripts/Game/GameLogic.gd" id="1_sqss8"]
 [ext_resource type="Texture2D" uid="uid://3f28bn54dy1a" path="res://Assets/Static/Escritorio.png" id="2_48fq7"]
@@ -78,6 +78,7 @@
 [ext_resource type="AudioStream" uid="uid://5aercnuueabc" path="res://Assets/SoundEffects/Monsters/CirculinJumpscare.ogg" id="68_264y6"]
 [ext_resource type="AudioStream" uid="uid://cntpshtenchcn" path="res://Assets/SoundEffects/Monsters/PastaLaVista.ogg" id="69_ni1gt"]
 [ext_resource type="AudioStream" uid="uid://bmhaxbymu1vfj" path="res://Assets/SoundEffects/Effects/estatitca.wav" id="75_sdu8g"]
+[ext_resource type="AudioStream" uid="uid://cpw8k1ffsr0dy" path="res://Assets/SoundEffects/Victoria.wav" id="78_atlg0"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_e7v5w"]
 animations = [{
@@ -641,7 +642,7 @@ tracks/5/use_blend = true
 
 [sub_resource type="Animation" id="Animation_1kxgc"]
 resource_name = "GameWin"
-length = 15.0
+length = 20.0
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -697,7 +698,7 @@ tracks/4/path = NodePath(".")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
-"times": PackedFloat32Array(0, 15),
+"times": PackedFloat32Array(0, 20),
 "transitions": PackedFloat32Array(1, 1),
 "values": [{
 "args": [],
@@ -727,11 +728,15 @@ tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
 "clips": [{
-"end_offset": 1.14654,
+"end_offset": 1.10669,
 "start_offset": 0.0,
 "stream": ExtResource("29_1cc5i")
+}, {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("78_atlg0")
 }],
-"times": PackedFloat32Array(0)
+"times": PackedFloat32Array(0, 10.1)
 }
 tracks/6/use_blend = true
 tracks/7/type = "value"
@@ -771,10 +776,10 @@ tracks/9/path = NodePath("POV/UILayer/UI/WinAnims/Alarm:volume_db")
 tracks/9/interp = 1
 tracks/9/loop_wrap = true
 tracks/9/keys = {
-"times": PackedFloat32Array(1, 7.4, 9.9),
-"transitions": PackedFloat32Array(1, 1, 1),
+"times": PackedFloat32Array(1, 7.4, 9.9, 10.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
-"values": [0.0, 0.0, -80.0]
+"values": [0.0, 0.0, -80.0, 0.0]
 }
 tracks/10/type = "value"
 tracks/10/imported = false
@@ -1278,7 +1283,6 @@ stream = ExtResource("32_eqjs7")
 position = Vector2(337, 363)
 texture = ExtResource("6_ux8r6")
 script = ExtResource("13_jswqi")
-startTime = 355.0
 
 [node name="Apagar" type="Button" parent="Interactable/Despertador"]
 modulate = Color(1, 1, 1, 0)
@@ -1704,7 +1708,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-color = Color(0, 0, 0, 0)
+color = Color(0, 0, 0, 1)
 
 [node name="WinText" type="Label" parent="POV/UILayer/UI/WinAnims"]
 modulate = Color(1, 1, 1, 0)
@@ -1720,13 +1724,13 @@ offset_right = 20.0
 offset_bottom = 11.5
 grow_horizontal = 2
 grow_vertical = 2
-text = "5:59"
+text = "6:00
+"
 label_settings = SubResource("LabelSettings_b50o2")
 
 [node name="Alarm" type="AudioStreamPlayer" parent="POV/UILayer/UI/WinAnims"]
 
 [node name="WinPhoto" type="Sprite2D" parent="POV/UILayer/UI/WinAnims"]
-modulate = Color(1, 1, 1, 0)
 position = Vector2(574.5, 333)
 scale = Vector2(0.843704, 1.03339)
 texture = ExtResource("59_nr1g7")
