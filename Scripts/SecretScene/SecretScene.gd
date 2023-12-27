@@ -6,7 +6,7 @@ func _ready():
 
 func _on_trigger_end_body_entered(body):
 	$Light/RedSpotLight4.show()
-	await get_tree().create_timer(0.1).timeout
+	await get_tree().create_timer(0.2).timeout
 	$Player.queue_free()
 	$Ambiente.queue_free()
 	$UI.show()

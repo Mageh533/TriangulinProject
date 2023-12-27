@@ -1283,7 +1283,6 @@ stream = ExtResource("32_eqjs7")
 position = Vector2(337, 363)
 texture = ExtResource("6_ux8r6")
 script = ExtResource("13_jswqi")
-startTime = 355.0
 
 [node name="Apagar" type="Button" parent="Interactable/Despertador"]
 modulate = Color(1, 1, 1, 0)
