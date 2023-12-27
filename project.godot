@@ -32,6 +32,10 @@ recharge={
 ]
 }
 
+[internationalization]
+
+locale/translations=PackedStringArray("res://Locale/locale_translation.en.translation", "res://Locale/locale_translation.es.translation")
+
 [rendering]
 
 renderer/rendering_method="gl_compatibility"

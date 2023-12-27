@@ -1,4 +1,4 @@
-[gd_scene load_steps=119 format=3 uid="uid://ci47ylf44fdg8"]
+[gd_scene load_steps=118 format=3 uid="uid://ci47ylf44fdg8"]
 
 [ext_resource type="Script" path="res://Scripts/Game/GameLogic.gd" id="1_sqss8"]
 [ext_resource type="Texture2D" uid="uid://3f28bn54dy1a" path="res://Assets/Static/Escritorio.png" id="2_48fq7"]
@@ -439,22 +439,6 @@ bg_color = Color(0.701961, 0.701961, 0.701961, 1)
 [sub_resource type="LabelSettings" id="LabelSettings_fvllc"]
 font_color = Color(0.156863, 0.156863, 0.156863, 1)
 
-[sub_resource type="Animation" id="Animation_jv2oe"]
-resource_name = "AlarmBlink"
-length = 0.2
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Interactable/Despertador/Time:modulate")
-tracks/0/interp = 2
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.2),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
-}
-
 [sub_resource type="Animation" id="Animation_vlrvt"]
 resource_name = "CirculinKill"
 tracks/0/type = "method"
@@ -764,10 +748,10 @@ tracks/8/path = NodePath("POV/UILayer/UI/WinAnims/WinText:text")
 tracks/8/interp = 1
 tracks/8/loop_wrap = true
 tracks/8/keys = {
-"times": PackedFloat32Array(1, 1.5, 2, 2.5, 3, 3.5, 4, 4.5, 5, 5.5),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 1, 1.5, 2, 2.5, 3, 3.5, 4, 4.5, 5, 5.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": ["5:59", "6:00
+"values": ["5:59", "5:59", "6:00
 ", "
 ", "6:00
 ", "", "6:00
@@ -1041,7 +1025,6 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_hxr4n"]
 _data = {
-"AlarmBlink": SubResource("Animation_jv2oe"),
 "CirculinKill": SubResource("Animation_vlrvt"),
 "DoorButtonPushed": SubResource("Animation_u4fau"),
 "GameLose": SubResource("Animation_8p7iw"),
@@ -1055,6 +1038,8 @@ _data = {
 [node name="MainScene" type="Node2D"]
 process_mode = 1
 script = ExtResource("1_sqss8")
+hoverMod = Color(0.521569, 0.521569, 0.521569, 1)
+normalMod = Color(1, 1, 1, 1)
 
 [node name="Static" type="Node2D" parent="."]
 
@@ -1276,7 +1261,6 @@ stream = ExtResource("32_eqjs7")
 position = Vector2(337, 363)
 texture = ExtResource("6_ux8r6")
 script = ExtResource("13_jswqi")
-startTime = 355.0
 
 [node name="Apagar" type="Button" parent="Interactable/Despertador"]
 modulate = Color(1, 1, 1, 0)
@@ -1687,6 +1671,7 @@ grow_vertical = 2
 mouse_filter = 2
 
 [node name="WinAnims" type="Control" parent="POV/UILayer/UI"]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -1701,10 +1686,10 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0, 0, 0, 0.6)
+color = Color(0, 0, 0, 1)
 
 [node name="WinText" type="Label" parent="POV/UILayer/UI/WinAnims"]
-modulate = Color(1, 1, 1, 0.6)
+modulate = Color(1, 1, 1, 0)
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -1717,13 +1702,14 @@ offset_right = 20.0
 offset_bottom = 11.5
 grow_horizontal = 2
 grow_vertical = 2
-text = "5:59"
+text = "6:00
+"
 label_settings = SubResource("LabelSettings_b50o2")
 
 [node name="Alarm" type="AudioStreamPlayer" parent="POV/UILayer/UI/WinAnims"]
+volume_db = -38.4
 
 [node name="DeathAnims" type="Control" parent="POV/UILayer/UI"]
-visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -1939,7 +1925,7 @@ offset_right = 255.0
 offset_bottom = 243.0
 grow_horizontal = 2
 grow_vertical = 2
-text = "Hold R to recharge the flashlight"
+text = "UI_HINT"
 label_settings = SubResource("LabelSettings_o6amb")
 
 [node name="Note" type="Panel" parent="POV/UILayer/UI"]
@@ -1971,13 +1957,7 @@ offset_right = 184.0
 offset_bottom = -32.0
 grow_horizontal = 2
 grow_vertical = 0
-text = "You shouldn't be here. 
-
-You should leave by morning as soon as you can.
-
-In the meantime try to keep the noise down to not wake him up. The music box next to him helps it sleep.
-
-Also watch out for the other two, shock them with the blue button or if you run out of power use the alarm (LOUD!)."
+text = "UI_NOTE"
 label_settings = SubResource("LabelSettings_fvllc")
 horizontal_alignment = 1
 autowrap_mode = 2
@@ -2013,6 +1993,8 @@ autoplay = true
 [connection signal="timeout" from="Mosters/Circulin/CirculinTimer" to="Mosters/Circulin" method="_on_circulin_timer_timeout"]
 [connection signal="rectangulinKill" from="Mosters/Rectangulin" to="." method="_on_rectangulin_rectangulin_kill"]
 [connection signal="timeout" from="Mosters/Rectangulin/RectangulinTimer" to="Mosters/Rectangulin" method="_on_rectangulin_timer_timeout"]
+[connection signal="mouse_entered" from="Interactable/Despertador/Apagar" to="." method="_on_apagar_mouse_entered"]
+[connection signal="mouse_exited" from="Interactable/Despertador/Apagar" to="." method="_on_apagar_mouse_exited"]
 [connection signal="pressed" from="Interactable/Despertador/Apagar" to="Interactable/Despertador" method="_on_apagar_pressed"]
 [connection signal="timeout" from="Interactable/Despertador/Blink" to="." method="_on_blink_timeout"]
 [connection signal="timeout" from="Interactable/Despertador/Alarm" to="Interactable/Despertador" method="_on_alarm_timeout"]
@@ -2022,22 +2004,36 @@ autoplay = true
 [connection signal="button_down" from="Interactable/CajaDeMusica/Accion" to="Interactable/CajaDeMusica" method="_on_accion_button_down"]
 [connection signal="button_up" from="Interactable/CajaDeMusica/Accion" to="." method="_on_accion_button_up"]
 [connection signal="button_up" from="Interactable/CajaDeMusica/Accion" to="Interactable/CajaDeMusica" method="_on_accion_button_up"]
+[connection signal="mouse_entered" from="Interactable/CajaDeMusica/Accion" to="." method="_on_accion_mouse_entered"]
+[connection signal="mouse_exited" from="Interactable/CajaDeMusica/Accion" to="." method="_on_accion_mouse_exited"]
 [connection signal="alarmActive" from="Interactable/Puerta" to="Mosters/Rectangulin" method="_on_puerta_alarm_active"]
 [connection signal="doorDisable" from="Interactable/Puerta" to="." method="_on_puerta_door_disable"]
 [connection signal="shocking" from="Interactable/Puerta" to="Mosters/Rectangulin" method="_on_puerta_shocking"]
+[connection signal="mouse_entered" from="Interactable/Puerta/BotonAzul/ShockDoor" to="." method="_on_shock_door_mouse_entered"]
+[connection signal="mouse_exited" from="Interactable/Puerta/BotonAzul/ShockDoor" to="." method="_on_shock_door_mouse_exited"]
 [connection signal="pressed" from="Interactable/Puerta/BotonAzul/ShockDoor" to="Interactable/Puerta" method="_on_shock_door_pressed"]
+[connection signal="mouse_entered" from="Interactable/Puerta/BotonRojo/AlertButton" to="." method="_on_alert_button_mouse_entered"]
+[connection signal="mouse_exited" from="Interactable/Puerta/BotonRojo/AlertButton" to="." method="_on_alert_button_mouse_exited"]
 [connection signal="pressed" from="Interactable/Puerta/BotonRojo/AlertButton" to="Interactable/Puerta" method="_on_alert_button_pressed"]
 [connection signal="alarmActive" from="Interactable/Ventana" to="Mosters/Circulin" method="_on_ventana_alarm_active"]
 [connection signal="shocking" from="Interactable/Ventana" to="Mosters/Circulin" method="_on_ventana_shocking"]
 [connection signal="windowDisable" from="Interactable/Ventana" to="." method="_on_ventana_window_disable"]
+[connection signal="mouse_entered" from="Interactable/Ventana/BotonAzul/ShockWindow" to="." method="_on_shock_door_mouse_entered"]
+[connection signal="mouse_exited" from="Interactable/Ventana/BotonAzul/ShockWindow" to="." method="_on_shock_door_mouse_exited"]
 [connection signal="pressed" from="Interactable/Ventana/BotonAzul/ShockWindow" to="Interactable/Ventana" method="_on_shock_window_pressed"]
+[connection signal="mouse_entered" from="Interactable/Ventana/BotonRojo/AlertButton" to="." method="_on_alert_button_mouse_entered"]
+[connection signal="mouse_exited" from="Interactable/Ventana/BotonRojo/AlertButton" to="." method="_on_alert_button_mouse_exited"]
 [connection signal="pressed" from="Interactable/Ventana/BotonRojo/AlertButton" to="Interactable/Ventana" method="_on_alert_button_pressed"]
+[connection signal="mouse_entered" from="Interactable/Radios/Radio1/Apagar" to="." method="_on_apagar_radio_entered"]
+[connection signal="mouse_exited" from="Interactable/Radios/Radio1/Apagar" to="." method="_on_apagar_radio_exited"]
 [connection signal="pressed" from="Interactable/Radios/Radio1/Apagar" to="Interactable/Radios" method="_on_apagar_pressed"]
 [connection signal="pressed" from="Interactable/Radios/Radio2/Apagar" to="Interactable/Radios" method="_on_apagar_pressed"]
 [connection signal="pressed" from="Interactable/Radios/Radio3/Apagar" to="Interactable/Radios" method="_on_apagar_pressed"]
 [connection signal="pressed" from="Interactable/Radios/Radio4First/Apagar" to="Interactable/Radios" method="_on_apagar_pressed"]
 [connection signal="pressed" from="Interactable/Radios/Radio4Last/Apagar" to="Interactable/Radios" method="_on_apagar_pressed"]
 [connection signal="timeout" from="Interactable/Radios/RadioTimer" to="Interactable/Radios" method="_on_radio_timer_timeout"]
+[connection signal="mouse_entered" from="Interactable/Note_GameStart/Read" to="." method="_on_read_mouse_entered"]
+[connection signal="mouse_exited" from="Interactable/Note_GameStart/Read" to="." method="_on_read_mouse_exited"]
 [connection signal="pressed" from="Interactable/Note_GameStart/Read" to="." method="_on_read_pressed"]
 [connection signal="mouse_entered" from="POV/MoveLeft" to="." method="_on_move_left_mouse_entered"]
 [connection signal="mouse_exited" from="POV/MoveLeft" to="." method="_on_move_left_mouse_exited"]

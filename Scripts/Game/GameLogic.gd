@@ -2,6 +2,9 @@ extends Node2D
 
 signal gameStart
 
+@export var hoverMod : Color
+@export var normalMod : Color
+
 var gameActive = true
 var movingLeft = false
 var movingRight = false
@@ -124,9 +127,9 @@ func _on_puerta_door_disable():
 
 func _on_blink_timeout():
 	if $Interactable/Despertador/Time.modulate.a == 0:
-		$UIAnims.play_backwards("AlarmBlink")
+		get_tree().create_tween().tween_property($Interactable/Despertador/Time, "modulate:a", 1, 0.2)
 	else:
-		$UIAnims.play("AlarmBlink")
+		get_tree().create_tween().tween_property($Interactable/Despertador/Time, "modulate:a", 0, 0.2)
 
 func _on_ventana_window_disable():
 	$UIAnims.play("WindowButtonPushed")
@@ -142,3 +145,43 @@ func _on_difficulty_timer_timeout():
 	elif rand == 2:
 		$Static/Pasos2.play()
 
+# Hover anims
+func _on_read_mouse_entered():
+	$Interactable/Note_GameStart.modulate = hoverMod
+
+func _on_read_mouse_exited():
+	$Interactable/Note_GameStart.modulate = normalMod
+
+func _on_accion_mouse_entered():
+	$Interactable/CajaDeMusica.modulate = hoverMod
+
+func _on_accion_mouse_exited():
+	$Interactable/CajaDeMusica.modulate = normalMod
+
+func _on_shock_door_mouse_entered():
+	$Interactable/Puerta/BotonAzul.modulate = hoverMod
+	$Interactable/Ventana/BotonAzul.modulate = hoverMod
+
+func _on_shock_door_mouse_exited():
+	$Interactable/Puerta/BotonAzul.modulate = normalMod
+	$Interactable/Ventana/BotonAzul.modulate = normalMod
+
+func _on_alert_button_mouse_entered():
+	$Interactable/Puerta/BotonRojo.modulate = hoverMod
+	$Interactable/Ventana/BotonRojo.modulate = hoverMod
+
+func _on_alert_button_mouse_exited():
+	$Interactable/Puerta/BotonRojo.modulate = normalMod
+	$Interactable/Ventana/BotonRojo.modulate = normalMod
+
+func _on_apagar_mouse_entered():
+	$Interactable/Despertador.modulate = hoverMod
+
+func _on_apagar_mouse_exited():
+	$Interactable/Despertador.modulate = normalMod
+
+func _on_apagar_radio_entered():
+	$Interactable/Radios.modulate = hoverMod
+
+func _on_apagar_radio_exited():
+	$Interactable/Radios.modulate = normalMod
