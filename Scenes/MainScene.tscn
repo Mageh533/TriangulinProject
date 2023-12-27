@@ -1108,6 +1108,7 @@ offset_bottom = 361.0
 texture = ExtResource("6_3byo8")
 expand_mode = 1
 script = ExtResource("6_ori24")
+health = 120
 
 [node name="GlassParticles" type="CPUParticles2D" parent="Static/Cristal"]
 position = Vector2(413, 77)
@@ -1259,6 +1260,7 @@ scale = Vector2(0.68, 0.68)
 sprite_frames = SubResource("SpriteFrames_hyekf")
 animation = &"normal"
 script = ExtResource("26_0yk8g")
+gunHolsterSpeed = 3.0
 
 [node name="RectAnims" type="AnimationPlayer" parent="Mosters/Rectangulin"]
 libraries = {

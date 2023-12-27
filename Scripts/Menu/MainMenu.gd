@@ -22,6 +22,7 @@ func _on_en_pressed():
 
 func menuEffects():
 	$MenuAnims.play("MenuStart")
+	$MainMenu/Music.play()
 
 func _on_quit_pressed():
 	get_tree().quit()

@@ -54,4 +54,5 @@ func disableDoor():
 		GlobalVariables.permNoise -= shockNoise
 		activated = false
 		$Barrera_Puerta.hide()
+		$Barrera_Puerta/Electricidad.stop()
 		$BotonAzul/ShockDoor.disabled = true

@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://deob3eh6sgnix"]
+[gd_scene load_steps=17 format=3 uid="uid://deob3eh6sgnix"]
 
 [ext_resource type="Script" path="res://Scripts/Menu/MainMenu.gd" id="1_m4jms"]
 [ext_resource type="Script" path="res://Scripts/Menu/Buttons/Play.gd" id="1_mlvm1"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://cdxbpisceqi4a" path="res://Assets/UI/Cara_Menu.png" id="5_g80wd"]
 [ext_resource type="Texture2D" uid="uid://ctc7650yn8r2c" path="res://Assets/Effects/flaslight.png" id="5_valkb"]
 [ext_resource type="Texture2D" uid="uid://3f28bn54dy1a" path="res://Assets/Static/Escritorio.png" id="7_cd00w"]
+[ext_resource type="AudioStream" uid="uid://cxmxxolpqg7lw" path="res://Assets/SoundEffects/Menu.mp3" id="8_kawga"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lkdhm"]
 bg_color = Color(0.6, 0.6, 0.6, 0.505882)
@@ -112,13 +113,13 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.145098, 0.145098, 0.145098, 1)
 
-[node name="Darkness" type="DirectionalLight2D" parent="MainMenu"]
-blend_mode = 1
-
 [node name="Escritorio" type="Sprite2D" parent="MainMenu"]
 position = Vector2(554.5, 271.5)
 scale = Vector2(0.896094, 0.898611)
 texture = ExtResource("7_cd00w")
+
+[node name="Darkness" type="DirectionalLight2D" parent="MainMenu"]
+blend_mode = 1
 
 [node name="CaraMenu" type="Sprite2D" parent="MainMenu"]
 position = Vector2(577.5, 254.5)
@@ -126,8 +127,8 @@ scale = Vector2(0.590731, 0.572807)
 texture = ExtResource("5_g80wd")
 
 [node name="Dark" type="PointLight2D" parent="MainMenu/CaraMenu"]
-position = Vector2(2.32757, 16.3668)
-scale = Vector2(1.01172, 1.01269)
+position = Vector2(2.32757, -81.0703)
+scale = Vector2(1.01172, 1.77392)
 energy = 1.39
 blend_mode = 1
 texture = ExtResource("5_valkb")
@@ -135,6 +136,7 @@ texture = ExtResource("5_valkb")
 [node name="UI" type="CanvasLayer" parent="MainMenu"]
 
 [node name="Locale" type="Control" parent="MainMenu/UI"]
+visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -189,7 +191,6 @@ grow_vertical = 2
 text = "Select text language:"
 
 [node name="Menu" type="Control" parent="MainMenu/UI"]
-modulate = Color(1, 1, 1, 0)
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -267,6 +268,10 @@ color = Color(0, 1, 1, 1)
 
 [node name="Sparks" type="AudioStreamPlayer2D" parent="MainMenu/UI/Effects"]
 position = Vector2(597, 5)
+
+[node name="Music" type="AudioStreamPlayer" parent="MainMenu"]
+stream = ExtResource("8_kawga")
+volume_db = -10.0
 
 [node name="MenuAnims" type="AnimationPlayer" parent="."]
 libraries = {

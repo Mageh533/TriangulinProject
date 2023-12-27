@@ -29,6 +29,7 @@ func disableWindow():
 		GlobalVariables.permNoise -= shockNoise
 		activated = false
 		$Barrera_Ventana.hide()
+		$Barrera_Ventana/Electricidad.stop()
 		$BotonAzul/ShockWindow.disabled = true
 		emit_signal("windowDisable")
 
