@@ -698,14 +698,14 @@ tracks/4/path = NodePath(".")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
-"times": PackedFloat32Array(0, 20),
+"times": PackedFloat32Array(0, 19.9),
 "transitions": PackedFloat32Array(1, 1),
 "values": [{
 "args": [],
 "method": &"stopLogic"
 }, {
 "args": [],
-"method": &"returnToMenu"
+"method": &"secretScene"
 }]
 }
 tracks/5/type = "value"
@@ -1283,6 +1283,7 @@ stream = ExtResource("32_eqjs7")
 position = Vector2(337, 363)
 texture = ExtResource("6_ux8r6")
 script = ExtResource("13_jswqi")
+startTime = 355.0
 
 [node name="Apagar" type="Button" parent="Interactable/Despertador"]
 modulate = Color(1, 1, 1, 0)
@@ -1730,8 +1731,10 @@ text = "6:00
 label_settings = SubResource("LabelSettings_b50o2")
 
 [node name="Alarm" type="AudioStreamPlayer" parent="POV/UILayer/UI/WinAnims"]
+volume_db = -3.2
 
 [node name="WinPhoto" type="Sprite2D" parent="POV/UILayer/UI/WinAnims"]
+modulate = Color(1, 1, 1, 0)
 position = Vector2(574.5, 333)
 scale = Vector2(0.843704, 1.03339)
 texture = ExtResource("59_nr1g7")

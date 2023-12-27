@@ -123,6 +123,10 @@ func returnToMenu():
 	get_tree().paused = false
 	get_tree().change_scene_to_file("res://Scenes/MainMenu.tscn")
 
+func secretScene():
+	get_tree().paused = false
+	get_tree().change_scene_to_file("res://Scenes/SecretScene.tscn")
+
 func _on_puerta_door_disable():
 	$UIAnims.play("DoorButtonPushed")
 

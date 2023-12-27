@@ -4,6 +4,7 @@ extends Node
 func _ready():
 	$MainMenu/UI/Menu.hide()
 	$MainMenu/UI/Locale.show()
+	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	if OS.get_name() == "Web":
 		$MainMenu/UI/Menu/Quit.hide()
 
