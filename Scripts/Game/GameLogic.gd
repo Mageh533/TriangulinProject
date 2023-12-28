@@ -12,6 +12,7 @@ var movingRight = false
 var hintShown = false
 var gameStarted = false
 
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	get_tree().paused = false
@@ -61,6 +62,11 @@ func _process(delta):
 		winGame()
 	$POV/UILayer/UI/Inventory/Volume/Ammount.text = str(snapped(GlobalVariables.noise, 0.01)).pad_decimals(2)
 	$POV/UILayer/UI/Inventory/Battery/Ammount.text = str(int($Flashlight.battery * 100)) + "%"
+	if $Mosters/Triangulin.sleepBar <= 30:
+		onTriangulinWarning()
+	else:
+		$POV/UILayer/UI/LeftGuide/WarningLeft.hide()
+		$POV/UILayer/UI/RightGuide/WarningRight.hide()
 
 # Camera Logic
 func _on_move_left_mouse_entered():
@@ -192,12 +198,12 @@ func _on_apagar_radio_exited():
 	$Interactable/Radios.modulate = normalMod
 
 func onTriangulinWarning():
-	if $POV.position.x <= 2000:
-		$POV/UILayer/UI/LeftGuide/WarningLeft.show()
-		$POV/UILayer/UI/LeftGuide/WarningRight.hide()
-	elif $POV.position.x >= -2000:
-		$POV/UILayer/UI/LeftGuide/WarningRight.show()
+	if $POV.position.x <= $Targets/WarningLeft.position.x:
 		$POV/UILayer/UI/LeftGuide/WarningLeft.hide()
+		$POV/UILayer/UI/RightGuide/WarningRight.show()
+	elif $POV.position.x >= $Targets/WarningRight.position.x:
+		$POV/UILayer/UI/RightGuide/WarningRight.hide()
+		$POV/UILayer/UI/LeftGuide/WarningLeft.show()
 	else:
 		$POV/UILayer/UI/LeftGuide/WarningLeft.hide()
-		$POV/UILayer/UI/LeftGuide/WarningRight.hide()
+		$POV/UILayer/UI/RightGuide/WarningRight.hide()
