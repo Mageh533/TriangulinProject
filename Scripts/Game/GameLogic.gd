@@ -41,15 +41,7 @@ func _on_close_pressed():
 	$POV/UILayer/UI/Note.queue_free()
 	$Interactable/Note_GameStart.queue_free()
 	startGame()
-	await get_tree().create_timer(1).timeout
-	get_tree().create_tween().tween_property($POV/UILayer/UI/Hint, "modulate:a", 1, 2)
-	await get_tree().create_timer(3).timeout
-	get_tree().create_tween().tween_property($POV/UILayer/UI/Hint, "modulate:a", 0, 2)
-	await get_tree().create_timer(3).timeout
-	$POV/UILayer/UI/Hint.text = tr("UI_HINT2")
-	get_tree().create_tween().tween_property($POV/UILayer/UI/Hint, "modulate:a", 1, 2)
-	await get_tree().create_timer(3).timeout
-	get_tree().create_tween().tween_property($POV/UILayer/UI/Hint, "modulate:a", 0, 2)
+	showHints()
 
 func startGame():
 	$DifficultyTimer.start()
@@ -61,6 +53,17 @@ func startGame():
 	get_tree().create_tween().tween_property($POV/UILayer/UI/LeftGuide, "modulate:a", 1, 2)
 	get_tree().create_tween().tween_property($POV/UILayer/UI/RightGuide, "modulate:a", 1, 2)
 	get_tree().create_tween().tween_property($POV/UILayer/UI/Inventory, "modulate:a", 0.6, 2)
+
+func showHints():
+	await get_tree().create_timer(1).timeout
+	get_tree().create_tween().tween_property($POV/UILayer/UI/Hint, "modulate:a", 1, 2)
+	await get_tree().create_timer(3).timeout
+	get_tree().create_tween().tween_property($POV/UILayer/UI/Hint, "modulate:a", 0, 2)
+	await get_tree().create_timer(3).timeout
+	$POV/UILayer/UI/Hint.text = tr("UI_HINT2")
+	get_tree().create_tween().tween_property($POV/UILayer/UI/Hint, "modulate:a", 1, 2)
+	await get_tree().create_timer(3).timeout
+	get_tree().create_tween().tween_property($POV/UILayer/UI/Hint, "modulate:a", 0, 2)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -79,7 +82,7 @@ func _process(delta):
 		$POV/UILayer/UI/RightGuide/WarningRight.hide()
 	playerKeyboardControls()
 
-# Camera Logic
+# ============== Camera Logic ==============
 func _on_move_left_mouse_entered():
 	movingLeft = true
 
@@ -91,6 +94,16 @@ func _on_move_right_mouse_entered():
 
 func _on_move_right_mouse_exited():
 	movingRight = false
+
+func playerKeyboardControls():
+	if Input.is_action_pressed("left"):
+		movingLeft = true
+	if Input.is_action_just_released("left"):
+		movingLeft = false
+	if Input.is_action_pressed("right"):
+		movingRight = true
+	if Input.is_action_just_released("right"):
+		movingRight = false
 
 func processCam(delta):
 	if(movingLeft):
@@ -109,7 +122,7 @@ func winGame():
 	$UIAnims.play("GameWin")
 	$POV/UILayer/UI/Inventory.hide()
 
-# Game anims
+# ============== Game anims ==============
 func _on_accion_button_down():
 	$UIAnims.play("TriangulinGaugeFade")
 
@@ -144,16 +157,6 @@ func secretScene():
 	get_tree().paused = false
 	get_tree().change_scene_to_file("res://Scenes/SecretScene.tscn")
 
-func playerKeyboardControls():
-	if Input.is_action_pressed("left"):
-		movingLeft = true
-	if Input.is_action_just_released("left"):
-		movingLeft = false
-	if Input.is_action_pressed("right"):
-		movingRight = true
-	if Input.is_action_just_released("right"):
-		movingRight = false
-
 func _on_puerta_door_disable():
 	$UIAnims.play("DoorButtonPushed")
 
@@ -177,7 +180,7 @@ func _on_difficulty_timer_timeout():
 	elif rand == 2:
 		$Static/Pasos2.play()
 
-# Hover anims
+# ============== Hover anims ==============
 func _on_read_mouse_entered():
 	$Interactable/Note_GameStart.modulate = hoverMod
 

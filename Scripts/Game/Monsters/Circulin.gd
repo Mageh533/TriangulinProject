@@ -16,6 +16,7 @@ func _ready():
 	shovelTime = shovelSpeed
 
 func _process(delta):
+	shocked = false
 	if active:
 		shovelTime -= delta
 		if shovelTime <= 0:
