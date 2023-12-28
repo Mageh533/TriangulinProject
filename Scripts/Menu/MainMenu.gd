@@ -26,3 +26,16 @@ func menuEffects():
 
 func _on_quit_pressed():
 	get_tree().quit()
+
+
+func _on_es_mouse_entered():
+	$MainMenu/UI/Locale/Es.modulate.a = 0.5
+
+func _on_es_mouse_exited():
+	$MainMenu/UI/Locale/Es.modulate.a = 1
+
+func _on_en_mouse_entered():
+	$MainMenu/UI/Locale/En.modulate.a = 0.5
+
+func _on_en_mouse_exited():
+	$MainMenu/UI/Locale/En.modulate.a = 1

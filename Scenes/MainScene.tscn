@@ -1149,6 +1149,7 @@ animation = &"Stage1"
 [node name="Break" type="AudioStreamPlayer2D" parent="Static/Cristal"]
 position = Vector2(412, 128)
 stream = ExtResource("13_raib4")
+max_distance = 3000.0
 
 [node name="Pasos" type="AudioStreamPlayer2D" parent="Static"]
 position = Vector2(1731, 282)

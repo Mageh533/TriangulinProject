@@ -1,20 +1,35 @@
-[gd_scene load_steps=17 format=3 uid="uid://deob3eh6sgnix"]
+[gd_scene load_steps=20 format=3 uid="uid://deob3eh6sgnix"]
 
 [ext_resource type="Script" path="res://Scripts/Menu/MainMenu.gd" id="1_m4jms"]
 [ext_resource type="Script" path="res://Scripts/Menu/Buttons/Play.gd" id="1_mlvm1"]
 [ext_resource type="PackedScene" uid="uid://ci47ylf44fdg8" path="res://Scenes/MainScene.tscn" id="2_w7qix"]
 [ext_resource type="AudioStream" uid="uid://brjvkbm0mr7fh" path="res://Assets/SoundEffects/Effects/Zap.wav" id="2_y74to"]
 [ext_resource type="Texture2D" uid="uid://c1c5m3yokxwax" path="res://Assets/Effects/spotlight.png" id="4_llfor"]
+[ext_resource type="Texture2D" uid="uid://d1t2m7ydmnn5d" path="res://Assets/spain.svg" id="5_8msgn"]
 [ext_resource type="Texture2D" uid="uid://cdxbpisceqi4a" path="res://Assets/UI/Cara_Menu.png" id="5_g80wd"]
 [ext_resource type="Texture2D" uid="uid://ctc7650yn8r2c" path="res://Assets/Effects/flaslight.png" id="5_valkb"]
+[ext_resource type="Texture2D" uid="uid://c33rmmcydxyac" path="res://Assets/united-kingdom.svg" id="6_khc5b"]
 [ext_resource type="Texture2D" uid="uid://3f28bn54dy1a" path="res://Assets/Static/Escritorio.png" id="7_cd00w"]
 [ext_resource type="AudioStream" uid="uid://cxmxxolpqg7lw" path="res://Assets/SoundEffects/Menu.mp3" id="8_kawga"]
+[ext_resource type="FontFile" uid="uid://ou3jqw8tftdw" path="res://Fonts/RubikDoodleShadow-Regular.ttf" id="9_i8n0o"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lkdhm"]
 bg_color = Color(0.6, 0.6, 0.6, 0.505882)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_psomk"]
 bg_color = Color(0.243137, 0.243137, 0.243137, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
 border_blend = true
 corner_radius_top_left = 6
 corner_radius_top_right = 6
@@ -23,6 +38,14 @@ corner_radius_bottom_left = 6
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ed806"]
 bg_color = Color(0.2, 0.698039, 0.509804, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
 
 [sub_resource type="Theme" id="Theme_u5e57"]
 Button/styles/hover = SubResource("StyleBoxFlat_lkdhm")
@@ -30,6 +53,7 @@ Button/styles/normal = SubResource("StyleBoxFlat_psomk")
 Button/styles/pressed = SubResource("StyleBoxFlat_ed806")
 
 [sub_resource type="LabelSettings" id="LabelSettings_85fwo"]
+font = ExtResource("9_i8n0o")
 font_size = 32
 
 [sub_resource type="Animation" id="Animation_1agi1"]
@@ -136,7 +160,6 @@ texture = ExtResource("5_valkb")
 [node name="UI" type="CanvasLayer" parent="MainMenu"]
 
 [node name="Locale" type="Control" parent="MainMenu/UI"]
-visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -152,13 +175,16 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -64.0
+offset_left = -50.0
 offset_top = -37.0
-offset_right = 64.0
+offset_right = 50.0
 offset_bottom = 37.0
 grow_horizontal = 2
 grow_vertical = 2
-text = "Español"
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+icon = ExtResource("5_8msgn")
+icon_alignment = 1
+expand_icon = true
 
 [node name="En" type="Button" parent="MainMenu/UI/Locale"]
 layout_mode = 1
@@ -167,13 +193,16 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -64.0
-offset_top = -137.0
-offset_right = 64.0
-offset_bottom = -63.0
+offset_left = -50.0
+offset_top = -132.0
+offset_right = 51.0
+offset_bottom = -58.0
 grow_horizontal = 2
 grow_vertical = 2
-text = "English"
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+icon = ExtResource("6_khc5b")
+icon_alignment = 1
+expand_icon = true
 
 [node name="SelectLan" type="Label" parent="MainMenu/UI/Locale"]
 layout_mode = 1
@@ -207,11 +236,14 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -93.0
-offset_top = 57.0
+offset_top = 78.0
 offset_right = 94.0
-offset_bottom = 124.0
+offset_bottom = 145.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("9_i8n0o")
+theme_override_font_sizes/font_size = 24
 text = "MENU_START"
 script = ExtResource("1_mlvm1")
 MainScene = ExtResource("2_w7qix")
@@ -224,11 +256,14 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -93.0
-offset_top = 141.0
+offset_top = 162.0
 offset_right = 92.0
-offset_bottom = 204.0
+offset_bottom = 225.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("9_i8n0o")
+theme_override_font_sizes/font_size = 24
 text = "MENU_QUIT"
 
 [node name="Title" type="Label" parent="MainMenu/UI/Menu"]
@@ -254,12 +289,15 @@ texture = ExtResource("4_llfor")
 [node name="Effects" type="Node2D" parent="MainMenu/UI"]
 
 [node name="Sparkles" type="CPUParticles2D" parent="MainMenu/UI/Effects"]
-position = Vector2(595, 4)
+position = Vector2(581, -41)
+rotation = 0.797216
 emitting = false
 amount = 32
 lifetime = 3.0
 one_shot = true
 explosiveness = 1.0
+emission_shape = 1
+emission_sphere_radius = 30.0
 direction = Vector2(0, 0)
 initial_velocity_max = 100.0
 scale_amount_min = 3.0
@@ -278,7 +316,11 @@ libraries = {
 "": SubResource("AnimationLibrary_anko8")
 }
 
+[connection signal="mouse_entered" from="MainMenu/UI/Locale/Es" to="." method="_on_es_mouse_entered"]
+[connection signal="mouse_exited" from="MainMenu/UI/Locale/Es" to="." method="_on_es_mouse_exited"]
 [connection signal="pressed" from="MainMenu/UI/Locale/Es" to="." method="_on_es_pressed"]
+[connection signal="mouse_entered" from="MainMenu/UI/Locale/En" to="." method="_on_en_mouse_entered"]
+[connection signal="mouse_exited" from="MainMenu/UI/Locale/En" to="." method="_on_en_mouse_exited"]
 [connection signal="pressed" from="MainMenu/UI/Locale/En" to="." method="_on_en_pressed"]
 [connection signal="pressed" from="MainMenu/UI/Menu/Play" to="MainMenu/UI/Menu/Play" method="_on_pressed"]
 [connection signal="pressed" from="MainMenu/UI/Menu/Quit" to="." method="_on_quit_pressed"]
