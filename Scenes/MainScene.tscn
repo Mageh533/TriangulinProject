@@ -1355,7 +1355,6 @@ volume_db = -10.0
 position = Vector2(-328, 368)
 script = ExtResource("16_t1obs")
 usageTime = 6
-alarmNoise = 35.0
 
 [node name="ShockEffect_Puerta" type="CPUParticles2D" parent="Interactable/Puerta"]
 position = Vector2(-216, -144)
@@ -1451,7 +1450,7 @@ stream = ExtResource("47_crlr7")
 [node name="Ventana" type="Node2D" parent="Interactable"]
 script = ExtResource("27_1ir03")
 usageTime = 6
-alarmNoise = 35.0
+alarmNoise = 20.0
 
 [node name="Barrera_Ventana" type="Sprite2D" parent="Interactable/Ventana"]
 visible = false
@@ -2053,7 +2052,6 @@ autoplay = true
 [connection signal="button_up" from="Interactable/CajaDeMusica/Accion" to="Interactable/CajaDeMusica" method="_on_accion_button_up"]
 [connection signal="mouse_entered" from="Interactable/CajaDeMusica/Accion" to="." method="_on_accion_mouse_entered"]
 [connection signal="mouse_exited" from="Interactable/CajaDeMusica/Accion" to="." method="_on_accion_mouse_exited"]
-[connection signal="alarmActive" from="Interactable/Puerta" to="Mosters/Circulin" method="_on_puerta_alarm_active"]
 [connection signal="alarmActive" from="Interactable/Puerta" to="Mosters/Rectangulin" method="_on_puerta_alarm_active"]
 [connection signal="doorDisable" from="Interactable/Puerta" to="." method="_on_puerta_door_disable"]
 [connection signal="shocking" from="Interactable/Puerta" to="Mosters/Rectangulin" method="_on_puerta_shocking"]
@@ -2064,7 +2062,6 @@ autoplay = true
 [connection signal="mouse_exited" from="Interactable/Puerta/BotonRojo/AlertButton" to="." method="_on_alert_button_mouse_exited"]
 [connection signal="pressed" from="Interactable/Puerta/BotonRojo/AlertButton" to="Interactable/Puerta" method="_on_alert_button_pressed"]
 [connection signal="alarmActive" from="Interactable/Ventana" to="Mosters/Circulin" method="_on_ventana_alarm_active"]
-[connection signal="alarmActive" from="Interactable/Ventana" to="Mosters/Rectangulin" method="_on_ventana_alarm_active"]
 [connection signal="shocking" from="Interactable/Ventana" to="Mosters/Circulin" method="_on_ventana_shocking"]
 [connection signal="windowDisable" from="Interactable/Ventana" to="." method="_on_ventana_window_disable"]
 [connection signal="mouse_entered" from="Interactable/Ventana/BotonAzul/ShockWindow" to="." method="_on_shock_door_mouse_entered"]

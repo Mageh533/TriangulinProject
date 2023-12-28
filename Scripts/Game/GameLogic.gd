@@ -24,10 +24,6 @@ func _ready():
 	$Darkness.show()
 	$POV/UILayer/UI/LeftGuide.modulate.a = 0
 	$POV/UILayer/UI/RightGuide.modulate.a = 0
-	await get_tree().create_timer(1).timeout
-	get_tree().create_tween().tween_property($POV/UILayer/UI/Hint, "modulate:a", 1, 2)
-	await get_tree().create_timer(3).timeout
-	get_tree().create_tween().tween_property($POV/UILayer/UI/Hint, "modulate:a", 0, 2)
 
 func _on_read_pressed():
 	$POV/UILayer/UI/Note.modulate.a = 0
@@ -41,6 +37,10 @@ func _on_close_pressed():
 	$POV/UILayer/UI/Note.queue_free()
 	$Interactable/Note_GameStart.queue_free()
 	startGame()
+	await get_tree().create_timer(1).timeout
+	get_tree().create_tween().tween_property($POV/UILayer/UI/Hint, "modulate:a", 1, 2)
+	await get_tree().create_timer(3).timeout
+	get_tree().create_tween().tween_property($POV/UILayer/UI/Hint, "modulate:a", 0, 2)
 
 func startGame():
 	$DifficultyTimer.start()
