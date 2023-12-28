@@ -190,3 +190,14 @@ func _on_apagar_radio_entered():
 
 func _on_apagar_radio_exited():
 	$Interactable/Radios.modulate = normalMod
+
+func onTriangulinWarning():
+	if $POV.position.x <= 2000:
+		$POV/UILayer/UI/LeftGuide/WarningLeft.show()
+		$POV/UILayer/UI/LeftGuide/WarningRight.hide()
+	elif $POV.position.x >= -2000:
+		$POV/UILayer/UI/LeftGuide/WarningRight.show()
+		$POV/UILayer/UI/LeftGuide/WarningLeft.hide()
+	else:
+		$POV/UILayer/UI/LeftGuide/WarningLeft.hide()
+		$POV/UILayer/UI/LeftGuide/WarningRight.hide()

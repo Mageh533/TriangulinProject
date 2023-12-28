@@ -1,4 +1,4 @@
-[gd_scene load_steps=121 format=3 uid="uid://ci47ylf44fdg8"]
+[gd_scene load_steps=122 format=3 uid="uid://ci47ylf44fdg8"]
 
 [ext_resource type="Script" path="res://Scripts/Game/GameLogic.gd" id="1_sqss8"]
 [ext_resource type="Texture2D" uid="uid://3f28bn54dy1a" path="res://Assets/Static/Escritorio.png" id="2_48fq7"]
@@ -77,6 +77,7 @@
 [ext_resource type="AudioStream" uid="uid://pjhnhj578tn2" path="res://Assets/SoundEffects/Monsters/Triangulin.ogg" id="62_5b5md"]
 [ext_resource type="AudioStream" uid="uid://5aercnuueabc" path="res://Assets/SoundEffects/Monsters/CirculinJumpscare.ogg" id="68_264y6"]
 [ext_resource type="AudioStream" uid="uid://cntpshtenchcn" path="res://Assets/SoundEffects/Monsters/PastaLaVista.ogg" id="69_ni1gt"]
+[ext_resource type="Texture2D" uid="uid://dhevdi8naonnq" path="res://Assets/UI/alert-triangle-filled.svg" id="75_aw6xk"]
 [ext_resource type="AudioStream" uid="uid://bmhaxbymu1vfj" path="res://Assets/SoundEffects/Effects/estatitca.wav" id="75_sdu8g"]
 [ext_resource type="AudioStream" uid="uid://cpw8k1ffsr0dy" path="res://Assets/SoundEffects/Victoria.wav" id="78_atlg0"]
 
@@ -1898,6 +1899,11 @@ grow_vertical = 2
 text = "<<"
 label_settings = SubResource("LabelSettings_4lk0f")
 
+[node name="WarningLeft" type="Sprite2D" parent="POV/UILayer/UI/LeftGuide"]
+visible = false
+position = Vector2(61, 24)
+texture = ExtResource("75_aw6xk")
+
 [node name="RightGuide" type="Label" parent="POV/UILayer/UI"]
 layout_mode = 1
 anchors_preset = 6
@@ -1913,6 +1919,11 @@ grow_horizontal = 0
 grow_vertical = 2
 text = ">>"
 label_settings = SubResource("LabelSettings_4lk0f")
+
+[node name="WarningRight" type="Sprite2D" parent="POV/UILayer/UI/RightGuide"]
+visible = false
+position = Vector2(-20, 25)
+texture = ExtResource("75_aw6xk")
 
 [node name="Inventory" type="Panel" parent="POV/UILayer/UI"]
 modulate = Color(1, 1, 1, 0.533333)
