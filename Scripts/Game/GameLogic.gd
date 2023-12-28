@@ -25,6 +25,9 @@ func _ready():
 	$Darkness.show()
 	$POV/UILayer/UI/LeftGuide.modulate.a = 0
 	$POV/UILayer/UI/RightGuide.modulate.a = 0
+	$POV/UILayer/UI/Inventory.modulate.a = 0
+	GlobalVariables.permNoise = 0
+	GlobalVariables.tempNoise = 0
 
 func _on_read_pressed():
 	$POV/UILayer/UI/Note.modulate.a = 0
@@ -42,15 +45,22 @@ func _on_close_pressed():
 	get_tree().create_tween().tween_property($POV/UILayer/UI/Hint, "modulate:a", 1, 2)
 	await get_tree().create_timer(3).timeout
 	get_tree().create_tween().tween_property($POV/UILayer/UI/Hint, "modulate:a", 0, 2)
+	await get_tree().create_timer(3).timeout
+	$POV/UILayer/UI/Hint.text = tr("UI_HINT2")
+	get_tree().create_tween().tween_property($POV/UILayer/UI/Hint, "modulate:a", 1, 2)
+	await get_tree().create_timer(3).timeout
+	get_tree().create_tween().tween_property($POV/UILayer/UI/Hint, "modulate:a", 0, 2)
 
 func startGame():
 	$DifficultyTimer.start()
 	$Interactable/Radios/RadioTimer.start()
 	$Mosters/Circulin/CirculinTimer.start()
 	$Mosters/Rectangulin/RectangulinTimer.start()
+	$Interactable/Despertador/Alarm.start()
 	gameStarted = true
 	get_tree().create_tween().tween_property($POV/UILayer/UI/LeftGuide, "modulate:a", 1, 2)
 	get_tree().create_tween().tween_property($POV/UILayer/UI/RightGuide, "modulate:a", 1, 2)
+	get_tree().create_tween().tween_property($POV/UILayer/UI/Inventory, "modulate:a", 0.6, 2)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -67,6 +77,7 @@ func _process(delta):
 	else:
 		$POV/UILayer/UI/LeftGuide/WarningLeft.hide()
 		$POV/UILayer/UI/RightGuide/WarningRight.hide()
+	playerKeyboardControls()
 
 # Camera Logic
 func _on_move_left_mouse_entered():
@@ -132,6 +143,16 @@ func returnToMenu():
 func secretScene():
 	get_tree().paused = false
 	get_tree().change_scene_to_file("res://Scenes/SecretScene.tscn")
+
+func playerKeyboardControls():
+	if Input.is_action_pressed("left"):
+		movingLeft = true
+	if Input.is_action_just_released("left"):
+		movingLeft = false
+	if Input.is_action_pressed("right"):
+		movingRight = true
+	if Input.is_action_just_released("right"):
+		movingRight = false
 
 func _on_puerta_door_disable():
 	$UIAnims.play("DoorButtonPushed")
@@ -207,3 +228,10 @@ func onTriangulinWarning():
 	else:
 		$POV/UILayer/UI/LeftGuide/WarningLeft.hide()
 		$POV/UILayer/UI/RightGuide/WarningRight.hide()
+
+func _on_action_pressed():
+	$Interactable/Cacerola/Bling.play()
+	$Interactable/Cacerola2/Bling.play()
+
+func _on_button_pressed():
+	$Interactable/CartelSeBuscaAngel/Honk.play()

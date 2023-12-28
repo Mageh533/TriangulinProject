@@ -17,3 +17,6 @@ MENU_START,Start,Jugar
 MENU_QUIT,Quit,Salir
 MENU_TITLE,One Night at Triangle's,Una Noche con Triangulin
 UI_WIN,Congrats! Enjoy a nice breakfast on your way out.,Felicidades! Disfruta de un buen desayuno antes de irte.
+UI_DEAD,You deaded,Has Morido
+UI_EMPTY,Empty,Vacio
+UI_HINT2,Move left or right with the mouse or with 'A' and 'D'.,Muevete con el mouse de izquierda a derecha o con la 'A' y 'D'

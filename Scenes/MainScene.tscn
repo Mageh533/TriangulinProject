@@ -1,4 +1,4 @@
-[gd_scene load_steps=122 format=3 uid="uid://ci47ylf44fdg8"]
+[gd_scene load_steps=132 format=3 uid="uid://ci47ylf44fdg8"]
 
 [ext_resource type="Script" path="res://Scripts/Game/GameLogic.gd" id="1_sqss8"]
 [ext_resource type="Texture2D" uid="uid://3f28bn54dy1a" path="res://Assets/Static/Escritorio.png" id="2_48fq7"]
@@ -28,6 +28,7 @@
 [ext_resource type="AudioStream" uid="uid://dltssk8a5enlo" path="res://Assets/SoundEffects/Effects/Cristal_roto.mp3" id="13_raib4"]
 [ext_resource type="Texture2D" uid="uid://dcd2cfnoyuwfm" path="res://Assets/Monsters/Circulin/Pala_agarrada.png" id="13_rmkaw"]
 [ext_resource type="AudioStream" uid="uid://52gx3p0vrtr3" path="res://Assets/SoundEffects/Monsters/Pasos.ogg" id="14_2od4f"]
+[ext_resource type="Texture2D" uid="uid://5g0y0pa05yyk" path="res://Assets/Static/Cartel_se_busca_Angel.png" id="15_fvyk8"]
 [ext_resource type="AudioStream" uid="uid://w7orssdt4bnx" path="res://Assets/SoundEffects/Effects/ambiente.ogg" id="15_u18h2"]
 [ext_resource type="Texture2D" uid="uid://bgtkyy37vsw1j" path="res://Assets/Objects/Boton_azul.png" id="16_b2dq5"]
 [ext_resource type="Texture2D" uid="uid://c3imkdw4n7gxd" path="res://Assets/Monsters/Triangulin/1.png" id="16_rs500"]
@@ -73,13 +74,17 @@
 [ext_resource type="AudioStream" uid="uid://ccwr2navfp5ui" path="res://Assets/SoundEffects/Effects/Recarga_act.ogg" id="55_3m1ea"]
 [ext_resource type="AudioStream" uid="uid://csef74csc6ls1" path="res://Assets/SoundEffects/Objects/Radio.mp3" id="55_8qdb1"]
 [ext_resource type="Texture2D" uid="uid://bspvr3jgvqh6j" path="res://Assets/Objects/readme.png" id="57_qv2hd"]
+[ext_resource type="AudioStream" uid="uid://nt1tymnwggoa" path="res://Assets/SoundEffects/Objects/dinero.wav" id="58_h323i"]
+[ext_resource type="Texture2D" uid="uid://be82jxwr6k2r6" path="res://Assets/Objects/Cacerola.png" id="58_om0lf"]
 [ext_resource type="Texture2D" uid="uid://bqqrucpo0gpfg" path="res://Assets/Static/Ending_Fondo.png" id="59_nr1g7"]
+[ext_resource type="AudioStream" uid="uid://1j1u00pc7qgf" path="res://Assets/SoundEffects/Objects/honk.mp3" id="60_t3t82"]
 [ext_resource type="AudioStream" uid="uid://pjhnhj578tn2" path="res://Assets/SoundEffects/Monsters/Triangulin.ogg" id="62_5b5md"]
 [ext_resource type="AudioStream" uid="uid://5aercnuueabc" path="res://Assets/SoundEffects/Monsters/CirculinJumpscare.ogg" id="68_264y6"]
 [ext_resource type="AudioStream" uid="uid://cntpshtenchcn" path="res://Assets/SoundEffects/Monsters/PastaLaVista.ogg" id="69_ni1gt"]
 [ext_resource type="Texture2D" uid="uid://dhevdi8naonnq" path="res://Assets/UI/alert-triangle-filled.svg" id="75_aw6xk"]
 [ext_resource type="AudioStream" uid="uid://bmhaxbymu1vfj" path="res://Assets/SoundEffects/Effects/estatitca.wav" id="75_sdu8g"]
 [ext_resource type="AudioStream" uid="uid://cpw8k1ffsr0dy" path="res://Assets/SoundEffects/Victoria.wav" id="78_atlg0"]
+[ext_resource type="Texture2D" uid="uid://dl4acv1m83ji0" path="res://Assets/UI/dynamo_flashlight.png" id="80_uovyt"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_e7v5w"]
 animations = [{
@@ -345,6 +350,17 @@ bg_color = Color(0.0666667, 0.486275, 0.360784, 1)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_d7ua2"]
 size = Vector2(117, 647)
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gu1bk"]
+bg_color = Color(0.388235, 0.411765, 0.388235, 0.521569)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lwidb"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="Theme" id="Theme_ocndm"]
+Button/styles/hover = SubResource("StyleBoxFlat_gu1bk")
+Button/styles/normal = SubResource("StyleBoxFlat_lwidb")
+Button/styles/pressed = null
+
 [sub_resource type="LabelSettings" id="LabelSettings_b50o2"]
 font_size = 73
 
@@ -436,6 +452,17 @@ font_size = 11
 
 [sub_resource type="LabelSettings" id="LabelSettings_5ofkn"]
 font_size = 15
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_14ki8"]
+bg_color = Color(0.6, 0.6, 0.6, 0.0588235)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.8, 0.8, 0.8, 0.231373)
+
+[sub_resource type="LabelSettings" id="LabelSettings_21f7l"]
+font_color = Color(1, 1, 1, 0.537255)
 
 [sub_resource type="LabelSettings" id="LabelSettings_o6amb"]
 font_size = 32
@@ -1643,6 +1670,56 @@ offset_right = 122.0
 offset_bottom = 106.0
 mouse_filter = 1
 
+[node name="Cacerola" type="Sprite2D" parent="Interactable"]
+position = Vector2(-1334, 172)
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("58_om0lf")
+
+[node name="Action" type="Button" parent="Interactable/Cacerola"]
+modulate = Color(1, 1, 1, 0)
+offset_left = -193.0
+offset_top = -72.0
+offset_right = 8.0
+offset_bottom = 75.0
+mouse_filter = 1
+
+[node name="Bling" type="AudioStreamPlayer2D" parent="Interactable/Cacerola"]
+stream = ExtResource("58_h323i")
+volume_db = -20.0
+
+[node name="Cacerola2" type="Sprite2D" parent="Interactable"]
+position = Vector2(3240, 172)
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("58_om0lf")
+
+[node name="Action" type="Button" parent="Interactable/Cacerola2"]
+modulate = Color(1, 1, 1, 0)
+offset_left = -193.0
+offset_top = -72.0
+offset_right = 8.0
+offset_bottom = 75.0
+mouse_filter = 1
+
+[node name="Bling" type="AudioStreamPlayer2D" parent="Interactable/Cacerola2"]
+stream = ExtResource("58_h323i")
+volume_db = -20.0
+
+[node name="CartelSeBuscaAngel" type="Sprite2D" parent="Interactable"]
+modulate = Color(1, 1, 1, 0.568627)
+position = Vector2(333, 150)
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("15_fvyk8")
+
+[node name="Button" type="Button" parent="Interactable/CartelSeBuscaAngel"]
+modulate = Color(1, 1, 1, 0)
+offset_left = 16.0
+offset_right = 76.0
+offset_bottom = 36.0
+
+[node name="Honk" type="AudioStreamPlayer2D" parent="Interactable/CartelSeBuscaAngel"]
+stream = ExtResource("60_t3t82")
+volume_db = -10.0
+
 [node name="Targets" type="Node2D" parent="."]
 
 [node name="Left" type="Marker2D" parent="Targets"]
@@ -1701,6 +1778,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
+theme = SubResource("Theme_ocndm")
 
 [node name="WinAnims" type="Control" parent="POV/UILayer/UI"]
 visible = false
@@ -1887,7 +1965,7 @@ offset_right = 20.0
 offset_bottom = 11.5
 grow_horizontal = 2
 grow_vertical = 2
-text = "Has Morido"
+text = "UI_DEAD"
 label_settings = SubResource("LabelSettings_pl7cf")
 
 [node name="Estatc" type="AudioStreamPlayer" parent="POV/UILayer/UI/LoseAnims"]
@@ -1939,9 +2017,9 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -129.0
-offset_top = -67.0
-offset_right = 110.0
+offset_left = -225.5
+offset_top = -68.0
+offset_right = 225.5
 grow_horizontal = 2
 grow_vertical = 0
 mouse_filter = 2
@@ -1961,7 +2039,7 @@ text = "1000"
 label_settings = SubResource("LabelSettings_x32vv")
 
 [node name="Battery" type="Sprite2D" parent="POV/UILayer/UI/Inventory"]
-position = Vector2(200, 34)
+position = Vector2(400, 34)
 scale = Vector2(2.875, 2.3125)
 texture = ExtResource("31_vrffb")
 
@@ -1973,6 +2051,40 @@ offset_bottom = 19.625
 scale = Vector2(0.29, 0.29)
 text = "100%"
 label_settings = SubResource("LabelSettings_5ofkn")
+
+[node name="Items" type="Panel" parent="POV/UILayer/UI/Inventory"]
+layout_mode = 0
+offset_left = 85.5
+offset_top = 12.0
+offset_right = 358.5
+offset_bottom = 62.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_14ki8")
+
+[node name="Empty" type="Label" parent="POV/UILayer/UI/Inventory/Items"]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -37.5
+offset_top = -11.0
+offset_right = 38.5
+offset_bottom = 12.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "UI_EMPTY"
+label_settings = SubResource("LabelSettings_21f7l")
+horizontal_alignment = 1
+
+[node name="Flashlight" type="TextureRect" parent="POV/UILayer/UI/Inventory/Items"]
+layout_mode = 0
+offset_left = 197.0
+offset_right = 248.0
+offset_bottom = 53.0
+texture = ExtResource("80_uovyt")
+expand_mode = 1
 
 [node name="Hint" type="Label" parent="POV/UILayer/UI"]
 modulate = Color(1, 1, 1, 0)
@@ -2069,6 +2181,7 @@ autoplay = true
 [connection signal="button_up" from="Interactable/CajaDeMusica/Accion" to="Interactable/CajaDeMusica" method="_on_accion_button_up"]
 [connection signal="mouse_entered" from="Interactable/CajaDeMusica/Accion" to="." method="_on_accion_mouse_entered"]
 [connection signal="mouse_exited" from="Interactable/CajaDeMusica/Accion" to="." method="_on_accion_mouse_exited"]
+[connection signal="mouse_exited" from="Interactable/CajaDeMusica/Accion" to="Interactable/CajaDeMusica" method="_on_accion_mouse_exited"]
 [connection signal="alarmActive" from="Interactable/Puerta" to="Mosters/Rectangulin" method="_on_puerta_alarm_active"]
 [connection signal="doorDisable" from="Interactable/Puerta" to="." method="_on_puerta_door_disable"]
 [connection signal="shocking" from="Interactable/Puerta" to="Mosters/Rectangulin" method="_on_puerta_shocking"]
@@ -2098,6 +2211,9 @@ autoplay = true
 [connection signal="mouse_entered" from="Interactable/Note_GameStart/Read" to="." method="_on_read_mouse_entered"]
 [connection signal="mouse_exited" from="Interactable/Note_GameStart/Read" to="." method="_on_read_mouse_exited"]
 [connection signal="pressed" from="Interactable/Note_GameStart/Read" to="." method="_on_read_pressed"]
+[connection signal="pressed" from="Interactable/Cacerola/Action" to="." method="_on_action_pressed"]
+[connection signal="pressed" from="Interactable/Cacerola2/Action" to="." method="_on_action_pressed"]
+[connection signal="pressed" from="Interactable/CartelSeBuscaAngel/Button" to="." method="_on_button_pressed"]
 [connection signal="mouse_entered" from="POV/MoveLeft" to="." method="_on_move_left_mouse_entered"]
 [connection signal="mouse_exited" from="POV/MoveLeft" to="." method="_on_move_left_mouse_exited"]
 [connection signal="mouse_entered" from="POV/MoveRight" to="." method="_on_move_right_mouse_entered"]

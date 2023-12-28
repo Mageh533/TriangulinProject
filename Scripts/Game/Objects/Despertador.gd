@@ -33,10 +33,10 @@ func activateAlarm():
 func _on_apagar_pressed():
 	if active:
 		active = false
-		$Time.modulate.a = 1
 		GlobalVariables.permNoise -= alarmNoise
 		$Blink.stop()
 		$AlarmSFX.stop()
+		$Time.modulate.a = 1
 
 func _on_alarm_timeout():
 	randomize()
