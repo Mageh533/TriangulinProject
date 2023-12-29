@@ -20,6 +20,8 @@ func _process(delta):
 				forwardSfxPos = 0
 				$Backwards.stop()
 				$Stop.play()
+	if Input.is_action_pressed("left") or Input.is_action_just_pressed("right"):
+		stopWinding()
 
 func _on_accion_button_down():
 	if !winding:

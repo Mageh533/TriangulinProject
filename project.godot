@@ -10,7 +10,11 @@ config_version=5
 
 [application]
 
-config/name="Traingulin Project"
+config/name="Triangle's Project"
+config/name_localized={
+"en": "One Night at Triangle's",
+"es": "Una Noche con Triangulin"
+}
 run/main_scene="res://Scenes/MainMenu.tscn"
 config/features=PackedStringArray("4.2", "GL Compatibility")
 config/icon="res://Assets/Saltosusto.png"
@@ -21,6 +25,7 @@ GlobalVariables="*res://Scripts/Game/GlobalVariables.gd"
 
 [display]
 
+window/size/mode=4
 window/stretch/mode="canvas_items"
 window/stretch/aspect="ignore"
 

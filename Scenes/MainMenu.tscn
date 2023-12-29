@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://deob3eh6sgnix"]
+[gd_scene load_steps=21 format=3 uid="uid://deob3eh6sgnix"]
 
 [ext_resource type="Script" path="res://Scripts/Menu/MainMenu.gd" id="1_m4jms"]
 [ext_resource type="Script" path="res://Scripts/Menu/Buttons/Play.gd" id="1_mlvm1"]
@@ -12,6 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://3f28bn54dy1a" path="res://Assets/Static/Escritorio.png" id="7_cd00w"]
 [ext_resource type="AudioStream" uid="uid://cxmxxolpqg7lw" path="res://Assets/SoundEffects/Menu.mp3" id="8_kawga"]
 [ext_resource type="FontFile" uid="uid://ou3jqw8tftdw" path="res://Fonts/RubikDoodleShadow-Regular.ttf" id="9_i8n0o"]
+[ext_resource type="Texture2D" uid="uid://7h84h8iln6vl" path="res://Assets/UI/arrows-maximize.svg" id="11_v6wlq"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lkdhm"]
 bg_color = Color(0.6, 0.6, 0.6, 0.505882)
@@ -307,6 +308,14 @@ color = Color(0, 1, 1, 1)
 [node name="Sparks" type="AudioStreamPlayer2D" parent="MainMenu/UI/Effects"]
 position = Vector2(597, 5)
 
+[node name="FullScreen" type="Button" parent="MainMenu/UI"]
+offset_left = 38.0
+offset_top = 29.0
+offset_right = 78.0
+offset_bottom = 69.0
+icon = ExtResource("11_v6wlq")
+icon_alignment = 1
+
 [node name="Music" type="AudioStreamPlayer" parent="MainMenu"]
 stream = ExtResource("8_kawga")
 volume_db = -10.0
@@ -324,3 +333,4 @@ libraries = {
 [connection signal="pressed" from="MainMenu/UI/Locale/En" to="." method="_on_en_pressed"]
 [connection signal="pressed" from="MainMenu/UI/Menu/Play" to="MainMenu/UI/Menu/Play" method="_on_pressed"]
 [connection signal="pressed" from="MainMenu/UI/Menu/Quit" to="." method="_on_quit_pressed"]
+[connection signal="pressed" from="MainMenu/UI/FullScreen" to="." method="_on_full_screen_pressed"]
