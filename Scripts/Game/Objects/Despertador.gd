@@ -6,13 +6,23 @@ extends Sprite2D
 
 var timeText = "12:00"
 var active = false
+var blinked = false
 
 func _ready():
 	GlobalVariables.time = startTime
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(_delta):
+func _process(delta):
 	processTime()
+	if active:
+		if $Time.modulate.a > 0 and !blinked:
+			$Time.modulate.a -= delta * 2
+		elif $Time.modulate.a < 1 and blinked:
+			$Time.modulate.a += delta * 2
+		else:
+			blinked = !blinked
+	else:
+		$Time.modulate.a = 1
 
 # Time display
 func processTime():
@@ -27,16 +37,13 @@ func activateAlarm():
 	if !active:
 		active = true
 		GlobalVariables.permNoise += alarmNoise
-		$Blink.start()
 		$AlarmSFX.play()
 
 func _on_apagar_pressed():
 	if active:
 		active = false
 		GlobalVariables.permNoise -= alarmNoise
-		$Blink.stop()
 		$AlarmSFX.stop()
-		$Time.modulate.a = 1
 
 func _on_alarm_timeout():
 	randomize()

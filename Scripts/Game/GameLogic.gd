@@ -160,12 +160,6 @@ func secretScene():
 func _on_puerta_door_disable():
 	$UIAnims.play("DoorButtonPushed")
 
-func _on_blink_timeout():
-	if $Interactable/Despertador/Time.modulate.a == 0:
-		get_tree().create_tween().tween_property($Interactable/Despertador/Time, "modulate:a", 1, 0.2)
-	else:
-		get_tree().create_tween().tween_property($Interactable/Despertador/Time, "modulate:a", 0, 0.2)
-
 func _on_ventana_window_disable():
 	$UIAnims.play("WindowButtonPushed")
 
