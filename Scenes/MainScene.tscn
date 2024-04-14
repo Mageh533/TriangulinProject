@@ -1391,6 +1391,7 @@ script = ExtResource("16_t1obs")
 usageTime = 6
 
 [node name="ShockEffect_Puerta" type="CPUParticles2D" parent="Interactable/Puerta"]
+z_index = -1
 position = Vector2(-216, -144)
 scale = Vector2(0.896094, 0.898611)
 emitting = false
@@ -1434,6 +1435,8 @@ mouse_filter = 1
 
 [node name="Barrera_Puerta" type="Sprite2D" parent="Interactable/Puerta"]
 visible = false
+z_index = -1
+z_as_relative = false
 position = Vector2(-249, -40)
 scale = Vector2(0.896094, 0.898611)
 texture = ExtResource("19_uu3fg")
@@ -1488,7 +1491,8 @@ alarmNoise = 20.0
 
 [node name="Barrera_Ventana" type="Sprite2D" parent="Interactable/Ventana"]
 visible = false
-position = Vector2(1727, 328)
+z_index = -1
+position = Vector2(1745, 346)
 scale = Vector2(0.896094, 0.898611)
 texture = ExtResource("18_b2ip2")
 
@@ -1522,6 +1526,7 @@ offset_bottom = 84.0
 mouse_filter = 1
 
 [node name="ShockEffect_Ventana" type="CPUParticles2D" parent="Interactable/Ventana"]
+z_index = -1
 position = Vector2(1707, 225)
 scale = Vector2(0.896094, 0.898611)
 emitting = false
@@ -1572,7 +1577,7 @@ radioChance = 0.05
 
 [node name="Radio1" type="Sprite2D" parent="Interactable/Radios"]
 visible = false
-position = Vector2(1443, 304)
+position = Vector2(1443, 323)
 scale = Vector2(0.25, 0.25)
 texture = ExtResource("21_53fum")
 
@@ -1590,7 +1595,7 @@ max_distance = 3000.0
 
 [node name="Radio2" type="Sprite2D" parent="Interactable/Radios"]
 visible = false
-position = Vector2(813, 578)
+position = Vector2(813, 583)
 scale = Vector2(0.25, 0.25)
 texture = ExtResource("21_53fum")
 
