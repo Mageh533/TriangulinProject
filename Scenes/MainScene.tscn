@@ -331,9 +331,15 @@ _data = {
 
 [sub_resource type="LabelSettings" id="LabelSettings_1bbin"]
 font_size = 31
+font_color = Color(1, 1, 1, 0.713726)
+shadow_size = 11
+shadow_color = Color(0, 0, 0, 0.227451)
 
-[sub_resource type="LabelSettings" id="LabelSettings_todmw"]
+[sub_resource type="LabelSettings" id="LabelSettings_nbs4f"]
 font_size = 18
+font_color = Color(1, 1, 1, 0.713726)
+shadow_size = 11
+shadow_color = Color(0, 0, 0, 0.227451)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8he2t"]
 bg_color = Color(0.239216, 0.239216, 0.239216, 1)
@@ -1106,37 +1112,12 @@ offset_bottom = 663.0
 mouse_filter = 2
 color = Color(0.0627451, 0.0627451, 0.0627451, 1)
 
-[node name="Escritorio" type="Sprite2D" parent="Static"]
-position = Vector2(576, 328)
-scale = Vector2(0.896094, 0.898611)
-texture = ExtResource("2_48fq7")
-
-[node name="Ventana1" type="Sprite2D" parent="Static"]
-position = Vector2(1720, 328)
-scale = Vector2(0.896094, 0.898611)
-texture = ExtResource("3_skxci")
-
-[node name="Puerta" type="Sprite2D" parent="Static"]
-position = Vector2(-568, 328)
-scale = Vector2(0.896094, 0.898611)
-texture = ExtResource("4_tul3m")
-
-[node name="Estanterias" type="Sprite2D" parent="Static"]
-position = Vector2(-1712, 328)
-scale = Vector2(0.896094, 0.898611)
-texture = ExtResource("5_podnf")
-
-[node name="Estanterias2" type="Sprite2D" parent="Static"]
-position = Vector2(2864, 328)
-scale = Vector2(0.896094, 0.898611)
-texture = ExtResource("5_podnf")
-
 [node name="Cristal" type="TextureRect" parent="Static"]
 modulate = Color(1, 1, 1, 0.34902)
-offset_left = 1304.0
-offset_top = 116.0
-offset_right = 2141.0
-offset_bottom = 361.0
+offset_left = 1299.0
+offset_top = 129.0
+offset_right = 2144.0
+offset_bottom = 393.0
 texture = ExtResource("6_3byo8")
 expand_mode = 1
 script = ExtResource("6_ori24")
@@ -1173,7 +1154,7 @@ scale_amount_min = 3.0
 scale_amount_max = 3.0
 
 [node name="Grietas" type="AnimatedSprite2D" parent="Static/Cristal"]
-position = Vector2(420, 130)
+position = Vector2(419, 140)
 scale = Vector2(0.94, 0.94)
 sprite_frames = SubResource("SpriteFrames_e7v5w")
 animation = &"Stage1"
@@ -1182,6 +1163,31 @@ animation = &"Stage1"
 position = Vector2(412, 128)
 stream = ExtResource("13_raib4")
 max_distance = 3000.0
+
+[node name="Escritorio" type="Sprite2D" parent="Static"]
+position = Vector2(576, 328)
+scale = Vector2(0.896094, 0.898611)
+texture = ExtResource("2_48fq7")
+
+[node name="Ventana1" type="Sprite2D" parent="Static"]
+position = Vector2(1720, 328)
+scale = Vector2(0.896094, 0.898611)
+texture = ExtResource("3_skxci")
+
+[node name="Puerta" type="Sprite2D" parent="Static"]
+position = Vector2(-568, 328)
+scale = Vector2(0.896094, 0.898611)
+texture = ExtResource("4_tul3m")
+
+[node name="Estanterias" type="Sprite2D" parent="Static"]
+position = Vector2(-1712, 328)
+scale = Vector2(0.896094, 0.898611)
+texture = ExtResource("5_podnf")
+
+[node name="Estanterias2" type="Sprite2D" parent="Static"]
+position = Vector2(2864, 328)
+scale = Vector2(0.896094, 0.898611)
+texture = ExtResource("5_podnf")
 
 [node name="Pasos" type="AudioStreamPlayer2D" parent="Static"]
 position = Vector2(1731, 282)
@@ -1327,20 +1333,20 @@ offset_bottom = 37.0
 mouse_filter = 1
 
 [node name="Time" type="Label" parent="Interactable/Despertador"]
-offset_left = -56.0
-offset_top = -24.0
-offset_right = 42.0
-offset_bottom = 29.0
+offset_left = -61.0
+offset_top = -19.0
+offset_right = 37.0
+offset_bottom = 34.0
 text = "00:00"
 label_settings = SubResource("LabelSettings_1bbin")
 
 [node name="AM" type="Label" parent="Interactable/Despertador"]
-offset_left = 33.0
-offset_top = -12.0
-offset_right = 131.0
-offset_bottom = 41.0
+offset_left = 28.0
+offset_top = -7.0
+offset_right = 126.0
+offset_bottom = 46.0
 text = "AM"
-label_settings = SubResource("LabelSettings_todmw")
+label_settings = SubResource("LabelSettings_nbs4f")
 
 [node name="Alarm" type="Timer" parent="Interactable/Despertador"]
 wait_time = 60.0
@@ -1401,7 +1407,7 @@ scale_amount_max = 5.0
 color = Color(0.360784, 0.568627, 1, 1)
 
 [node name="BotonAzul" type="Sprite2D" parent="Interactable/Puerta"]
-position = Vector2(29.75, -72.5)
+position = Vector2(43.75, -75.5)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("16_b2dq5")
 
@@ -1414,7 +1420,7 @@ offset_bottom = 83.0
 mouse_filter = 1
 
 [node name="BotonRojo" type="Sprite2D" parent="Interactable/Puerta"]
-position = Vector2(29.75, 25)
+position = Vector2(43.75, 22)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("17_eiet5")
 
@@ -1446,10 +1452,10 @@ texture_scale = 5.5
 stream = ExtResource("47_u1p6k")
 
 [node name="UsageGauge" type="ProgressBar" parent="Interactable/Puerta"]
-offset_left = 80.0
-offset_top = -112.0
-offset_right = 89.0
-offset_bottom = -29.0
+offset_left = 94.0
+offset_top = -115.0
+offset_right = 103.0
+offset_bottom = -32.0
 mouse_filter = 1
 theme_override_styles/background = SubResource("StyleBoxFlat_8he2t")
 theme_override_styles/fill = SubResource("StyleBoxFlat_36xep")
@@ -1490,7 +1496,7 @@ texture = ExtResource("18_b2ip2")
 stream = ExtResource("47_u1p6k")
 
 [node name="BotonAzul" type="Sprite2D" parent="Interactable/Ventana"]
-position = Vector2(1659, 417)
+position = Vector2(1658.75, 458.5)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("16_b2dq5")
 
@@ -1503,7 +1509,7 @@ offset_bottom = 82.0
 mouse_filter = 1
 
 [node name="BotonRojo" type="Sprite2D" parent="Interactable/Ventana"]
-position = Vector2(1758, 415)
+position = Vector2(1757.75, 456.5)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("17_eiet5")
 
@@ -1532,10 +1538,10 @@ scale_amount_max = 5.0
 color = Color(0.360784, 0.568627, 1, 1)
 
 [node name="UsageGauge" type="ProgressBar" parent="Interactable/Ventana"]
-offset_left = 1617.0
-offset_top = 461.0
-offset_right = 1700.0
-offset_bottom = 471.0
+offset_left = 1616.75
+offset_top = 502.5
+offset_right = 1699.75
+offset_bottom = 512.5
 mouse_filter = 1
 theme_override_styles/background = SubResource("StyleBoxFlat_8he2t")
 theme_override_styles/fill = SubResource("StyleBoxFlat_36xep")
@@ -1658,8 +1664,9 @@ max_distance = 3000.0
 wait_time = 10.0
 
 [node name="Note_GameStart" type="Sprite2D" parent="Interactable"]
-position = Vector2(353, 362)
-scale = Vector2(0.808594, 0.615234)
+position = Vector2(336, 365)
+rotation = -0.268379
+scale = Vector2(0.727935, 0.655467)
 texture = ExtResource("57_qv2hd")
 
 [node name="Read" type="Button" parent="Interactable/Note_GameStart"]
@@ -1876,6 +1883,10 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = 19.0
+offset_top = 21.0
+offset_right = 19.0
+offset_bottom = 21.0
 grow_horizontal = 2
 grow_vertical = 2
 
