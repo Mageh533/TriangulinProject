@@ -2,7 +2,7 @@ extends TextureRect
 
 signal broken
 
-@export var health = 100
+@export var health = 150
 
 func _process(_delta):
 	if health <= 80 and health > 60:

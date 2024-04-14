@@ -1,4 +1,4 @@
-[gd_scene load_steps=132 format=3 uid="uid://ci47ylf44fdg8"]
+[gd_scene load_steps=130 format=3 uid="uid://ci47ylf44fdg8"]
 
 [ext_resource type="Script" path="res://Scripts/Game/GameLogic.gd" id="1_sqss8"]
 [ext_resource type="Texture2D" uid="uid://3f28bn54dy1a" path="res://Assets/Static/Escritorio.png" id="2_48fq7"]
@@ -41,9 +41,7 @@
 [ext_resource type="Texture2D" uid="uid://bwww4ewa85nv1" path="res://Assets/Monsters/Triangulin/5.png" id="19_5gdqe"]
 [ext_resource type="Texture2D" uid="uid://y1tl32obuluk" path="res://Assets/Objects/Barrera_Puerta.png" id="19_uu3fg"]
 [ext_resource type="AudioStream" uid="uid://doexkfmafmo6w" path="res://Assets/SoundEffects/Effects/Snore.wav" id="19_xef3o"]
-[ext_resource type="Texture2D" uid="uid://v4ohnposhbde" path="res://Assets/Monsters/Triangulin/6.png" id="20_11aiv"]
 [ext_resource type="Texture2D" uid="uid://cr25vsm6let08" path="res://Assets/Objects/Radio.png" id="21_53fum"]
-[ext_resource type="Texture2D" uid="uid://el4brylng18v" path="res://Assets/Monsters/Triangulin/7.png" id="21_ffoxj"]
 [ext_resource type="Texture2D" uid="uid://tv1o0q2jdpcn" path="res://Assets/Monsters/Rectangulin/1.png" id="22_1rw84"]
 [ext_resource type="Script" path="res://Scripts/Game/Objects/Radios.gd" id="22_8qmgw"]
 [ext_resource type="Shader" path="res://Assets/Effects/TVNoise.gdshader" id="22_ersd0"]
@@ -382,12 +380,6 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": ExtResource("19_5gdqe")
-}, {
-"duration": 1.0,
-"texture": ExtResource("20_11aiv")
-}, {
-"duration": 1.0,
-"texture": ExtResource("21_ffoxj")
 }],
 "loop": true,
 "name": &"default",
@@ -1206,7 +1198,6 @@ position = Vector2(596, 328)
 scale = Vector2(0.575718, 0.549123)
 sprite_frames = SubResource("SpriteFrames_yqs6t")
 animation = &"Fase1"
-frame_progress = 0.535346
 script = ExtResource("11_pmmvt")
 
 [node name="ProgressBar" type="ProgressBar" parent="Mosters/Triangulin"]
@@ -1849,7 +1840,6 @@ text = "UI_WIN"
 label_settings = SubResource("LabelSettings_etat7")
 
 [node name="DeathAnims" type="Control" parent="POV/UILayer/UI"]
-visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -1872,8 +1862,16 @@ frame_progress = 0.75939
 [node name="Jumpscare" type="AudioStreamPlayer2D" parent="POV/UILayer/UI/DeathAnims/Triangulin/TriangulinSusto"]
 stream = ExtResource("62_5b5md")
 
+[node name="TriangulinSusto2" type="AnimatedSprite2D" parent="POV/UILayer/UI/DeathAnims/Triangulin"]
+position = Vector2(600, 295)
+scale = Vector2(0.001, 0.001)
+sprite_frames = SubResource("SpriteFrames_jxpnt")
+frame_progress = 0.75939
+
+[node name="Jumpscare" type="AudioStreamPlayer2D" parent="POV/UILayer/UI/DeathAnims/Triangulin/TriangulinSusto2"]
+stream = ExtResource("62_5b5md")
+
 [node name="Circulin" type="Control" parent="POV/UILayer/UI/DeathAnims"]
-visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -1901,7 +1899,7 @@ grow_vertical = 2
 [node name="RectangulinSusto" type="AnimatedSprite2D" parent="POV/UILayer/UI/DeathAnims/Rectangulin"]
 position = Vector2(-212, 384)
 sprite_frames = SubResource("SpriteFrames_hyekf")
-animation = &"ready"
+animation = &"shoot"
 
 [node name="Jumpscare" type="AudioStreamPlayer2D" parent="POV/UILayer/UI/DeathAnims/Rectangulin/RectangulinSusto"]
 stream = ExtResource("69_ni1gt")
