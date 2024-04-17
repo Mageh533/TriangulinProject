@@ -18,6 +18,7 @@ config/name_localized={
 run/main_scene="res://Scenes/MainMenu.tscn"
 config/features=PackedStringArray("4.2", "GL Compatibility")
 config/icon="res://Assets/Saltosusto.png"
+config/windows_native_icon="res://Assets/Saltosusto.ico"
 
 [autoload]
 
