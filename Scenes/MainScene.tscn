@@ -1702,7 +1702,7 @@ texture = ExtResource("58_om0lf")
 modulate = Color(1, 1, 1, 0)
 offset_left = -193.0
 offset_top = -72.0
-offset_right = 8.0
+offset_right = 43.0
 offset_bottom = 75.0
 mouse_filter = 1
 
